@@ -19,7 +19,7 @@ const Pokemons: React.FC = () => {
       });
   }, []);
 
-  const renderItem: ListRenderItem<IPokemon> = ({item}) => (
+  const renderPokemon: ListRenderItem<IPokemon> = ({item}) => (
     <Pokemon pokemon={item} />
   );
 
@@ -27,7 +27,7 @@ const Pokemons: React.FC = () => {
     <View>
       <FlatList
         data={PokemonList}
-        renderItem={renderItem}
+        renderItem={renderPokemon}
         keyExtractor={item => item.name}
       />
     </View>

@@ -16,7 +16,7 @@ const Pokemon: React.FC<props> = props => {
       setPokemonData(res.data);
     });
   }, [props.pokemon.url]);
-
+  const title = pokemonData?.name.toUpperCase();
   if (!pokemonData) {
     return <></>;
   }
@@ -24,7 +24,7 @@ const Pokemon: React.FC<props> = props => {
     <View style={styles.сontainer}>
       <Image
         source={{
-          uri: pokemonData.sprites.front_default,
+          uri: pokemonData.sprites.other['official-artwork'].front_default,
         }}
         style={styles.pokemonImage}
       />
@@ -35,8 +35,8 @@ const Pokemon: React.FC<props> = props => {
         <Text style={styles.description}>weight: {pokemonData.weight}</Text>
         <TouchableOpacity
           style={styles.dataButton}
-          onPress={() => navigate('PokemonData', {pokemonData})}>
-          <Text style={styles.dataText}>SHOW POKEMON DATA</Text>
+          onPress={() => navigate('PokemonData', {pokemonData, title})}>
+          <Text style={styles.dataText}>SHOW DATA</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -74,8 +74,16 @@ const styles = StyleSheet.create({
   description: {
     textTransform: 'capitalize',
   },
-  dataButton: {},
-  dataText: {},
+  dataButton: {
+    width: 100,
+    padding: 3,
+    backgroundColor: theme.color.logoBackground,
+    borderRadius: 3,
+    alignSelf: 'flex-end',
+  },
+  dataText: {
+    textAlign: 'center',
+  },
 });
 
 export default Pokemon;

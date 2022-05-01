@@ -32,7 +32,7 @@ const App = () => {
         <Stack.Screen
           name="PokemonData"
           component={PokemonData}
-          options={{title: 'Pokemon data'}}
+          options={({route}) => ({title: route.params.title})}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -17,12 +17,19 @@ const Slider: React.FC<props> = props => {
         }>
         <Text style={styles.arrow}>⇐</Text>
       </TouchableOpacity>
-      <Image
-        source={{
-          uri: props.uris[uriIndex],
-        }}
-        style={{width: 96, height: 96}}
-      />
+      <View style={styles.imageContainer}>
+        <Image
+          source={{
+            uri: props.uris[uriIndex],
+          }}
+          style={{width: 192, height: 192}}
+        />
+        <View style={styles.dotContainer}>
+          {props.uris.map((item,index) => (
+            <View style={index === uriIndex ? styles.dotActive : styles.dot} />
+          ))}
+        </View>
+      </View>
       <TouchableOpacity
         style={styles.right}
         onPress={() =>
@@ -40,6 +47,30 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: theme.color.background,
+  },
+  imageContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  dotContainer: {
+    position: 'absolute',
+    bottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: 'gray',
+    marginHorizontal: 5,
+  },
+  dotActive: {
+    width: 15,
+    height: 15,
+    borderRadius: 8,
+    backgroundColor: 'gray',
+    marginHorizontal: 5,
   },
   right: {},
   left: {},
