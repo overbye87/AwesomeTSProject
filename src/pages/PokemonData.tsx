@@ -2,7 +2,7 @@ import {whileStatement} from '@babel/types';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import Slider from '../components/Slider';
+import Slider from '../components/ImageSlider';
 import {theme} from '../theme';
 import {IPokemonData} from '../types';
 

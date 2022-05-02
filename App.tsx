@@ -5,8 +5,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import SignIn from './src/pages/SignIn';
 import PasswordRecovery from './src/pages/PasswordRecovery';
-import Pokemons from './src/pages/Pokemons';
+import Pokemons from './src/components/PokemonList';
 import PokemonData from './src/pages/PokemonData';
+import PokemonTabs from './src/pages/PokemonTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,9 +26,9 @@ const App = () => {
           options={{title: 'Password Recovery'}}
         />
         <Stack.Screen
-          name="Pokemons"
-          component={Pokemons}
-          options={{title: 'Pokemons'}}
+          name="PokemonTabs"
+          component={PokemonTabs}
+          options={{title: 'PokemonTabs'}}
         />
         <Stack.Screen
           name="PokemonData"

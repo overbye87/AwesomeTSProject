@@ -6,7 +6,7 @@ import {theme} from '../theme';
 type props = {
   uris: string[];
 };
-const Slider: React.FC<props> = props => {
+const ImageSlider: React.FC<props> = props => {
   const [uriIndex, setUriIndex] = useState(0);
   return (
     <View style={styles.сontainer}>
@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Slider;
+export default ImageSlider;

@@ -1,21 +1,21 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItem, View} from 'react-native';
-import Pokemon from '../components/Pokemon';
+import Pokemon from './PokemonItem';
 
 interface IPokemon {
   name: string;
   url: string;
 }
 
-const Pokemons: React.FC = () => {
-  const [PokemonList, setPokemonList] = useState<IPokemon[]>([]);
+const PokemonList: React.FC = () => {
+  const [PokemonListArray, setPokemonListArray] = useState<IPokemon[]>([]);
 
   useEffect(() => {
     axios
       .get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
       .then(res => {
-        setPokemonList(res.data.results);
+        setPokemonListArray(res.data.results);
       });
   }, []);
 
@@ -26,7 +26,7 @@ const Pokemons: React.FC = () => {
   return (
     <View>
       <FlatList
-        data={PokemonList}
+        data={PokemonListArray}
         renderItem={renderPokemon}
         keyExtractor={item => item.name}
       />
@@ -34,4 +34,4 @@ const Pokemons: React.FC = () => {
   );
 };
 
-export default Pokemons;
+export default PokemonList;

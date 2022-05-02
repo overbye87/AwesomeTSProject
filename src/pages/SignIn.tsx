@@ -39,7 +39,7 @@ const SignIn: React.FC = () => {
         </View>
         <TouchableOpacity
           style={styles.signButton}
-          onPress={() => navigate('Pokemons')}>
+          onPress={() => navigate('PokemonTabs')}>
           <Text style={styles.signText}>SIGN IN</Text>
         </TouchableOpacity>
       </View>

@@ -8,7 +8,7 @@ import {IPokemon, IPokemonData} from '../types';
 type props = {
   pokemon: IPokemon;
 };
-const Pokemon: React.FC<props> = props => {
+const PokemonItem: React.FC<props> = props => {
   const [pokemonData, setPokemonData] = useState<null | IPokemonData>(null);
   const {navigate} = useNavigation();
   useEffect(() => {
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Pokemon;
+export default PokemonItem;
