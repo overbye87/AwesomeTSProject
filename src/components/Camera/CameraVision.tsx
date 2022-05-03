@@ -21,11 +21,7 @@ const CameraVision = () => {
   }
   return (
     <>
-      <Camera
-        style={StyleSheet.absoluteFill}
-        device={device}
-        isActive={true}
-      />
+      <Camera style={StyleSheet.absoluteFill} device={device} isActive={true} />
       <CameraButtons />
     </>
   );
