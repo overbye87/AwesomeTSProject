@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import PokemonList from '../components/PokemonList';
 import Filter from '../components/Filter';
 import {theme} from '../theme';
-import CameraVision from '../components/CameraVision';
+import CameraVision from '../components/Camera/CameraVision';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +30,11 @@ const PokemonTabs = () => {
       })}>
       <Tab.Screen name="List" component={PokemonList} />
       <Tab.Screen name="Filter" component={Filter} />
-      <Tab.Screen name="Camera" component={CameraVision} />
+      <Tab.Screen
+        options={{headerShown: false, tabBarStyle: {display: 'none'}}}
+        name="Camera"
+        component={CameraVision}
+      />
     </Tab.Navigator>
   );
 };

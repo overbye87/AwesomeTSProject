@@ -28,12 +28,14 @@ const App = () => {
         <Stack.Screen
           name="PokemonTabs"
           component={PokemonTabs}
-          options={{title: 'PokemonTabs'}}
+          options={{title: 'PokemonTabs', headerShown: false}}
         />
         <Stack.Screen
           name="PokemonData"
           component={PokemonData}
-          options={({route}) => ({title: route.params.title})}
+          options={({route}) => ({
+            title: route.params.title,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
