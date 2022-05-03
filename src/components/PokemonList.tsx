@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../api/axios';
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItem, View} from 'react-native';
 import Pokemon from './PokemonItem';
@@ -11,12 +11,14 @@ interface IPokemon {
 const PokemonList: React.FC = () => {
   const [PokemonListArray, setPokemonListArray] = useState<IPokemon[]>([]);
 
+  const getPokemonList = async () => {
+    const url = 'pokemon?limit=20&offset=0';
+    const res = await axios.get(url);
+    setPokemonListArray(res.data.results);
+  };
+
   useEffect(() => {
-    axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
-      .then(res => {
-        setPokemonListArray(res.data.results);
-      });
+    getPokemonList();
   }, []);
 
   const renderPokemon: ListRenderItem<IPokemon> = ({item}) => (
