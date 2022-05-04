@@ -3,6 +3,20 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { theme } from '../../theme';
 
+const styles = StyleSheet.create({
+  allContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  itemsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  item: {},
+});
+
 const CameraButtons = () => {
   return (
     <View style={styles.allContainer}>
@@ -32,19 +46,5 @@ const CameraButtons = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  allContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-  },
-  itemsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  item: {},
-});
 
 export default CameraButtons;

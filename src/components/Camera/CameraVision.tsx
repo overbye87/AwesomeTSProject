@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {Camera, useCameraDevices} from 'react-native-vision-camera';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { Camera, useCameraDevices } from 'react-native-vision-camera';
 import CameraButtons from './CameraButtons';
 
 const CameraVision = () => {
@@ -21,7 +21,11 @@ const CameraVision = () => {
   }
   return (
     <>
-      <Camera style={StyleSheet.absoluteFill} device={device} isActive={true} />
+      <Camera
+        style={StyleSheet.absoluteFill}
+        device={device}
+        isActive={true}
+      />
       <CameraButtons />
     </>
   );
