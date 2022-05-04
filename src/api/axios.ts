@@ -1,33 +1,54 @@
-import axios from 'axios';
+import axios, { HeadersDefaults, AxiosResponse } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const baseURL = 'https://pokeapi.co/api/v2/';
 
-const instance = axios.create();
+const apiInstance = axios.create({
+  baseURL: baseURL,
+});
 
-instance.defaults.baseURL = baseURL;
+export const setToken = (token: string) => {
+  if (!apiInstance.defaults.headers) {
+    apiInstance.defaults.headers = {} as HeadersDefaults;
+  }
 
-instance.interceptors.request.use(
+  (apiInstance.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
+}
+
+apiInstance.interceptors.request.use(
   async config => {
-    const token = await AsyncStorage.getItem('token');
-    if (token) {
-      config.headers!['x-access-token'] = `${token}`;
-    }
+    // const token = await AsyncStorage.getItem('token');
+    // if (token) {
+    //   config.headers!['x-access-token'] = `${token}`;
+    // }
     return config;
   },
-  error => {
-    return Promise.reject(error);
-  },
 );
 
-instance.interceptors.response.use(
+apiInstance.interceptors.response.use(
   response => {
-    console.log('x-access-token', response.data['x-access-token']);
-    return response;
-  },
-  error => {
-    return Promise.reject(error);
+    // console.log('x-access-token', response.data['x-access-token']);
+    return response.data;
   },
 );
 
-export default instance;
+type Pokemon = { id: number }
+
+const getPokemons = (): Promise<Pokemon> => {
+  return apiInstance.get('');
+}
+
+const getPoken = ()=>{
+  
+};
+
+const getPokensMetaList = ()=>{
+  
+};
+
+const getPokensList = ()=>{
+  getPokensMetaList
+  getPoken
+};
+
+export default apiInstance;

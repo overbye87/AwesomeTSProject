@@ -1,25 +1,47 @@
-import React, {useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import {theme} from '../theme';
-import {IPokemon, IPokemonData} from '../types';
+import { theme } from '../theme';
+import { IPokemon, IPokemonData } from '../types';
 
-type props = {
+type Props = {
   pokemon: IPokemon;
 };
-const PokemonItem: React.FC<props> = props => {
+
+const PokemonItem: React.FC<Props> = props => {
   const [pokemonData, setPokemonData] = useState<null | IPokemonData>(null);
-  const {navigate} = useNavigation();
-  useEffect(() => {
-    axios.get(props.pokemon.url).then(res => {
+  const { navigate } = useNavigation();
+
+  const fetchPokemonData = async (pokemonUrl: string) => {
+    try {
+      const res = await axios.get(pokemonUrl);
       setPokemonData(res.data);
-    });
+    } catch (error) {
+      Alert.alert(
+        'Can not get pokemon data',
+        JSON.stringify((error as Error).message),
+      );
+    }
+  };
+
+  useEffect(() => {
+    fetchPokemonData(props.pokemon.url);
   }, [props.pokemon.url]);
+
   const title = pokemonData?.name.toUpperCase();
+
   if (!pokemonData) {
-    return <></>;
+    return null;
   }
+
   return (
     <View style={styles.сontainer}>
       <Image
@@ -35,7 +57,7 @@ const PokemonItem: React.FC<props> = props => {
         <Text style={styles.description}>weight: {pokemonData.weight}</Text>
         <TouchableOpacity
           style={styles.dataButton}
-          onPress={() => navigate('PokemonData', {pokemonData, title})}>
+          onPress={() => navigate('PokemonData', { pokemonData, title })}>
           <Text style={styles.dataText}>SHOW DATA</Text>
         </TouchableOpacity>
       </View>

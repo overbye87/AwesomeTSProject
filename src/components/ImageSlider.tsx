@@ -3,38 +3,42 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {theme} from '../theme';
-type props = {
+type Props = {
   uris: string[];
 };
-const ImageSlider: React.FC<props> = props => {
+const ImageSlider: React.FC<Props> = Props => {
   const [uriIndex, setUriIndex] = useState(0);
+
+  const incrementUriIndex = () => {
+    setUriIndex(prev => (prev === Props.uris.length - 1 ? 0 : prev + 1));
+  };
+
+  const decrementUriIndex = () => {
+    setUriIndex(prev => (prev === 0 ? Props.uris.length - 1 : prev - 1));
+  };
+
   return (
     <View style={styles.сontainer}>
-      <TouchableOpacity
-        style={styles.left}
-        onPress={() =>
-          setUriIndex(prev => (prev === 0 ? props.uris.length - 1 : prev - 1))
-        }>
+      <TouchableOpacity style={styles.left} onPress={decrementUriIndex}>
         <Text style={styles.arrow}>⇐</Text>
       </TouchableOpacity>
       <View style={styles.imageContainer}>
         <Image
           source={{
-            uri: props.uris[uriIndex],
+            uri: Props.uris[uriIndex],
           }}
           style={{width: 192, height: 192}}
         />
         <View style={styles.dotContainer}>
-          {props.uris.map((item,index) => (
-            <View style={index === uriIndex ? styles.dotActive : styles.dot} />
+          {Props.uris.map((item, index) => (
+            <View
+              key={index}
+              style={index === uriIndex ? styles.dotActive : styles.dot}
+            />
           ))}
         </View>
       </View>
-      <TouchableOpacity
-        style={styles.right}
-        onPress={() =>
-          setUriIndex(prev => (prev === props.uris.length - 1 ? 0 : prev + 1))
-        }>
+      <TouchableOpacity style={styles.right} onPress={incrementUriIndex}>
         <Text style={styles.arrow}>⇒</Text>
       </TouchableOpacity>
     </View>

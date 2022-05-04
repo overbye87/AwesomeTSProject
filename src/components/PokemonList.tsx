@@ -1,7 +1,7 @@
 import axios from '../api/axios';
-import React, {useEffect, useState} from 'react';
-import {FlatList, ListRenderItem, View} from 'react-native';
-import Pokemon from './PokemonItem';
+import React, { useEffect, useState } from 'react';
+import { Alert, FlatList, ListRenderItem, View } from 'react-native';
+import PokemonItem from './PokemonItem';
 
 interface IPokemon {
   name: string;
@@ -9,28 +9,35 @@ interface IPokemon {
 }
 
 const PokemonList: React.FC = () => {
-  const [PokemonListArray, setPokemonListArray] = useState<IPokemon[]>([]);
+  const [pokemonListArray, setPokemonListArray] = useState<IPokemon[]>([]);
 
   const getPokemonList = async () => {
-    const url = 'pokemon?limit=20&offset=0';
-    const res = await axios.get(url);
-    setPokemonListArray(res.data.results);
+    try {
+      const url = 'pokemon?limit=20&offset=0';
+      const res = await axios.get(url);
+      setPokemonListArray(res.data.results);
+    } catch (error) {
+      Alert.alert(
+        'Can not get pokemon list',
+        JSON.stringify((error as Error).message),
+      );
+    }
   };
 
   useEffect(() => {
     getPokemonList();
   }, []);
 
-  const renderPokemon: ListRenderItem<IPokemon> = ({item}) => (
-    <Pokemon pokemon={item} />
+  const renderPokemon: ListRenderItem<IPokemon> = ({ item }) => (
+    <PokemonItem pokemon={item} />
   );
 
   return (
     <View>
       <FlatList
-        data={PokemonListArray}
+        data={pokemonListArray}
         renderItem={renderPokemon}
-        keyExtractor={item => item.name}
+        keyExtractor={(item) => item.name}
       />
     </View>
   );

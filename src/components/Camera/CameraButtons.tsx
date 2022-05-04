@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {theme} from '../../theme';
+import { theme } from '../../theme';
 
 const CameraButtons = () => {
   return (
@@ -16,7 +16,7 @@ const CameraButtons = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.item}>
           <Ionicons
-            name={'ios-scan-circle-outline'}
+            name="ios-scan-circle-outline"
             size={60}
             color={theme.color.white}
           />
