@@ -1,10 +1,9 @@
 import axios, { HeadersDefaults, AxiosResponse } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const baseURL = 'https://pokeapi.co/api/v2/';
+import { config } from '../config';
 
 const apiInstance = axios.create({
-  baseURL: baseURL,
+  baseURL: config.pokemonUrl,
 });
 
 export const setToken = (token: string) => {
@@ -13,10 +12,10 @@ export const setToken = (token: string) => {
   }
 
   (apiInstance.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
-}
+};
 
 apiInstance.interceptors.request.use(
-  async config => {
+  async (config) => {
     // const token = await AsyncStorage.getItem('token');
     // if (token) {
     //   config.headers!['x-access-token'] = `${token}`;
@@ -26,29 +25,10 @@ apiInstance.interceptors.request.use(
 );
 
 apiInstance.interceptors.response.use(
-  response => {
+  (response) => {
     // console.log('x-access-token', response.data['x-access-token']);
     return response.data;
   },
 );
-
-type Pokemon = { id: number }
-
-const getPokemons = (): Promise<Pokemon> => {
-  return apiInstance.get('');
-}
-
-const getPoken = ()=>{
-  
-};
-
-const getPokensMetaList = ()=>{
-  
-};
-
-const getPokensList = ()=>{
-  getPokensMetaList
-  getPoken
-};
 
 export default apiInstance;
