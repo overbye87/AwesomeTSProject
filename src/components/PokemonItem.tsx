@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
-  Alert,
+  ActivityIndicator,
   Image,
   StyleSheet,
   Text,
@@ -8,62 +8,8 @@ import {
   View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
 import { theme } from '../theme';
-import { IPokemon, IPokemonData } from '../types';
-
-type Props = {
-  pokemon: IPokemon;
-};
-
-const PokemonItem: React.FC<Props> = props => {
-  const [pokemonData, setPokemonData] = useState<null | IPokemonData>(null);
-  const { navigate } = useNavigation();
-
-  const fetchPokemonData = async (pokemonUrl: string) => {
-    try {
-      const res = await axios.get(pokemonUrl);
-      setPokemonData(res.data);
-    } catch (error) {
-      Alert.alert(
-        'Can not get pokemon data',
-        JSON.stringify((error as Error).message),
-      );
-    }
-  };
-
-  useEffect(() => {
-    fetchPokemonData(props.pokemon.url);
-  }, [props.pokemon.url]);
-
-  const title = pokemonData?.name.toUpperCase();
-
-  if (!pokemonData) {
-    return null;
-  }
-
-  return (
-    <View style={styles.сontainer}>
-      <Image
-        source={{
-          uri: pokemonData.sprites.other['official-artwork'].front_default,
-        }}
-        style={styles.pokemonImage}
-      />
-      <View style={styles.textContainer}>
-        <Text style={styles.id}>ID: {pokemonData.id}</Text>
-        <Text style={styles.name}>{pokemonData.name}</Text>
-        <Text style={styles.description}>height: {pokemonData.height}</Text>
-        <Text style={styles.description}>weight: {pokemonData.weight}</Text>
-        <TouchableOpacity
-          style={styles.dataButton}
-          onPress={() => navigate('PokemonData', { pokemonData, title })}>
-          <Text style={styles.dataText}>SHOW DATA</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
+import { IPokemonFullData } from '../types/pokemonsTypes';
 
 const styles = StyleSheet.create({
   сontainer: {
@@ -107,5 +53,42 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+type Props = {
+  pokemon: IPokemonFullData;
+};
+
+const PokemonItem: React.FC<Props> = (props) => {
+  const { navigate } = useNavigation();
+
+  if (!props.pokemon) {
+    return <ActivityIndicator size={'large'}></ActivityIndicator>;
+  }
+
+  const title = props.pokemon.name.toUpperCase();
+  const { id } = props.pokemon;
+
+  return (
+    <View style={styles.сontainer}>
+      <Image
+        source={{
+          uri: props.pokemon.sprites.other['official-artwork'].front_default,
+        }}
+        style={styles.pokemonImage}
+      />
+      <View style={styles.textContainer}>
+        <Text style={styles.id}>ID: {props.pokemon.id}</Text>
+        <Text style={styles.name}>{props.pokemon.name}</Text>
+        <Text style={styles.description}>height: {props.pokemon.height}</Text>
+        <Text style={styles.description}>weight: {props.pokemon.weight}</Text>
+        <TouchableOpacity
+          style={styles.dataButton}
+          onPress={() => navigate('PokemonData', { id, title })}>
+          <Text style={styles.dataText}>SHOW DATA</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
 export default PokemonItem;

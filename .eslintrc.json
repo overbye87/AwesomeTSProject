@@ -23,7 +23,14 @@
         "react-native"
     ],
     "rules": {
-        "no-use-before-define": "off",
+        "no-use-before-define": [
+            "error",
+            { 
+                "functions": true,
+                "classes": false,
+                "variables": false
+            }
+        ],
         "@typescript-eslint/no-use-before-define": ["error"],
         "import/extensions": [
             "error",
@@ -34,7 +41,9 @@
               "ts": "never",
               "tsx": "never"
             }
-         ]
+         ],
+         "arrow-body-style": 0,
+         "import/prefer-default-export": "off"
     },
     "settings": {
         "import/resolver": {

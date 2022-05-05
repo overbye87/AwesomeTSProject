@@ -1,49 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 
-import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {theme} from '../theme';
-type Props = {
-  uris: string[];
-};
-const ImageSlider: React.FC<Props> = Props => {
-  const [uriIndex, setUriIndex] = useState(0);
-
-  const incrementUriIndex = () => {
-    setUriIndex(prev => (prev === Props.uris.length - 1 ? 0 : prev + 1));
-  };
-
-  const decrementUriIndex = () => {
-    setUriIndex(prev => (prev === 0 ? Props.uris.length - 1 : prev - 1));
-  };
-
-  return (
-    <View style={styles.сontainer}>
-      <TouchableOpacity style={styles.left} onPress={decrementUriIndex}>
-        <Text style={styles.arrow}>⇐</Text>
-      </TouchableOpacity>
-      <View style={styles.imageContainer}>
-        <Image
-          source={{
-            uri: Props.uris[uriIndex],
-          }}
-          style={{width: 192, height: 192}}
-        />
-        <View style={styles.dotContainer}>
-          {Props.uris.map((item, index) => (
-            <View
-              key={index}
-              style={index === uriIndex ? styles.dotActive : styles.dot}
-            />
-          ))}
-        </View>
-      </View>
-      <TouchableOpacity style={styles.right} onPress={incrementUriIndex}>
-        <Text style={styles.arrow}>⇒</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+import React, { useState } from 'react';
+import {
+  Image, StyleSheet, Text, TouchableOpacity, View,
+} from 'react-native';
+import { theme } from '../theme';
 
 const styles = StyleSheet.create({
   сontainer: {
@@ -57,8 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dotContainer: {
-    position: 'absolute',
-    bottom: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -84,5 +44,47 @@ const styles = StyleSheet.create({
     color: theme.color.white,
   },
 });
+
+type Props = {
+  uris: string[];
+};
+const ImageSlider: React.FC<Props> = (props) => {
+  const [uriIndex, setUriIndex] = useState(0);
+
+  const incrementUriIndex = () => {
+    setUriIndex((prev) => (prev === props.uris.length - 1 ? 0 : prev + 1));
+  };
+
+  const decrementUriIndex = () => {
+    setUriIndex((prev) => (prev === 0 ? props.uris.length - 1 : prev - 1));
+  };
+
+  return (
+    <View style={styles.сontainer}>
+      <TouchableOpacity style={styles.left} onPress={decrementUriIndex}>
+        <Text style={styles.arrow}>⇐</Text>
+      </TouchableOpacity>
+      <View style={styles.imageContainer}>
+        <Image
+          source={{
+            uri: props.uris[uriIndex],
+          }}
+          style={{ width: 192, height: 192 }}
+        />
+        <View style={styles.dotContainer}>
+          {props.uris.map((item, index) => (
+            <View
+              key={index}
+              style={index === uriIndex ? styles.dotActive : styles.dot}
+            />
+          ))}
+        </View>
+      </View>
+      <TouchableOpacity style={styles.right} onPress={incrementUriIndex}>
+        <Text style={styles.arrow}>⇒</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 export default ImageSlider;
