@@ -1,5 +1,5 @@
 import { IdOrName, IPokemonData, IParams } from '../types/pokemonsTypes';
-import axios from './axios';
+import { pokemonAxios } from './axios';
 
 const path = '/pokemon';
 
@@ -11,11 +11,11 @@ interface IPokemonList {
 }
 
 export const getPokemonsList = (params: IParams): Promise<IPokemonList> => {
-  return axios.get(path, { params });
+  return pokemonAxios.get(path, { params });
 };
 
 export const getPokemonData = (idOrName: IdOrName): Promise<IPokemonData> => {
-  return axios.get(`${path}/${idOrName}`);
+  return pokemonAxios.get(`${path}/${idOrName}`);
 };
 
 interface IPokemonFullDataArray {

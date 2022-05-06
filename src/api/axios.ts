@@ -1,5 +1,4 @@
-import axios, { HeadersDefaults, AxiosResponse } from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios, { HeadersDefaults } from 'axios';
 import { config } from '../config';
 
 const pokemonAxios = axios.create({
@@ -15,28 +14,15 @@ const setToken = (token: string) => {
     authAxios.defaults.headers = {} as HeadersDefaults;
   }
   (authAxios.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
-  // authAxios.defaults.headers.Authorization = `Bearer ${token}`;
 };
 
-// pokemonAxios.interceptors.request.use(
-//   async (config) => {
-//     // const token = await AsyncStorage.getItem('token');
-//     // if (token) {
-//     //   config.headers!['x-access-token'] = `${token}`;
-//     // }
-//     return config;
-//   },
-// );
-
-authAxios.interceptors.response.use(
+pokemonAxios.interceptors.response.use(
   (response) => {
-    // console.log('x-access-token', response.data['x-access-token']);
     return response.data;
   },
-  
 );
 
-export default {
+export {
   pokemonAxios,
   authAxios,
   setToken,
