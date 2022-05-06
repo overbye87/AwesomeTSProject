@@ -1,4 +1,5 @@
 export const config = {
   pokemonUrl: 'https://pokeapi.co/api/v2',
-  sekretKey: 'SEKRET_KEY',
+  authUrl: 'http://192.168.88.215:4000',
+  sekretKey: 'secret_key_string',
 };

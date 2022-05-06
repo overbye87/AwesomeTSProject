@@ -2,33 +2,42 @@ import axios, { HeadersDefaults, AxiosResponse } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { config } from '../config';
 
-const apiInstance = axios.create({
+const pokemonAxios = axios.create({
   baseURL: config.pokemonUrl,
 });
 
-export const setToken = (token: string) => {
-  if (!apiInstance.defaults.headers) {
-    apiInstance.defaults.headers = {} as HeadersDefaults;
-  }
+const authAxios = axios.create({
+  baseURL: config.authUrl,
+});
 
-  (apiInstance.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
+const setToken = (token: string) => {
+  if (!authAxios.defaults.headers) {
+    authAxios.defaults.headers = {} as HeadersDefaults;
+  }
+  (authAxios.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
+  // authAxios.defaults.headers.Authorization = `Bearer ${token}`;
 };
 
-apiInstance.interceptors.request.use(
-  async (config) => {
-    // const token = await AsyncStorage.getItem('token');
-    // if (token) {
-    //   config.headers!['x-access-token'] = `${token}`;
-    // }
-    return config;
-  },
-);
+// pokemonAxios.interceptors.request.use(
+//   async (config) => {
+//     // const token = await AsyncStorage.getItem('token');
+//     // if (token) {
+//     //   config.headers!['x-access-token'] = `${token}`;
+//     // }
+//     return config;
+//   },
+// );
 
-apiInstance.interceptors.response.use(
+authAxios.interceptors.response.use(
   (response) => {
     // console.log('x-access-token', response.data['x-access-token']);
     return response.data;
   },
+  
 );
 
-export default apiInstance;
+export default {
+  pokemonAxios,
+  authAxios,
+  setToken,
+};

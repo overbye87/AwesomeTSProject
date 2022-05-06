@@ -1,7 +1,9 @@
 // import {useNavigation} from '@react-navigation/native';
-import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import React, { useState } from 'react';
 import {
+  Alert,
   Image,
   StyleSheet,
   Text,
@@ -9,43 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {theme} from '../theme';
-
-const SignIn: React.FC = () => {
-  const {navigate} = useNavigation();
-
-  return (
-    <>
-      <View style={styles.сontainer}>
-        <View style={styles.logo}>
-          <Image
-            source={{
-              uri: 'https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png',
-            }}
-            style={styles.logoImage}
-          />
-          {/* <Text style={styles.logoText}>LOGO APP</Text> */}
-        </View>
-      </View>
-      <View style={styles.сontainer}>
-        <TextInput style={styles.input} placeholder="USERNAME" />
-        <TextInput style={styles.input} placeholder="PASSWORD" />
-        <View>
-          <TouchableOpacity
-            style={styles.forgotButton}
-            onPress={() => navigate('PasswordRecovery')}>
-            <Text style={styles.forgotText}>FORGOT PASSWORD?</Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity
-          style={styles.signButton}
-          onPress={() => navigate('PokemonTabs')}>
-          <Text style={styles.signText}>SIGN IN</Text>
-        </TouchableOpacity>
-      </View>
-    </>
-  );
-};
+import { theme } from '../theme';
 
 const styles = StyleSheet.create({
   сontainer: {
@@ -96,5 +62,73 @@ const styles = StyleSheet.create({
     color: theme.color.white,
   },
 });
+
+const SignIn: React.FC = () => {
+  const [username, setUsername] = useState('username');
+  const [password, setPassword] = useState('password');
+  const { navigate } = useNavigation();
+
+  const handleSubmit = async () => {
+    try {
+      const res = await axios.post('/auth', { username, password });
+      Alert.alert(
+        'OK',
+        JSON.stringify(res.data, null, 2),
+      );
+    } catch (error) {
+      Alert.alert(
+        'Can not submit',
+        JSON.stringify((error as Error).message),
+      );
+    }
+  };
+
+  return (
+    <>
+      <View style={styles.сontainer}>
+        <View style={styles.logo}>
+          <Image
+            source={{
+              uri: 'https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png',
+            }}
+            style={styles.logoImage}
+          />
+          {/* <Text style={styles.logoText}>LOGO APP</Text> */}
+        </View>
+      </View>
+      <View style={styles.сontainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="USERNAME"
+          value={username}
+          onChangeText={setUsername}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="PASSWORD"
+          value={password}
+          onChangeText={setPassword}
+        />
+        <View>
+          <TouchableOpacity
+            style={styles.forgotButton}
+            onPress={() => navigate('PasswordRecovery')}>
+            <Text style={styles.forgotText}>FORGOT PASSWORD?</Text>
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity
+          style={styles.signButton}
+          onPress={handleSubmit}>
+          <Text style={styles.signText}>SIGN IN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.signButton}
+          onPress={() => navigate('PokemonTabs')}>
+          <Text style={styles.signText}>POKEMON LIST</Text>
+        </TouchableOpacity>
+      </View>
+    </>
+  );
+};
 
 export default SignIn;

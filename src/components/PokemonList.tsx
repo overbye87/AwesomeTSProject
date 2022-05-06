@@ -5,32 +5,36 @@ import { additionalLoadingThunk, getPokemonsThunk } from '../store/thunks';
 import { IPokemonFullData } from '../types/pokemonsTypes';
 import PokemonItem from './PokemonItem';
 
-const params = { limit: 10, offset: 0 };
+const initialParams = { limit: 10, offset: 0 };
+
+const renderPokemon: ListRenderItem<IPokemonFullData> = ({ item }) => (
+  <PokemonItem pokemon={item} />
+);
+
+const handleKeyExtractor = (item: IPokemonFullData) => item.name;
 
 const PokemonList: React.FC = () => {
   const dispatch = useTypedDispatch();
   const pokemonsArray = useTypedSelector(({ pokemons }) => pokemons.pokemonsArray);
 
   useEffect(() => {
-    dispatch(getPokemonsThunk(params));
+    dispatch(getPokemonsThunk(initialParams));
   }, [dispatch]);
 
-  const renderPokemon: ListRenderItem<IPokemonFullData> = ({ item }) => (
-    <PokemonItem pokemon={item} />
-  );
-
-  const onEndReached = () => {
+  const handleEndReached = () => {
     dispatch(additionalLoadingThunk({ limit: 10, offset: pokemonsArray.length }));
   };
+
+  console.log('*** render pokemon list');
 
   return (
     <View>
       <FlatList
         data={pokemonsArray}
         renderItem={renderPokemon}
-        keyExtractor={(item) => item.name}
+        keyExtractor={handleKeyExtractor}
         onEndReachedThreshold={0.25}
-        onEndReached={onEndReached}
+        onEndReached={handleEndReached}
       />
     </View>
   );
