@@ -1,6 +1,4 @@
-// import {useNavigation} from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
 import React, { useState } from 'react';
 import {
   Alert,
@@ -11,6 +9,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { signInThunk } from '../store/userThunks';
 import { theme } from '../theme';
 
 const styles = StyleSheet.create({
@@ -64,23 +64,18 @@ const styles = StyleSheet.create({
 });
 
 const SignIn: React.FC = () => {
+  const dispatch = useDispatch();
   const [username, setUsername] = useState('username');
   const [password, setPassword] = useState('password');
   const { navigate } = useNavigation();
 
   const handleSubmit = async () => {
-    try {
-      const res = await axios.post('/auth', { username, password });
-      Alert.alert(
-        'OK',
-        JSON.stringify(res.data, null, 2),
-      );
-    } catch (error) {
-      Alert.alert(
-        'Can not submit',
-        JSON.stringify((error as Error).message),
-      );
-    }
+    dispatch(signInThunk({ username, password }));
+    navigate('Main');
+    // Alert.alert(
+    //   'OK',
+    //   JSON.stringify(data, null, 2),
+    // );
   };
 
   return (
@@ -120,11 +115,6 @@ const SignIn: React.FC = () => {
           style={styles.signButton}
           onPress={handleSubmit}>
           <Text style={styles.signText}>SIGN IN</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.signButton}
-          onPress={() => navigate('PokemonTabs')}>
-          <Text style={styles.signText}>POKEMON LIST</Text>
         </TouchableOpacity>
       </View>
     </>

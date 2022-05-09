@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import { useTypedDispatch, useTypedSelector } from '../store/store';
-import { additionalLoadingThunk, getPokemonsThunk } from '../store/thunks';
+import { additionalLoadingThunk, getPokemonsThunk } from '../store/pokemonsThunks';
 import { IPokemonFullData } from '../types/pokemonsTypes';
 import PokemonItem from './PokemonItem';
 

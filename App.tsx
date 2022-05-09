@@ -9,12 +9,14 @@ import PasswordRecovery from './src/pages/PasswordRecovery';
 import PokemonData from './src/pages/PokemonData';
 import PokemonTabs from './src/pages/PokemonTabs';
 import { store } from './src/store/store';
+import Main from './src/pages/Main';
 
 type RootStackParamList = {
   SignIn: undefined;
   PasswordRecovery: undefined;
   PokemonTabs: undefined;
   PokemonData: undefined;
+  Main: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,6 +26,11 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            name="Main"
+            component={Main}
+            options={{ title: 'Main', headerShown: false }}
+          />
           <Stack.Screen
             name="SignIn"
             component={SignIn}

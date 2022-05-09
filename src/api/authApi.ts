@@ -1,18 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { authAxios, setToken } from './axios';
+import { ISignIn, ISignInResponce } from './interfaces';
 
-const saveToken = async (res: any) => {
-  const { token } = res;
+const saveToken = async (data: any) => {
+  const { token } = data;
+  console.log('token', token);
   await AsyncStorage.setItem('token', token);
   setToken(token);
-  return res;
+  return data;
 };
 
-interface ISignIn {
-  username: string,
-  password: string,
-}
+export const signIn = (SignInData : ISignIn): Promise<ISignInResponce> => {
+  return authAxios.post('/auth', SignInData).then(saveToken);
+};
 
-export const signIn = (data : ISignIn) => {
-  return authAxios.post('/auth', data).then(saveToken);
+export default {
+  signIn,
 };
