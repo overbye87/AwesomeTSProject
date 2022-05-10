@@ -7,27 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {theme} from '../theme';
-
-const PasswordRecovery: React.FC = () => {
-  // const navigation = useNavigation<string>();
-
-  return (
-    <>
-      <View style={styles.сontainer}>
-        <View>
-          <Text style={styles.logoText}>FORGOT PASSWORD?</Text>
-        </View>
-      </View>
-      <View style={styles.сontainer}>
-        <TextInput style={styles.input} placeholder="USERNAME" />
-        <TouchableOpacity style={styles.signButton} onPress={() => null}>
-          <Text style={styles.signText}>REMIND ME</Text>
-        </TouchableOpacity>
-      </View>
-    </>
-  );
-};
+import { theme } from '../theme';
 
 const styles = StyleSheet.create({
   сontainer: {
@@ -73,5 +53,25 @@ const styles = StyleSheet.create({
     color: theme.color.white,
   },
 });
+
+const PasswordRecovery: React.FC = () => {
+  // const navigation = useNavigation<string>();
+
+  return (
+    <>
+      <View style={styles.сontainer}>
+        <View>
+          <Text style={styles.logoText}>FORGOT PASSWORD?</Text>
+        </View>
+      </View>
+      <View style={styles.сontainer}>
+        <TextInput style={styles.input} placeholder="USERNAME" />
+        <TouchableOpacity style={styles.signButton} onPress={() => null}>
+          <Text style={styles.signText}>REMIND ME</Text>
+        </TouchableOpacity>
+      </View>
+    </>
+  );
+};
 
 export default PasswordRecovery;

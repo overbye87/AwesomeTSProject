@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -16,26 +17,43 @@ const styles = StyleSheet.create({
   },
   item: {},
 });
+interface Props {
+  onTakePhoto: () => void;
+  onFlipCamera: () => void;
+}
 
-const CameraButtons = () => {
+const CameraButtons: React.FC<Props> = (props) => {
+  const { navigate } = useNavigation();
+
   return (
     <View style={styles.allContainer}>
       <View style={styles.itemsContainer}>
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => navigate('MediaFiles')}
+        >
           <Ionicons
             name={'ios-images-outline'}
             size={30}
             color={theme.color.white}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item}>
+
+        <TouchableOpacity
+          style={styles.item}
+          onPress={props.onTakePhoto}
+        >
           <Ionicons
             name="ios-scan-circle-outline"
             size={60}
             color={theme.color.white}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item}>
+
+        <TouchableOpacity
+          style={styles.item}
+          onPress={props.onFlipCamera}
+        >
           <Ionicons
             name={'ios-camera-reverse-outline'}
             size={30}

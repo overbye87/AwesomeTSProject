@@ -10,6 +10,7 @@ import PokemonData from './src/pages/PokemonData';
 import PokemonTabs from './src/pages/PokemonTabs';
 import { store } from './src/store/store';
 import Main from './src/pages/Main';
+import MediaFiles from './src/pages/MediaFiles';
 
 type RootStackParamList = {
   SignIn: undefined;
@@ -17,6 +18,7 @@ type RootStackParamList = {
   PokemonTabs: undefined;
   PokemonData: undefined;
   Main: undefined;
+  MediaFiles: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -52,6 +54,11 @@ const App = () => {
             options={({ route }) => ({
               title: route.params.title,
             })}
+          />
+          <Stack.Screen
+            name="MediaFiles"
+            component={MediaFiles}
+            options={{ title: 'MediaFiles' }}
           />
         </Stack.Navigator>
       </NavigationContainer>
