@@ -11,6 +11,43 @@ import { useNavigation } from '@react-navigation/native';
 import { theme } from '../theme';
 import { IPokemonFullData } from '../types/pokemonsTypes';
 
+type Props = {
+  pokemon: IPokemonFullData;
+};
+
+const PokemonItem: React.FC<Props> = (props) => {
+  const { navigate } = useNavigation();
+
+  if (!props.pokemon) {
+    return <ActivityIndicator size={'large'} />;
+  }
+
+  const title = props.pokemon.name.toUpperCase();
+  const { id } = props.pokemon;
+
+  return (
+    <View style={styles.сontainer}>
+      <Image
+        source={{
+          uri: props.pokemon.sprites.other['official-artwork'].front_default,
+        }}
+        style={styles.pokemonImage}
+      />
+      <View style={styles.textContainer}>
+        <Text style={styles.id}>ID: {props.pokemon.id}</Text>
+        <Text style={styles.name}>{props.pokemon.name}</Text>
+        <Text style={styles.description}>height: {props.pokemon.height}</Text>
+        <Text style={styles.description}>weight: {props.pokemon.weight}</Text>
+        <TouchableOpacity
+          style={styles.dataButton}
+          onPress={() => navigate('PokemonData', { id, title })}>
+          <Text style={styles.dataText}>SHOW DATA</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   сontainer: {
     flexDirection: 'row',
@@ -53,42 +90,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-type Props = {
-  pokemon: IPokemonFullData;
-};
-
-const PokemonItem: React.FC<Props> = (props) => {
-  const { navigate } = useNavigation();
-
-  if (!props.pokemon) {
-    return <ActivityIndicator size={'large'}></ActivityIndicator>;
-  }
-
-  const title = props.pokemon.name.toUpperCase();
-  const { id } = props.pokemon;
-
-  return (
-    <View style={styles.сontainer}>
-      <Image
-        source={{
-          uri: props.pokemon.sprites.other['official-artwork'].front_default,
-        }}
-        style={styles.pokemonImage}
-      />
-      <View style={styles.textContainer}>
-        <Text style={styles.id}>ID: {props.pokemon.id}</Text>
-        <Text style={styles.name}>{props.pokemon.name}</Text>
-        <Text style={styles.description}>height: {props.pokemon.height}</Text>
-        <Text style={styles.description}>weight: {props.pokemon.weight}</Text>
-        <TouchableOpacity
-          style={styles.dataButton}
-          onPress={() => navigate('PokemonData', { id, title })}>
-          <Text style={styles.dataText}>SHOW DATA</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
 
 export default PokemonItem;

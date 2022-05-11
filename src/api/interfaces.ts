@@ -1,4 +1,4 @@
-import { IPokemonData } from "../types/pokemonsTypes";
+import { IPokemonData } from '../types/pokemonsTypes';
 
 export interface ISaveToken {
   token: string,

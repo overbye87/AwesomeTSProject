@@ -4,13 +4,13 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import SignIn from './src/pages/SignIn';
-import PasswordRecovery from './src/pages/PasswordRecovery';
-import PokemonData from './src/pages/PokemonData';
-import PokemonTabs from './src/pages/PokemonTabs';
-import { store } from './src/store/store';
-import Main from './src/pages/Main';
-import MediaFiles from './src/pages/MediaFiles';
+import SignIn from './pages/SignIn';
+import PasswordRecovery from './pages/PasswordRecovery';
+import PokemonData from './pages/PokemonData';
+import PokemonTabs from './pages/PokemonTabs';
+import { store } from './store/store';
+import Main from './pages/Main';
+import MediaFiles from './pages/MediaFiles';
 
 type RootStackParamList = {
   SignIn: undefined;

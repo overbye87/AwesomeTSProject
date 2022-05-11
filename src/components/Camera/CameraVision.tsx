@@ -47,6 +47,7 @@ const CameraVision = () => {
         device={device}
         isActive={true}
         photo={true}
+        enableZoomGesture
       />
       <CameraButtons
         onTakePhoto={handleTakePhoto}
