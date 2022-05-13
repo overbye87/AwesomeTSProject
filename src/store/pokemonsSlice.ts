@@ -4,7 +4,7 @@ import { IParams, IPokemonsArray } from '../types/pokemonsTypes';
 import type { RootState } from './store';
 
 interface IInitial {
-  pokemonsArray: any[];
+  pokemonsArray: IPokemonsArray;
   params: IParams;
 }
 
@@ -17,11 +17,11 @@ export const pokemonsSlice = createSlice({
   name: 'pokemons',
   initialState,
   reducers: {
-    setPokemons: (store, action: PayloadAction<IPokemonsArray[]>) => {
+    setPokemons: (store, action: PayloadAction<IPokemonsArray>) => {
       store.pokemonsArray = action.payload;
       return store;
     },
-    addPokemons: (store, action: PayloadAction<IPokemonsArray[]>) => {
+    addPokemons: (store, action: PayloadAction<IPokemonsArray>) => {
       store.pokemonsArray = store.pokemonsArray.concat(action.payload);
       return store;
     },

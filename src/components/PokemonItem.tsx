@@ -10,13 +10,14 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '../theme';
 import { IPokemonFullData } from '../types/pokemonsTypes';
+import { NavigationCommon } from '../App';
 
 type Props = {
   pokemon: IPokemonFullData;
 };
 
 const PokemonItem: React.FC<Props> = (props) => {
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<NavigationCommon<'PokemonTabs'>>();
 
   if (!props.pokemon) {
     return <ActivityIndicator size={'large'} />;

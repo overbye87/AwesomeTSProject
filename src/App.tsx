@@ -1,26 +1,32 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, RouteProp } from '@react-navigation/native';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import SignIn from './pages/SignIn';
-import PasswordRecovery from './pages/PasswordRecovery';
-import PokemonData from './pages/PokemonData';
-import PokemonTabs from './pages/PokemonTabs';
+import SignIn from './screens/SignIn';
+import PasswordRecovery from './screens/PasswordRecovery';
+import PokemonData from './screens/PokemonData';
+import PokemonTabs from './screens/PokemonTabs';
 import { store } from './store/store';
-import Main from './pages/Main';
-import MediaFiles from './pages/MediaFiles';
+import Main from './screens/Main';
+import MediaFiles from './screens/MediaFiles';
 
-type RootStackParamList = {
+export type RootStackParamList = {
   SignIn: undefined;
   PasswordRecovery: undefined;
   PokemonTabs: undefined;
-  PokemonData: undefined;
+  PokemonData: { id: number, title: string };
   Main: undefined;
   MediaFiles: undefined;
 };
 
+type ScreenKeys = keyof RootStackParamList;
+export type RouteCommon<T extends ScreenKeys> = RouteProp<RootStackParamList, T>;
+export type NavigationCommon<T extends ScreenKeys> = NativeStackNavigationProp<
+  RootStackParamList,
+  T
+>;
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
@@ -52,7 +58,7 @@ const App = () => {
             name="PokemonData"
             component={PokemonData}
             options={({ route }) => ({
-              title: route.params.title,
+              title: route.params?.title,
             })}
           />
           <Stack.Screen

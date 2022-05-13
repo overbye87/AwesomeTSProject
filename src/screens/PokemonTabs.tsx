@@ -22,7 +22,6 @@ const PokemonTabs = () => {
           } else if (route.name === 'Camera') {
             iconName = focused ? 'ios-camera' : 'ios-camera-outline';
           }
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: theme.color.headerDark,

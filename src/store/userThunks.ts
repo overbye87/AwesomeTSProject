@@ -6,11 +6,11 @@ import authApi from '../api/authApi';
 import { setUser } from './userSlice';
 
 export const signInThunk = createAsyncThunk(
-  'pokemons/getPokemons',
-  async (SignInData: ISignIn, { dispatch }) => {
+  'user/signIn',
+  async (signInData: ISignIn, { dispatch }) => {
     try {
       dispatch(setUser(null));
-      const data = await authApi.signIn(SignInData);
+      const data = await authApi.signIn(signInData);
       dispatch(setUser(data.user));
     } catch (error) {
       Alert.alert(

@@ -1,46 +1,22 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import {
   Alert,
   StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { RootStackParamList } from '../App';
 import { useTypedSelector } from '../store/store';
 import { setUser } from '../store/userSlice';
 import { theme } from '../theme';
 
-const styles = StyleSheet.create({
-  сontainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.color.background,
-  },
-  button: {
-    marginTop: 20,
-    width: 300,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.color.logoBackground,
-  },
-  buttonText: {
-    textAlign: 'center',
-    lineHeight: 40,
-    fontSize: 20,
-    color: theme.color.white,
-  },
-  text: {
-    textAlign: 'center',
-    lineHeight: 40,
-    fontSize: 40,
-    color: theme.color.headerBackground,
-  },
-});
+type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
+type NavigationProp = Props['navigation'];
 
-const Main = () => {
-  const { navigate } = useNavigation();
+const Main: React.FC<Props> = () => {
+  const { navigate } = useNavigation<NavigationProp>();
   const dispatch = useDispatch();
   const currentUser = useTypedSelector(({ user }) => user.user);
 
@@ -93,5 +69,34 @@ const Main = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  сontainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.color.background,
+  },
+  button: {
+    marginTop: 20,
+    width: 300,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: theme.color.logoBackground,
+  },
+  buttonText: {
+    textAlign: 'center',
+    lineHeight: 40,
+    fontSize: 20,
+    color: theme.color.white,
+  },
+  text: {
+    textAlign: 'center',
+    lineHeight: 40,
+    fontSize: 40,
+    color: theme.color.headerBackground,
+  },
+});
 
 export default Main;
