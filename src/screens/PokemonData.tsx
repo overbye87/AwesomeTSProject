@@ -8,8 +8,7 @@ import Slider from '../components/ImageSlider';
 import { useTypedSelector } from '../store/store';
 import { theme } from '../theme';
 
-type Props = {
-} & NativeStackScreenProps<RootStackParamList, 'PokemonData'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'PokemonData'>;
 
 const PokemonData: React.FC<Props> = () => {
   const { params } = useRoute<RouteCommon<'PokemonData'>>();
