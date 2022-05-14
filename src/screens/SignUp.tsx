@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Alert,
   StyleSheet,
@@ -8,11 +8,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Formik, useFormik } from 'formik';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useTypedDispatch } from '../store/store';
 import { theme } from '../theme';
 import { RootStackParamList } from '../App';
+import validation from '../utils/validation';
 
 interface ISignUpFormValues {
   email: string;
@@ -29,6 +31,14 @@ const initialValues: ISignUpFormValues = {
   lastName: 'Dsadsa',
   login: 'asd',
 };
+
+const validationSchema = yup.object().shape({
+  email: validation.email,
+  password: validation.password,
+  firstName: validation.firstName,
+  lastName: validation.lastName,
+  login: validation.login,
+});
 
 type NavigationProp = NativeStackScreenProps<RootStackParamList>['navigation'];
 
@@ -50,10 +60,11 @@ const SignUp: React.FC = () => {
       <View style={styles.сontainer}>
         <Formik
           initialValues={initialValues}
+          validationSchema={validationSchema}
           onSubmit={SubmitSignUpForm}
         >
       {({
-        handleChange, handleBlur, handleSubmit, values,
+        handleChange, handleBlur, handleSubmit, values, errors, touched,
       }) => (
        <>
         <TextInput
@@ -63,6 +74,9 @@ const SignUp: React.FC = () => {
           onBlur={handleBlur('email')}
           value={values.email}
         />
+        {errors.email && touched.email && (
+          <Text style={styles.signText}>{errors.email}</Text>
+        )}
         <TextInput
           style={styles.input}
           placeholder="PASSWORD"
@@ -133,6 +147,9 @@ const styles = StyleSheet.create({
     borderColor: theme.color.mainText,
     marginBottom: 10,
     padding: 0,
+  },
+  error: {
+    color: 'red',
   },
   signButton: {
     marginTop: 40,

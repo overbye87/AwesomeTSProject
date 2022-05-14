@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import { useTypedDispatch, useTypedSelector } from '../store/store';
-import { additionalLoadingThunk, getPokemonsThunk } from '../store/pokemonsThunks';
+import { additionalLoadingThunk } from '../store/pokemonsThunks';
 import { IPokemonFullData } from '../types/pokemonsTypes';
 import PokemonItem from './PokemonItem';
+import { setPokemons } from '../store/pokemonsSlice';
 
 const initialParams = { limit: 10, offset: 0 };
 
@@ -18,7 +19,8 @@ const PokemonList: React.FC = () => {
   const pokemonsArray = useTypedSelector(({ pokemons }) => pokemons.pokemonsArray);
 
   useEffect(() => {
-    dispatch(getPokemonsThunk(initialParams));
+    dispatch(setPokemons([]));
+    dispatch(additionalLoadingThunk(initialParams));
   }, [dispatch]);
 
   const handleEndReached = () => {
