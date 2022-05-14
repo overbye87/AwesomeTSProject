@@ -11,9 +11,11 @@ import PokemonTabs from './screens/PokemonTabs';
 import { store } from './store/store';
 import Main from './screens/Main';
 import MediaFiles from './screens/MediaFiles';
+import SignUp from './screens/SignUp';
 
 export type RootStackParamList = {
   SignIn: undefined;
+  SignUp: undefined;
   PasswordRecovery: undefined;
   PokemonTabs: undefined;
   PokemonData: { id: number, title: string };
@@ -43,6 +45,11 @@ const App = () => {
             name="SignIn"
             component={SignIn}
             options={{ title: 'Sign In' }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ title: 'Sign Up' }}
           />
           <Stack.Screen
             name="PasswordRecovery"

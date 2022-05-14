@@ -43,7 +43,8 @@
             }
          ],
          "arrow-body-style": 0,
-         "import/prefer-default-export": "off"
+         "import/prefer-default-export": "off",
+         "linebreak-style": 0
     },
     "settings": {
         "import/resolver": {

@@ -10,8 +10,9 @@ export const signInThunk = createAsyncThunk(
   async (signInData: ISignIn, { dispatch }) => {
     try {
       dispatch(setUser(null));
-      const data = await authApi.signIn(signInData);
-      dispatch(setUser(data.user));
+      const user = await authApi.signIn(signInData);
+      Alert.alert('user', JSON.stringify(user, null, 2));
+      dispatch(setUser(user));
     } catch (error) {
       Alert.alert(
         'Authentication failed',

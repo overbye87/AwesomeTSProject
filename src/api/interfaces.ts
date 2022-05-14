@@ -1,4 +1,5 @@
 import { IPokemonData } from '../types/pokemonsTypes';
+import { IUser } from '../types/userTypes';
 
 export interface ISaveToken {
   token: string,
@@ -7,11 +8,6 @@ export interface ISaveToken {
 export interface ISignIn {
   email: string,
   password: string,
-}
-
-export interface ISignInResponce extends ISaveToken{
-  status: boolean,
-  user: { id: number, name: string }
 }
 
 export interface IPokemonList {

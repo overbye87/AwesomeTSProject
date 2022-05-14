@@ -1,72 +1,106 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
-  Image,
+  Alert,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Formik, useFormik } from 'formik';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useTypedDispatch } from '../store/store';
-import { signInThunk } from '../store/userThunks';
 import { theme } from '../theme';
 import { RootStackParamList } from '../App';
 
+interface ISignUpFormValues {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  login: string;
+}
+
+const initialValues: ISignUpFormValues = {
+  email: 'asd@asd.ru',
+  password: 'asd',
+  firstName: 'Asdasd',
+  lastName: 'Dsadsa',
+  login: 'asd',
+};
+
 type NavigationProp = NativeStackScreenProps<RootStackParamList>['navigation'];
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const dispatch = useTypedDispatch();
-  const [email, setEmail] = useState<string>('admin@admin.ru');
-  const [password, setPassword] = useState<string>('admin');
-
   const { navigate } = useNavigation<NavigationProp>();
 
-  const handleSubmit = async () => {
-    const signInData = { email, password };
-    dispatch(signInThunk(signInData));
-    navigate('Main');
+  const SubmitSignUpForm = async (values: ISignUpFormValues) => {
+    Alert.alert('values', JSON.stringify(values, null, 2));
   };
 
   return (
     <>
       <View style={styles.сontainer}>
         <View style={styles.logo}>
-          <Image
-            source={{
-              uri: 'https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png',
-            }}
-            style={styles.logoImage}
-          />
-          {/* <Text style={styles.logoText}>LOGO APP</Text> */}
+          <Text style={styles.logoText}>SIGN UP</Text>
         </View>
       </View>
       <View style={styles.сontainer}>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={SubmitSignUpForm}
+        >
+      {({
+        handleChange, handleBlur, handleSubmit, values,
+      }) => (
+       <>
         <TextInput
           style={styles.input}
           placeholder="EMAIL"
-          value={email}
-          onChangeText={setEmail}
+          onChangeText={handleChange('email')}
+          onBlur={handleBlur('email')}
+          value={values.email}
         />
         <TextInput
           style={styles.input}
           placeholder="PASSWORD"
-          value={password}
-          onChangeText={setPassword}
+          onChangeText={handleChange('password')}
+          onBlur={handleBlur('password')}
+          value={values.password}
         />
-        <View>
-          <TouchableOpacity
-            style={styles.forgotButton}
-            onPress={() => navigate('PasswordRecovery')}>
-            <Text style={styles.forgotText}>FORGOT PASSWORD?</Text>
-          </TouchableOpacity>
-        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="NAME"
+          onChangeText={handleChange('firstName')}
+          onBlur={handleBlur('firstName')}
+          value={values.firstName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="SURNAME"
+          onChangeText={handleChange('lastName')}
+          onBlur={handleBlur('lastName')}
+          value={values.lastName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="LOGIN"
+          onChangeText={handleChange('login')}
+          onBlur={handleBlur('login')}
+          value={values.login}
+        />
+
         <TouchableOpacity
           style={styles.signButton}
           onPress={handleSubmit}>
-          <Text style={styles.signText}>SIGN IN</Text>
+          <Text style={styles.signText}>SIGN UP</Text>
         </TouchableOpacity>
+       </>
+      )}
+     </Formik>
+
       </View>
     </>
   );
@@ -88,10 +122,6 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 100,
   },
-  logoImage: {
-    width: 257,
-    height: 103,
-  },
   logoText: {
     color: theme.color.mainText,
     fontSize: 30,
@@ -103,11 +133,6 @@ const styles = StyleSheet.create({
     borderColor: theme.color.mainText,
     marginBottom: 10,
     padding: 0,
-  },
-  forgotButton: {},
-  forgotText: {
-    width: 300,
-    textAlign: 'right',
   },
   signButton: {
     marginTop: 40,
@@ -124,4 +149,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+export default SignUp;

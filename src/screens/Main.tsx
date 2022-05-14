@@ -38,17 +38,24 @@ const Main: React.FC<Props> = () => {
       <View style={styles.сontainer}>
         <Text style={styles.buttonText}>User:</Text>
         {currentUser
-          ? <Text style={styles.text}>{currentUser.name}</Text>
+          ? <Text style={styles.text}>{currentUser.email}</Text>
           : <Text style={styles.buttonText}>PLease login</Text>
         }
       </View>
       <View style={styles.сontainer}>
         {!currentUser
-          ? <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate('SignIn')}>
-          <Text style={styles.buttonText}>SIGN IN</Text>
-        </TouchableOpacity>
+          ? <>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigate('SignIn')}>
+                <Text style={styles.buttonText}>SIGN IN</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigate('SignUp')}>
+                <Text style={styles.buttonText}>SIGN UP</Text>
+              </TouchableOpacity>
+            </>
           : <TouchableOpacity
           style={styles.button}
           onPress={handleLogOut}>
