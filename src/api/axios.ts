@@ -12,6 +12,7 @@ pokemonAxios.interceptors.response.use(
 
 const authAxios = axios.create({
   baseURL: config.authUrl,
+  timeout: 1000,
 });
 authAxios.interceptors.response.use(
   (response) => {

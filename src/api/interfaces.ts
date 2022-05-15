@@ -10,6 +10,14 @@ export interface ISignIn {
   password: string,
 }
 
+export interface ISignUp {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  login: string;
+}
+
 export interface IPokemonList {
   count: number;
   next: string | null;

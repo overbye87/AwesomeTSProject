@@ -15,16 +15,10 @@ import { useTypedDispatch } from '../store/store';
 import { theme } from '../theme';
 import { RootStackParamList } from '../App';
 import validation from '../utils/validation';
+import { ISignUp } from '../api/interfaces';
+import { signUpThunk } from '../store/userThunks';
 
-interface ISignUpFormValues {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  login: string;
-}
-
-const initialValues: ISignUpFormValues = {
+const initialValues: ISignUp = {
   email: 'asd@asd.ru',
   password: 'asd',
   firstName: 'Asdasd',
@@ -46,17 +40,13 @@ const SignUp: React.FC = () => {
   const dispatch = useTypedDispatch();
   const { navigate } = useNavigation<NavigationProp>();
 
-  const SubmitSignUpForm = async (values: ISignUpFormValues) => {
-    Alert.alert('values', JSON.stringify(values, null, 2));
+  const SubmitSignUpForm = async (values: ISignUp) => {
+    dispatch(signUpThunk(values));
+    navigate('Main');
   };
 
   return (
     <>
-      <View style={styles.сontainer}>
-        <View style={styles.logo}>
-          <Text style={styles.logoText}>SIGN UP</Text>
-        </View>
-      </View>
       <View style={styles.сontainer}>
         <Formik
           initialValues={initialValues}
@@ -67,6 +57,9 @@ const SignUp: React.FC = () => {
         handleChange, handleBlur, handleSubmit, values, errors, touched,
       }) => (
        <>
+        <Text style={errors.email && touched.email ? styles.labelerror : styles.label}>
+          {errors.email && touched.email ? `EMAIL: ${errors.email}` : 'EMAIL:' }
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="EMAIL"
@@ -74,16 +67,20 @@ const SignUp: React.FC = () => {
           onBlur={handleBlur('email')}
           value={values.email}
         />
-        {errors.email && touched.email && (
-          <Text style={styles.signText}>{errors.email}</Text>
-        )}
+        <Text style={errors.password && touched.password ? styles.labelerror : styles.label}>
+          {errors.password && touched.password ? `PASSWORD: ${errors.password}` : 'PASSWORD:' }
+        </Text>
         <TextInput
+          secureTextEntry={true}
           style={styles.input}
           placeholder="PASSWORD"
           onChangeText={handleChange('password')}
           onBlur={handleBlur('password')}
           value={values.password}
         />
+        <Text style={errors.firstName && touched.firstName ? styles.labelerror : styles.label}>
+          {errors.firstName && touched.firstName ? `NAME: ${errors.firstName}` : 'NAME:' }
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="NAME"
@@ -91,6 +88,9 @@ const SignUp: React.FC = () => {
           onBlur={handleBlur('firstName')}
           value={values.firstName}
         />
+        <Text style={errors.lastName && touched.lastName ? styles.labelerror : styles.label}>
+          {errors.lastName && touched.lastName ? `SURNAME: ${errors.lastName}` : 'SURNAME:' }
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="SURNAME"
@@ -98,6 +98,9 @@ const SignUp: React.FC = () => {
           onBlur={handleBlur('lastName')}
           value={values.lastName}
         />
+        <Text style={errors.login && touched.login ? styles.labelerror : styles.label}>
+          {errors.login && touched.login ? `LOGIN: ${errors.login}` : 'LOGIN:' }
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="LOGIN"
@@ -128,17 +131,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.color.background,
   },
-  logo: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.color.logoBackground,
-    width: 200,
-    height: 200,
-    borderRadius: 100,
+  label: {
+    width: 330,
+    color: theme.color.gray,
+    fontSize: 15,
+    textAlign: 'left',
   },
-  logoText: {
-    color: theme.color.mainText,
-    fontSize: 30,
+  labelerror: {
+    width: 330,
+    color: theme.color.red,
+    fontSize: 15,
+    textAlign: 'left',
   },
   input: {
     fontSize: 20,
@@ -147,9 +150,6 @@ const styles = StyleSheet.create({
     borderColor: theme.color.mainText,
     marginBottom: 10,
     padding: 0,
-  },
-  error: {
-    color: 'red',
   },
   signButton: {
     marginTop: 40,

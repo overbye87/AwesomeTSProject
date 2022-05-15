@@ -20,7 +20,7 @@ const PokemonItem: React.FC<Props> = (props) => {
   const { navigate } = useNavigation<NavigationCommon<'PokemonTabs'>>();
 
   if (!props.pokemon) {
-    return <ActivityIndicator size={'large'} />;
+    return null;
   }
 
   const title = props.pokemon.name.toUpperCase();

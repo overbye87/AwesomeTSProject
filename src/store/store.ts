@@ -8,6 +8,9 @@ export const store = configureStore({
     pokemons: pokemonsSlice,
     user: userSlice,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
 
 export type RootState = ReturnType<typeof store.getState>

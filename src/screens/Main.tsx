@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { RootStackParamList } from '../App';
+import { setPokemons } from '../store/pokemonsSlice';
 import { useTypedSelector } from '../store/store';
 import { setUser } from '../store/userSlice';
 import { theme } from '../theme';
@@ -66,6 +67,11 @@ const Main: React.FC<Props> = () => {
           style={styles.button}
           onPress={handleCheckToken}>
           <Text style={styles.buttonText}>CHECK TOKEN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => { dispatch(setPokemons([])); }}>
+          <Text style={styles.buttonText}>CLEAR POKEMON ARRAY</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}

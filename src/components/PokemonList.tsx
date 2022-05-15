@@ -5,6 +5,7 @@ import { additionalLoadingThunk } from '../store/pokemonsThunks';
 import { IPokemonFullData } from '../types/pokemonsTypes';
 import PokemonItem from './PokemonItem';
 import { setPokemons } from '../store/pokemonsSlice';
+import Loading from './Loading';
 
 const initialParams = { limit: 10, offset: 0 };
 
@@ -17,6 +18,7 @@ const handleKeyExtractor = (item: IPokemonFullData) => item.name;
 const PokemonList: React.FC = () => {
   const dispatch = useTypedDispatch();
   const pokemonsArray = useTypedSelector(({ pokemons }) => pokemons.pokemonsArray);
+  const loading = useTypedSelector(({ pokemons }) => pokemons.loading);
 
   useEffect(() => {
     dispatch(setPokemons([]));
@@ -29,6 +31,9 @@ const PokemonList: React.FC = () => {
 
   console.log('*** render pokemon list');
 
+  if (!pokemonsArray.length) {
+    return <Loading />;
+  }
   return (
     <View>
       <FlatList
