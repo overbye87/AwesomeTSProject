@@ -50,6 +50,7 @@ const SignIn: React.FC = () => {
           onChangeText={setEmail}
         />
         <TextInput
+          secureTextEntry={true}
           style={styles.input}
           placeholder="PASSWORD"
           value={password}

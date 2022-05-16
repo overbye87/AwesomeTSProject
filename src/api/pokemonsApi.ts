@@ -1,5 +1,8 @@
 import {
-  IdOrName, IPokemonData, IParams, IPokemonsArray,
+  IdOrName,
+  IPokemonData,
+  IParams,
+  IPokemonsArray,
 } from '../types/pokemonsTypes';
 import { pokemonAxios } from './axios';
 import { IPokemonList } from './interfaces';
