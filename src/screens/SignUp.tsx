@@ -21,9 +21,9 @@ import { signUpThunk } from '../store/userThunks';
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',
   password: 'admin',
-  firstName: '',
-  lastName: '',
-  login: '',
+  firstName: 'Jacob',
+  lastName: 'Astrowsky',
+  login: 'Kukuruzo',
 };
 
 const validationSchema = yup.object().shape({

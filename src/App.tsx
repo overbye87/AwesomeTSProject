@@ -6,6 +6,7 @@ import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-na
 
 import { store } from './store/store';
 import Loading from './components/Loading';
+import lazyLoading from './utils/lazyLoading';
 
 // import Main from './screens/Main';
 // import SignIn from './screens/SignIn';
