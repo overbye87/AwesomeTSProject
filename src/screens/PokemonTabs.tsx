@@ -4,7 +4,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import PokemonList from '../components/PokemonList';
 import Filter from '../components/Filter';
 import { theme } from '../theme';
-import CameraVision from '../components/Camera/CameraVision';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,13 +13,15 @@ const PokemonTabs = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName = '';
-
-          if (route.name === 'List') {
-            iconName = focused ? 'ios-list-circle' : 'ios-list-circle-outline';
-          } else if (route.name === 'Filter') {
-            iconName = focused ? 'ios-filter' : 'ios-filter-outline';
-          } else if (route.name === 'Camera') {
-            iconName = focused ? 'ios-camera' : 'ios-camera-outline';
+          switch (route.name) {
+            case 'List':
+              iconName = focused ? 'ios-list-circle' : 'ios-list-circle-outline';
+              break;
+            case 'Filter':
+              iconName = focused ? 'ios-filter' : 'ios-filter-outline';
+              break;
+            default:
+              break;
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -29,11 +30,6 @@ const PokemonTabs = () => {
       })}>
       <Tab.Screen name="List" component={PokemonList} />
       <Tab.Screen name="Filter" component={Filter} />
-      <Tab.Screen
-        options={{ headerShown: false, tabBarStyle: { display: 'none' } }}
-        name="Camera"
-        component={CameraVision}
-      />
     </Tab.Navigator>
   );
 };

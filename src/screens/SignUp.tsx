@@ -13,7 +13,7 @@ import * as yup from 'yup';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useTypedDispatch } from '../store/store';
 import { theme } from '../theme';
-import { RootStackParamList } from '../App';
+import { NavigationCommon, RootStackParamList } from '../App';
 import validation from '../utils/validation';
 import { ISignUp } from '../api/interfaces';
 import { signUpThunk } from '../store/userThunks';
@@ -34,11 +34,9 @@ const validationSchema = yup.object().shape({
   login: validation.login,
 });
 
-type NavigationProp = NativeStackScreenProps<RootStackParamList>['navigation'];
-
 const SignUp: React.FC = () => {
   const dispatch = useTypedDispatch();
-  const { navigate } = useNavigation<NavigationProp>();
+  const { navigate } = useNavigation<NavigationCommon<'SignUp'>>();
 
   const SubmitSignUpForm = async (values: ISignUp) => {
     dispatch(signUpThunk(values));

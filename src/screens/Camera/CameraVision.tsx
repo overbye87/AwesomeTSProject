@@ -1,13 +1,19 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, StyleSheet, Text } from 'react-native';
 import { Camera, PhotoFile, useCameraDevices } from 'react-native-vision-camera';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootStackParamList } from '../../App';
+import { setResult } from '../../store/cameraSlice';
 import CameraButtons from './CameraButtons';
 
-const CameraVision = () => {
+type Props = NativeStackScreenProps<RootStackParamList, 'CameraVision'>;
+
+const CameraVision: React.FC<Props> = () => {
   const camera = useRef<Camera>(null);
   const devices = useCameraDevices();
   const [isFrontCamera, setIsFronCamera] = useState(false);
-  const [results, setResults] = useState<PhotoFile[]>([]);
+  const dispatch = useDispatch();
 
   const device = isFrontCamera ? devices.front : devices.back;
 
@@ -24,7 +30,7 @@ const CameraVision = () => {
     try {
       const result = await camera.current?.takePhoto();
       if (result?.path) {
-        setResults((prev) => [...prev, result]);
+        dispatch(setResult(result));
       }
       Alert.alert('path', result?.path);
     } catch (e) {

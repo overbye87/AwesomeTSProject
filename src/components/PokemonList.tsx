@@ -18,7 +18,6 @@ const handleKeyExtractor = (item: IPokemonFullData) => item.name;
 const PokemonList: React.FC = () => {
   const dispatch = useTypedDispatch();
   const pokemonsArray = useTypedSelector(({ pokemons }) => pokemons.pokemonsArray);
-  const loading = useTypedSelector(({ pokemons }) => pokemons.loading);
 
   useEffect(() => {
     dispatch(setPokemons([]));

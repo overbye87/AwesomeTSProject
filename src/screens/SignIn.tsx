@@ -12,16 +12,14 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useTypedDispatch } from '../store/store';
 import { signInThunk } from '../store/userThunks';
 import { theme } from '../theme';
-import { RootStackParamList } from '../App';
-
-type NavigationProp = NativeStackScreenProps<RootStackParamList>['navigation'];
+import { NavigationCommon, RootStackParamList } from '../App';
 
 const SignIn: React.FC = () => {
   const dispatch = useTypedDispatch();
   const [email, setEmail] = useState<string>('admin@admin.ru');
   const [password, setPassword] = useState<string>('admin');
 
-  const { navigate } = useNavigation<NavigationProp>();
+  const { navigate } = useNavigation<NavigationCommon<'SignIn'>>();
 
   const handleSubmit = async () => {
     const signInData = { email, password };

@@ -7,17 +7,16 @@ import {
   StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { RootStackParamList } from '../App';
+import { NavigationCommon, RootStackParamList } from '../App';
 import { setPokemons } from '../store/pokemonsSlice';
 import { useTypedSelector } from '../store/store';
 import { setUser } from '../store/userSlice';
 import { theme } from '../theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
-type NavigationProp = Props['navigation'];
 
 const Main: React.FC<Props> = () => {
-  const { navigate } = useNavigation<NavigationProp>();
+  const { navigate } = useNavigation<NavigationCommon<'Main'>>();
   const dispatch = useDispatch();
   const currentUser = useTypedSelector(({ user }) => user.user);
 
@@ -77,6 +76,11 @@ const Main: React.FC<Props> = () => {
           style={styles.button}
           onPress={() => navigate('PokemonTabs')}>
           <Text style={styles.buttonText}>POKEMON LIST</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigate('CameraVision')}>
+          <Text style={styles.buttonText}>CAMERA VISION</Text>
         </TouchableOpacity>
       </View>
     </>

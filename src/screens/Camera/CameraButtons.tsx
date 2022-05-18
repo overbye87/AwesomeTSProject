@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { NavigationCommon } from '../../App';
 import { theme } from '../../theme';
 
 const styles = StyleSheet.create({
@@ -23,7 +24,7 @@ interface Props {
 }
 
 const CameraButtons: React.FC<Props> = (props) => {
-  const { navigate } = useNavigation();
+  const { navigate } = useNavigation<NavigationCommon<'CameraVision'>>();
 
   return (
     <View style={styles.allContainer}>
