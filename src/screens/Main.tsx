@@ -36,11 +36,13 @@ const Main: React.FC<Props> = () => {
   return (
     <>
       <View style={styles.сontainer}>
-        <Text style={styles.text}>User:</Text>
-        {currentUser
-          ? <Text style={styles.headerText}>{currentUser.email}</Text>
-          : <Text style={styles.text}>Please login</Text>
-        }
+        <View style={styles.logo}>
+          {/* <Text style={styles.text}>User:</Text> */}
+          {currentUser
+            ? <Text style={styles.headerText}>{currentUser.email}</Text>
+            : <Text style={styles.text}>Please log in</Text>
+          }
+        </View>
       </View>
       <View style={styles.сontainer}>
         {
@@ -121,14 +123,22 @@ const styles = StyleSheet.create({
   headerText: {
     textAlign: 'center',
     lineHeight: 40,
-    fontSize: 40,
+    fontSize: 20,
     color: theme.color.headerBackground,
   },
   text: {
     textAlign: 'center',
     lineHeight: 40,
-    fontSize: 40,
+    fontSize: 20,
     color: theme.color.mainText,
+  },
+  logo: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.color.logoBackground,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
   },
 });
 

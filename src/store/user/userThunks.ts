@@ -56,3 +56,22 @@ export const getAllUsersThunk = createAsyncThunk(
     }
   },
 );
+
+export const deleteUserThunk = createAsyncThunk(
+  'user/deleteUser',
+  async (id: number, { dispatch }) => {
+    try {
+      const result = await authApi.deleteOneUser(id);
+      // Alert.alert('user', JSON.stringify(user, null, 2));
+      if (result) {
+        const users = await authApi.getAllUsers();
+        dispatch(setUsers(users));
+      }
+    } catch (error) {
+      Alert.alert(
+        JSON.stringify((error as AxiosError).message),
+        JSON.stringify((error as AxiosError).response?.data.message),
+      );
+    }
+  },
+);
