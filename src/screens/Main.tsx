@@ -40,7 +40,7 @@ const Main: React.FC<Props> = () => {
           {/* <Text style={styles.text}>User:</Text> */}
           {currentUser
             ? <Text style={styles.headerText}>{currentUser.email}</Text>
-            : <Text style={styles.text}>Please log in</Text>
+            : <Text style={styles.text}>Please sign in</Text>
           }
         </View>
       </View>
