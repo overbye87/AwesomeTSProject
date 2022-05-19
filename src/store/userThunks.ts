@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Alert } from 'react-native';
 import { AxiosError } from 'axios';
-import { ISignIn, ISignUp } from '../api/interfaces';
+import { ISignIn, ISignUp } from '../types/userApi';
 
 import authApi from '../api/auth/api';
 import { setUser } from './userSlice';

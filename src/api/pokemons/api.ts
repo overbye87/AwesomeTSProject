@@ -5,7 +5,7 @@ import {
   IPokemonsArray,
 } from '../../types/pokemonsTypes';
 import { pokemonAxios } from './axios';
-import { IPokemonList } from '../interfaces';
+import { IPokemonList } from '../../types/pokemonsApi';
 
 const path = '/pokemon';
 

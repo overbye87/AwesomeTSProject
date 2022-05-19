@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IUser } from '../../types/userTypes';
 import { authAxios, setToken } from './axios';
-import { ISignIn, ISignUp } from '../interfaces';
+import { ISignIn, ISignUp } from '../../types/userApi';
 
 const saveToken = async (data: any) => {
   const { token } = data;

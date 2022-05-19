@@ -15,7 +15,7 @@ import { useTypedDispatch } from '../store/store';
 import { theme } from '../theme';
 import { NavigationCommon, RootStackParamList } from '../App';
 import validation from '../utils/validation';
-import { ISignUp } from '../api/interfaces';
+import { ISignUp } from '../types/userApi';
 import { signUpThunk } from '../store/userThunks';
 
 const initialValues: ISignUp = {
