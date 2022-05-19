@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useTypedDispatch } from '../store/store';
-import { signInThunk } from '../store/userThunks';
+import { signInThunk } from '../store/user/userThunks';
 import { theme } from '../theme';
 import { NavigationCommon, RootStackParamList } from '../App';
 

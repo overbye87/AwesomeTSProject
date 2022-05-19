@@ -16,7 +16,7 @@ import { theme } from '../theme';
 import { NavigationCommon, RootStackParamList } from '../App';
 import validation from '../utils/validation';
 import { ISignUp } from '../types/userApi';
-import { signUpThunk } from '../store/userThunks';
+import { signUpThunk } from '../store/user/userThunks';
 
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',

@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { NavigationCommon, RootStackParamList } from '../App';
-import { setPokemons } from '../store/pokemonsSlice';
+import { setPokemons } from '../store/pokemons/pokemonsSlice';
 import { useTypedSelector } from '../store/store';
-import { setUser } from '../store/userSlice';
+import { setUser } from '../store/user/userSlice';
 import { theme } from '../theme';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;

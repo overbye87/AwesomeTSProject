@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import { useTypedDispatch, useTypedSelector } from '../store/store';
-import { additionalLoadingThunk } from '../store/pokemonsThunks';
+import { additionalLoadingThunk } from '../store/pokemons/pokemonsThunks';
 import { IPokemonFullData } from '../types/pokemonsTypes';
 import PokemonItem from './PokemonItem';
-import { setPokemons } from '../store/pokemonsSlice';
+import { setPokemons } from '../store/pokemons/pokemonsSlice';
 import Loading from './Loading';
 
 const initialParams = { limit: 10, offset: 0 };

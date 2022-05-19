@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IParams, IPokemonsArray } from '../types/pokemonsTypes';
-import type { RootState } from './store';
+import { IParams, IPokemonsArray } from '../../types/pokemonsTypes';
+import type { RootState } from '../store';
 
 interface IInitial {
   pokemonsArray: IPokemonsArray;

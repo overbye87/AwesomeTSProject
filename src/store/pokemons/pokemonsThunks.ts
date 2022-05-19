@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Alert } from 'react-native';
-import { IParams } from '../types/pokemonsTypes';
+import { IParams } from '../../types/pokemonsTypes';
 
-import pokemonsApi from '../api/pokemons/api';
+import pokemonsApi from '../../api/pokemons/api';
 import { addPokemons, setLoading } from './pokemonsSlice';
 
 export const additionalLoadingThunk = createAsyncThunk(

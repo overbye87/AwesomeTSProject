@@ -5,7 +5,7 @@ import { Camera, useCameraDevices } from 'react-native-vision-camera';
 import { useDispatch } from 'react-redux';
 import { RootStackParamList } from '../../App';
 import Loading from '../../components/Loading';
-import { setResult } from '../../store/cameraSlice';
+import { setResult } from '../../store/camera/cameraSlice';
 import CameraButtons from './CameraButtons';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CameraVision'>;

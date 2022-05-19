@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../types/userTypes';
-import type { RootState } from './store';
+import { IUser } from '../../types/userTypes';
+import type { RootState } from '../store';
 
 interface IInitial {
   currentUser: null | IUser,

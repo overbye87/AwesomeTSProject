@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import cameraSlice from './cameraSlice';
-import pokemonsSlice from './pokemonsSlice';
-import userSlice from './userSlice';
+import cameraSlice from './camera/cameraSlice';
+import pokemonsSlice from './pokemons/pokemonsSlice';
+import userSlice from './user/userSlice';
 
 export const store = configureStore({
   reducer: {
