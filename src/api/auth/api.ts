@@ -11,12 +11,19 @@ const saveToken = async (data: any) => {
 };
 
 export const signIn = async (SignInData : ISignIn): Promise<IUser> => {
-  const data = await authAxios.post('/auth', SignInData).then(saveToken);
+  const data = await authAxios.post('/auth', SignInData);
+  await saveToken(data);
   return data.data;
 };
 
 export const signUp = async (SignUpData : ISignUp): Promise<IUser> => {
-  const data = await authAxios.post('/auth/signup', SignUpData).then(saveToken);
+  const data = await authAxios.post('/auth/signup', SignUpData);
+  await saveToken(data);
+  return data.data;
+};
+
+export const getAllUsers = async (): Promise<IUser[]> => {
+  const data = await authAxios.post('/users');
   return data.data;
 };
 
