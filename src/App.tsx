@@ -14,6 +14,7 @@ import PokemonData from './screens/PokemonData';
 import PokemonTabs from './screens/PokemonTabs';
 import MediaFiles from './screens/MediaFiles';
 import CameraVision from './screens/Camera/CameraVision';
+import UserTabs from './screens/UserTabs';
 
 export type RootStackParamList = {
   SignIn: undefined;
@@ -24,6 +25,7 @@ export type RootStackParamList = {
   Main: undefined;
   MediaFiles: undefined;
   CameraVision: undefined;
+  UserTabs: undefined;
 };
 
 type ScreenKeys = keyof RootStackParamList;
@@ -58,6 +60,11 @@ const App = () => {
             name="PasswordRecovery"
             component={PasswordRecovery}
             options={{ title: 'Password Recovery' }}
+          />
+          <Stack.Screen
+            name="UserTabs"
+            component={UserTabs}
+            options={{ title: 'UserTabs' }}
           />
           <Stack.Screen
             name="PokemonTabs"

@@ -3,9 +3,9 @@ import {
   IPokemonData,
   IParams,
   IPokemonsArray,
-} from '../types/pokemonsTypes';
+} from '../../types/pokemonsTypes';
 import { pokemonAxios } from './axios';
-import { IPokemonList } from './interfaces';
+import { IPokemonList } from '../interfaces';
 
 const path = '/pokemon';
 

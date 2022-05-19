@@ -1,19 +1,11 @@
 import axios, { HeadersDefaults } from 'axios';
-import { config } from '../config';
-
-const pokemonAxios = axios.create({
-  baseURL: config.pokemonUrl,
-});
-pokemonAxios.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
-);
+import { config } from '../../config';
 
 const authAxios = axios.create({
   baseURL: config.authUrl,
   timeout: 1000,
 });
+
 authAxios.interceptors.response.use(
   (response) => {
     return response.data;
@@ -28,7 +20,6 @@ const setToken = (token: string) => {
 };
 
 export {
-  pokemonAxios,
   authAxios,
   setToken,
 };

@@ -1,5 +1,4 @@
-import { IPokemonData } from '../types/pokemonsTypes';
-import { IUser } from '../types/userTypes';
+import { IPokemon, IPokemonData } from '../types/pokemonsTypes';
 
 export interface ISaveToken {
   token: string,
@@ -22,7 +21,7 @@ export interface IPokemonList {
   count: number;
   next: string | null;
   previous: string | null;
-  results: any[];
+  results: IPokemon[];
 }
 
 export interface IPokemonFullDataArray {

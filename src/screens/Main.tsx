@@ -18,7 +18,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 const Main: React.FC<Props> = () => {
   const { navigate } = useNavigation<NavigationCommon<'Main'>>();
   const dispatch = useDispatch();
-  const currentUser = useTypedSelector(({ user }) => user.user);
+  const currentUser = useTypedSelector(({ user }) => user.currentUser);
 
   const handleLogOut = async () => {
     AsyncStorage.removeItem('token');
@@ -43,25 +43,35 @@ const Main: React.FC<Props> = () => {
         }
       </View>
       <View style={styles.сontainer}>
-        {!currentUser
-          ? <>
-              <TouchableOpacity
+        {
+          !currentUser
+            ? <>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => navigate('SignIn')}>
+                  <Text style={styles.buttonText}>SIGN IN</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => navigate('SignUp')}>
+                  <Text style={styles.buttonText}>SIGN UP</Text>
+                </TouchableOpacity>
+              </>
+            : <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigate('SignIn')}>
-                <Text style={styles.buttonText}>SIGN IN</Text>
+                onPress={handleLogOut}>
+                <Text style={styles.buttonText}>LOG OUT</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigate('SignUp')}>
-                <Text style={styles.buttonText}>SIGN UP</Text>
-              </TouchableOpacity>
-            </>
-          : <TouchableOpacity
-          style={styles.button}
-          onPress={handleLogOut}>
-          <Text style={styles.buttonText}>LOG OUT</Text>
-        </TouchableOpacity>
         }
+        {
+          currentUser
+          && <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigate('UserTabs')}>
+              <Text style={styles.buttonText}>USER LIST</Text>
+            </TouchableOpacity>
+        }
+
         <TouchableOpacity
           style={styles.button}
           onPress={handleCheckToken}>

@@ -4,11 +4,13 @@ import { IUser } from '../types/userTypes';
 import type { RootState } from './store';
 
 interface IInitial {
-  user: null | IUser,
+  currentUser: null | IUser,
+  users: IUser[],
 }
 
 const initialState: IInitial = {
-  user: null,
+  currentUser: null,
+  users: [],
 };
 
 export const userSlice = createSlice({
@@ -16,7 +18,11 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (store, action: PayloadAction<IUser | null>) => {
-      store.user = action.payload;
+      store.currentUser = action.payload;
+      return store;
+    },
+    setUsers: (store, action: PayloadAction<IUser[]>) => {
+      store.users = action.payload;
       return store;
     },
   },
@@ -24,6 +30,7 @@ export const userSlice = createSlice({
 
 export const {
   setUser,
+  setUsers,
 } = userSlice.actions;
 
 export const user = (state: RootState) => state.user;

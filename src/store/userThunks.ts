@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { AxiosError } from 'axios';
 import { ISignIn, ISignUp } from '../api/interfaces';
 
-import authApi from '../api/authApi';
+import authApi from '../api/auth/api';
 import { setUser } from './userSlice';
 
 export const signInThunk = createAsyncThunk(
@@ -24,7 +24,7 @@ export const signInThunk = createAsyncThunk(
 );
 
 export const signUpThunk = createAsyncThunk(
-  'user/signIn',
+  'user/signUp',
   async (signUpData: ISignUp, { dispatch }) => {
     try {
       dispatch(setUser(null));
