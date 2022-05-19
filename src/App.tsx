@@ -15,6 +15,8 @@ import PokemonTabs from './screens/PokemonTabs';
 import MediaFiles from './screens/MediaFiles';
 import CameraVision from './screens/Camera/CameraVision';
 import UserTabs from './screens/UserTabs';
+import Settings from './screens/Settings';
+import CurrentUser from './screens/CurrentUser';
 
 export type RootStackParamList = {
   SignIn: undefined;
@@ -26,6 +28,8 @@ export type RootStackParamList = {
   MediaFiles: undefined;
   CameraVision: undefined;
   UserTabs: undefined;
+  Settings: undefined;
+  CurrentUser: undefined;
 };
 
 type ScreenKeys = keyof RootStackParamList;
@@ -64,12 +68,12 @@ const App = () => {
           <Stack.Screen
             name="UserTabs"
             component={UserTabs}
-            options={{ title: 'UserTabs' }}
+            options={{ title: 'Users' }}
           />
           <Stack.Screen
             name="PokemonTabs"
             component={PokemonTabs}
-            options={{ title: 'PokemonTabs', headerShown: false }}
+            options={{ title: 'Pokemon', headerShown: false }}
           />
           <Stack.Screen
             name="PokemonData"
@@ -81,12 +85,22 @@ const App = () => {
           <Stack.Screen
             name="CameraVision"
             component={CameraVision}
-            options={{ headerShown: false, title: 'CameraVision' }}
+            options={{ headerShown: false, title: 'Camera Vision' }}
           />
           <Stack.Screen
             name="MediaFiles"
             component={MediaFiles}
             options={{ title: 'MediaFiles' }}
+          />
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{ title: 'Settings' }}
+          />
+          <Stack.Screen
+            name="CurrentUser"
+            component={CurrentUser}
+            options={{ title: 'Current User' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

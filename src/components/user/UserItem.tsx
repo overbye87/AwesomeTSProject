@@ -26,19 +26,19 @@ const UserItem: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.сontainer}>
-      <Ionicons name={'person-circle-outline'} size={80}/>
+      <Ionicons style={styles.image} name={'person-outline'} size={80}/>
+      <Text style={styles.id}>ID:{props.user.id}</Text>
       <View style={styles.textContainer}>
-        <Text style={styles.id}>ID:{props.user.id}</Text>
         <Text style={styles.email}>{props.user.email}</Text>
-        <Text>{props.user.firstName}</Text>
-        <Text>{props.user.lastName}</Text>
-        <Text style={styles.login}>{props.user.login}</Text>
-        <TouchableOpacity
-          style={styles.deleteButton}
-          onPress={() => deletionСonfirmation(props.user)}>
-          <Text style={styles.buttonText}>DELETE</Text>
-        </TouchableOpacity>
+        {props.user.firstName && <Text>{props.user.firstName}</Text>}
+        {props.user.lastName && <Text>{props.user.lastName}</Text>}
+        {props.user.login && <Text style={styles.login}>{props.user.login}</Text>}
       </View>
+    <TouchableOpacity
+      style={styles.deleteButton}
+      onPress={() => deletionСonfirmation(props.user)}>
+      <Text style={styles.buttonText}>DELETE</Text>
+    </TouchableOpacity>
     </View>
   );
 };
@@ -53,6 +53,12 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
   },
+  image: {
+    borderWidth: 1,
+    borderColor: theme.color.logoBackground,
+    padding: 10,
+    marginRight: 15,
+  },
   textContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -61,22 +67,31 @@ const styles = StyleSheet.create({
   },
   id: {
     position: 'absolute',
-    top: 0,
-    right: 5,
+    top: 5,
+    right: 10,
   },
   email: {
     color: theme.color.headerDark,
     textTransform: 'uppercase',
   },
   login: {
+    alignSelf: 'flex-start',
+    backgroundColor: theme.color.headerDark,
+    color: theme.color.white,
+    borderRadius: 5,
+    marginTop: 5,
+    paddingVertical: 2,
+    paddingHorizontal: 10,
     textTransform: 'uppercase',
   },
   deleteButton: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
     width: 100,
     padding: 3,
     backgroundColor: theme.color.logoBackground,
     borderRadius: 3,
-    alignSelf: 'flex-end',
   },
   buttonText: {
     textAlign: 'center',

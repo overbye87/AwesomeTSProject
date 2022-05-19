@@ -3,13 +3,11 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import {
-  Alert,
   StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationCommon, RootStackParamList } from '../App';
-import { setPokemons } from '../store/pokemons/pokemonsSlice';
-import { useTypedSelector } from '../store/store';
+import { useTypedDispatch, useTypedSelector } from '../store/store';
 import { setUser } from '../store/user/userSlice';
 import { theme } from '../theme';
 
@@ -17,20 +15,12 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
 const Main: React.FC<Props> = () => {
   const { navigate } = useNavigation<NavigationCommon<'Main'>>();
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
   const currentUser = useTypedSelector(({ user }) => user.currentUser);
 
   const handleLogOut = async () => {
     AsyncStorage.removeItem('token');
     dispatch(setUser(null));
-  };
-
-  const handleCheckToken = async () => {
-    const token = await AsyncStorage.getItem('token');
-    Alert.alert(
-      'token',
-      String(token),
-    );
   };
 
   return (
@@ -68,22 +58,11 @@ const Main: React.FC<Props> = () => {
         {
           currentUser
           && <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigate('UserTabs')}>
-              <Text style={styles.buttonText}>USER LIST</Text>
+               style={styles.button}
+               onPress={() => navigate('UserTabs')}>
+               <Text style={styles.buttonText}>USER LIST</Text>
             </TouchableOpacity>
         }
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleCheckToken}>
-          <Text style={styles.buttonText}>CHECK TOKEN</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => { dispatch(setPokemons([])); }}>
-          <Text style={styles.buttonText}>CLEAR POKEMON ARRAY</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigate('PokemonTabs')}>
@@ -95,6 +74,20 @@ const Main: React.FC<Props> = () => {
           <Text style={styles.buttonText}>CAMERA VISION</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+          style={styles.settings}
+          onPress={() => navigate('Settings')}>
+          <Ionicons name={'settings-outline'} size={40}/>
+      </TouchableOpacity>
+      {
+        currentUser
+        && <TouchableOpacity
+             style={styles.user}
+             onPress={() => navigate('CurrentUser')}>
+             <Ionicons name={'person-circle-outline'} size={40}/>
+          </TouchableOpacity>
+      }
+
     </>
   );
 };
@@ -106,6 +99,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.color.background,
+  },
+  settings: {
+    position: 'absolute',
+    top: 15,
+    right: 15,
+  },
+  user: {
+    position: 'absolute',
+    top: 15,
+    left: 15,
   },
   button: {
     marginTop: 20,
