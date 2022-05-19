@@ -1,9 +1,10 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, StyleSheet, Text } from 'react-native';
-import { Camera, PhotoFile, useCameraDevices } from 'react-native-vision-camera';
-import { useDispatch, useSelector } from 'react-redux';
+import { Alert, StyleSheet } from 'react-native';
+import { Camera, useCameraDevices } from 'react-native-vision-camera';
+import { useDispatch } from 'react-redux';
 import { RootStackParamList } from '../../App';
+import Loading from '../../components/Loading';
 import { setResult } from '../../store/cameraSlice';
 import CameraButtons from './CameraButtons';
 
@@ -13,37 +14,45 @@ const CameraVision: React.FC<Props> = () => {
   const camera = useRef<Camera>(null);
   const devices = useCameraDevices();
   const [isFrontCamera, setIsFronCamera] = useState(false);
+  const [isTakePhoto, setIsTakePhoto] = useState(false);
   const dispatch = useDispatch();
 
   const device = isFrontCamera ? devices.front : devices.back;
 
   const requestingPermissions = async () => {
+    // eslint-disable-next-line no-unused-vars
     const newCameraPermission = await Camera.requestCameraPermission();
+    // eslint-disable-next-line no-unused-vars
     const newMicrophonePermission = await Camera.requestMicrophonePermission();
-  };
-
-  const handleFlipCamera = () => {
-    setIsFronCamera((prev) => !prev);
-  };
-
-  const handleTakePhoto = async () => {
-    try {
-      const result = await camera.current?.takePhoto();
-      if (result?.path) {
-        dispatch(setResult(result));
-      }
-      Alert.alert('path', result?.path);
-    } catch (e) {
-      Alert.alert(`Error: ${e}`);
-    }
   };
 
   useEffect(() => {
     requestingPermissions();
   }, []);
 
-  if (device == null) {
-    return <Text>No device</Text>;
+  const handleFlipCamera = () => {
+    setIsFronCamera((prev) => !prev);
+    // Alert.alert('device', JSON.stringify(device));
+    Alert.alert('devices', Object.keys(devices).join(', '));
+  };
+
+  const handleTakePhoto = async () => {
+    try {
+      setIsTakePhoto(true);
+      const result = await camera.current?.takePhoto();
+      if (result?.path) {
+        dispatch(setResult(result));
+      }
+      setIsTakePhoto(false);
+      // Alert.alert('path', result?.path);
+    } catch (e) {
+      setIsTakePhoto(false);
+      Alert.alert(`Error: ${e}`);
+    }
+  };
+
+  if (!device || isTakePhoto) {
+    return <Loading />;
   }
   return (
     <>
