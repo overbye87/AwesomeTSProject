@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import {
   Image, StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
-import { theme } from '../theme';
+import { theme } from '../../theme';
 
 const styles = StyleSheet.create({
   сontainer: {

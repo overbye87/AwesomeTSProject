@@ -8,9 +8,9 @@ import {
   View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { theme } from '../theme';
-import { IPokemonFullData } from '../types/pokemonsTypes';
-import { NavigationCommon } from '../App';
+import { theme } from '../../theme';
+import { IPokemonFullData } from '../../types/pokemonsTypes';
+import { NavigationCommon } from '../../App';
 
 type Props = {
   pokemon: IPokemonFullData;

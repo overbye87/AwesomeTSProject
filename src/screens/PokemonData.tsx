@@ -4,7 +4,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { RootStackParamList, RouteCommon } from '../App';
 
-import Slider from '../components/ImageSlider';
+import Slider from '../components/pokemon/ImageSlider';
 import { useTypedSelector } from '../store/store';
 import { theme } from '../theme';
 
