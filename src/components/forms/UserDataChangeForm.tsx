@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { theme } from '../../theme';
 import validation from '../../utils/validation';
-import FormItem from '../FormItem';
+import FormItem from '../CustomTextInput';
 import FormButton from '../FormButton';
 import { IUserDataChange } from '../../types/userApi';
 
@@ -32,10 +32,13 @@ const UserDataChangeForm: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.сontainer}>
-      <FormItem formik={formik} itemName="firstName" itemLabel="NAME"/>
-      <FormItem formik={formik} itemName="lastName" itemLabel="SURNAME"/>
-      <FormItem formik={formik} itemName="login" itemLabel="LOGIN"/>
-      <FormButton formik={formik} buttonLabel="SUBMIT"/>
+      <FormItem formik={formik} itemName="firstName" itemLabel="NAME" />
+      <FormItem formik={formik} itemName="lastName" itemLabel="SURNAME" />
+      <FormItem formik={formik} itemName="login" itemLabel="LOGIN" />
+      {inputFields.map(({ name, label }) => (
+        <FormItem key={name} formik={formik} itemName={name} value={formik.value[name]} itemLabel={label} />
+      ))}
+      <FormButton formik={formik} buttonLabel="SUBMIT" />
     </View>
   );
 };
@@ -49,5 +52,12 @@ const styles = StyleSheet.create({
     backgroundColor: theme.color.background,
   },
 });
+
+const inputFields = [
+  {
+    name: 'email',
+    label: 'Email',
+  },
+];
 
 export default UserDataChangeForm;

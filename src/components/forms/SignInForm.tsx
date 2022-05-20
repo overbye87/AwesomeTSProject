@@ -1,4 +1,5 @@
-import { useFormik } from 'formik';
+/* eslint-disable dot-notation */
+import { FormikProps, useFormik } from 'formik';
 import * as yup from 'yup';
 import React from 'react';
 import {
@@ -7,9 +8,10 @@ import {
 } from 'react-native';
 import { theme } from '../../theme';
 import validation from '../../utils/validation';
-import FormItem from '../FormItem';
+import FormItem from '../CustomTextInput';
 import FormButton from '../FormButton';
 import { ISignIn } from '../../types/userApi';
+import CustomTextInput from '../CustomTextInput';
 
 type Props = {
   initialValues: ISignIn;
@@ -29,10 +31,22 @@ const SignInForm: React.FC<Props> = (props) => {
     validationSchema,
   });
 
+  // eslint-disable-next-line no-shadow
+  const getInputProps = (formik: FormikProps<any>, name: string) => ({
+    value: formik.values[name],
+    error: formik.errors[name],
+    touched: formik.touched[name],
+    handleChange: formik.handleChange(name),
+    handleBlur: formik.handleBlur(name),
+  });
+
   return (
     <View style={styles.сontainer}>
-      <FormItem formik={formik} itemName="email" itemLabel="EMAIL"/>
-      <FormItem formik={formik} itemName="password" itemLabel="PASSWORD" secureTextEntry/>
+      <CustomTextInput
+        itemLabel="EMAIL"
+        {...getInputProps(formik, 'email')}
+      />
+      <CustomTextInput formik={formik} itemName="password" itemLabel="PASSWORD" secureTextEntry/>
       <FormButton formik={formik} buttonLabel="SUBMIT"/>
     </View>
   );

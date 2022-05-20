@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { theme } from '../../theme';
 import validation from '../../utils/validation';
-import FormItem from '../FormItem';
+import FormItem from '../CustomTextInput';
 import FormButton from '../FormButton';
 import { ISignUp } from '../../types/userApi';
 

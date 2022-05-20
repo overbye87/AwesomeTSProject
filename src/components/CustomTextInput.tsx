@@ -1,4 +1,3 @@
-import { FormikProps } from 'formik';
 import React from 'react';
 import {
   StyleSheet,
@@ -8,25 +7,32 @@ import {
 import { theme } from '../theme';
 
 type Props = {
-  formik: FormikProps<any>,
-  itemName: string,
+  value: string,
+  error: string | undefined | string[],
+  touched: boolean | undefined,
+  handleChange: (e: string) => void,
+  handleBlur: (e: string) => void,
   itemLabel?: string,
   secureTextEntry?: boolean
 };
 
-const FormItem: React.FC<Props> = (props) => {
+const CustomTextInput: React.FC<Props> = (props) => {
   return (
     <>
-      <Text style={
-          props.formik.errors[props.itemName]
-          && props.formik.touched[props.itemName]
+      <Text
+        style={
+          props.error
+            && props.touched
             ? styles.labelerror
             : styles.label
-        }>
+        }
+      >
         {
-          props.formik.errors[props.itemName]
-          && props.formik.touched[props.itemName]
-            ? `${props.itemLabel}: ${props.formik.errors[props.itemName]}`
+          (
+            props.error
+            && props.touched
+          )
+            ? `${props.itemLabel}: ${props.error}`
             : `${props.itemLabel}:`
         }
       </Text>
@@ -34,9 +40,9 @@ const FormItem: React.FC<Props> = (props) => {
         secureTextEntry={props.secureTextEntry}
         style={styles.input}
         placeholder={props.itemLabel}
-        onChangeText={props.formik.handleChange(props.itemName)}
-        onBlur={props.formik.handleBlur(props.itemName)}
-        value={props.formik.values[props.itemName]}
+        onChangeText={props.handleChange}
+        onBlur={props.handleBlur}
+        value={props.value}
       />
     </>
   );
@@ -65,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FormItem;
+export default CustomTextInput;

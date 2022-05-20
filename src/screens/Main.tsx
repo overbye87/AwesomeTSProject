@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 import { NavigationCommon, RootStackParamList } from '../App';
 import Logo from '../components/Logo';
-import MenuButton from '../components/MenuButton';
-import SettingsButton from '../components/SettingsButton';
-import UserButton from '../components/UserButton';
+import MenuButton from '../components/ui/MenuButton';
+import SettingsButton from '../components/ui/SettingsButton';
+import UserButton from '../components/ui/UserButton';
 import { useTypedDispatch, useTypedSelector } from '../store/store';
 import { setUser } from '../store/user/userSlice';
 import { theme } from '../theme';

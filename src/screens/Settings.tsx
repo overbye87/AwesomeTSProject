@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import MenuButton from '../components/MenuButton';
+import MenuButton from '../components/ui/MenuButton';
 import { setPokemons } from '../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../store/store';
 import { theme } from '../theme';

@@ -16,8 +16,8 @@ export const signInThunk = createAsyncThunk(
       dispatch(setUser(user));
     } catch (error) {
       Alert.alert(
-        JSON.stringify((error as AxiosError).message),
-        JSON.stringify((error as AxiosError).response?.data.message),
+        (error as AxiosError).message,
+        (error as AxiosError<{ message: string }>).response?.data.message,
       );
     }
   },
@@ -33,8 +33,8 @@ export const signUpThunk = createAsyncThunk(
       dispatch(setUser(user));
     } catch (error) {
       Alert.alert(
-        JSON.stringify((error as AxiosError).message),
-        JSON.stringify((error as AxiosError).response?.data.message),
+        (error as AxiosError).message,
+        (error as AxiosError<{ message: string }>).response?.data.message,
       );
     }
   },
@@ -50,8 +50,8 @@ export const getAllUsersThunk = createAsyncThunk(
       dispatch(setUsers(users));
     } catch (error) {
       Alert.alert(
-        JSON.stringify((error as AxiosError).message),
-        JSON.stringify((error as AxiosError).response?.data.message),
+        (error as AxiosError).message,
+        (error as AxiosError<{ message: string }>).response?.data.message,
       );
     }
   },
@@ -69,8 +69,8 @@ export const deleteUserThunk = createAsyncThunk(
       }
     } catch (error) {
       Alert.alert(
-        JSON.stringify((error as AxiosError).message),
-        JSON.stringify((error as AxiosError).response?.data.message),
+        (error as AxiosError).message,
+        (error as AxiosError<{ message: string }>).response?.data.message,
       );
     }
   },

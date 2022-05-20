@@ -4,7 +4,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { theme } from '../theme';
+import { theme } from '../../theme';
 
 type Props = {
   buttonLabel?: string,
@@ -17,7 +17,8 @@ const MenuButton: React.FC<Props> = (props) => {
     <TouchableOpacity
       disabled={props.disabled}
       style={styles.button}
-      onPress={props.onPress}>
+      onPress={props.onPress}
+    >
       <Text style={styles.buttonText}>
         {props.buttonLabel}
       </Text>

@@ -11,23 +11,24 @@ type Props = {
   disabled?: boolean,
 };
 
-const UserButton: React.FC<Props> = (props) => {
+const SettingsButton: React.FC<Props> = (props) => {
   return (
     <TouchableOpacity
       disabled={props.disabled}
-      style={styles.user}
-      onPress={props.onPress}>
-      <Ionicons name="person-circle-outline" size={40}/>
+      style={styles.settings}
+      onPress={props.onPress}
+    >
+      <Ionicons name="settings-outline" size={40}/>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  user: {
+  settings: {
     position: 'absolute',
     top: 15,
-    left: 15,
+    right: 15,
   },
 });
 
-export default UserButton;
+export default SettingsButton;
