@@ -3,10 +3,9 @@ import React from 'react';
 import {
   Alert,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
+import MenuButton from '../components/MenuButton';
 import { setPokemons } from '../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../store/store';
 import { theme } from '../theme';
@@ -19,20 +18,12 @@ const handleCheckToken = async () => {
   );
 };
 
-const Settings = () => {
+const Settings: React.FC = () => {
   const dispatch = useTypedDispatch();
   return (
     <View style={styles.сontainer}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleCheckToken}>
-        <Text style={styles.buttonText}>CHECK TOKEN</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-          style={styles.button}
-          onPress={() => { dispatch(setPokemons([])); }}>
-          <Text style={styles.buttonText}>CLEAR POKEMON ARRAY</Text>
-      </TouchableOpacity>
+      <MenuButton buttonLabel="CHECK TOKEN" onPress={handleCheckToken} />
+      <MenuButton buttonLabel="CLEAR POKEMON ARRAY" onPress={() => { dispatch(setPokemons([])); }} />
     </View>
   );
 };
@@ -44,19 +35,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.color.background,
-  },
-  button: {
-    marginTop: 20,
-    width: 300,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.color.logoBackground,
-  },
-  buttonText: {
-    textAlign: 'center',
-    lineHeight: 40,
-    fontSize: 20,
-    color: theme.color.white,
   },
 });
 

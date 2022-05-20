@@ -7,6 +7,17 @@ export interface ISignIn {
   password: string,
 }
 
+export interface IUserDataChange {
+  firstName: string;
+  lastName: string;
+  login: string;
+}
+
+export interface IPasswordChange {
+  oldPassword: string;
+  newPassword: string;
+}
+
 export interface ISignUp {
   email: string;
   password: string;

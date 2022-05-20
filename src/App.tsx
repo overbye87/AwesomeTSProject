@@ -16,7 +16,7 @@ import MediaFiles from './screens/MediaFiles';
 import CameraVision from './screens/Camera/CameraVision';
 import UserTabs from './screens/UserTabs';
 import Settings from './screens/Settings';
-import CurrentUser from './screens/CurrentUser';
+import CurrentUserTabs from './screens/CurrentUserTabs';
 
 export type RootStackParamList = {
   SignIn: undefined;
@@ -29,7 +29,7 @@ export type RootStackParamList = {
   CameraVision: undefined;
   UserTabs: undefined;
   Settings: undefined;
-  CurrentUser: undefined;
+  CurrentUserTabs: undefined;
 };
 
 type ScreenKeys = keyof RootStackParamList;
@@ -98,8 +98,8 @@ const App = () => {
             options={{ title: 'Settings' }}
           />
           <Stack.Screen
-            name="CurrentUser"
-            component={CurrentUser}
+            name="CurrentUserTabs"
+            component={CurrentUserTabs}
             options={{ title: 'Current User' }}
           />
         </Stack.Navigator>

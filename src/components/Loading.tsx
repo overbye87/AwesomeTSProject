@@ -1,13 +1,14 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { theme } from '../theme';
+import Logo from './Logo';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <View style={styles.сontainer}>
-      <View style={styles.logo}>
+      <Logo>
         <ActivityIndicator size={'large'} />
-      </View>
+      </Logo>
     </View>
   );
 };
@@ -19,14 +20,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.color.background,
-  },
-  logo: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.color.logoBackground,
-    width: 200,
-    height: 200,
-    borderRadius: 100,
   },
 });
 
