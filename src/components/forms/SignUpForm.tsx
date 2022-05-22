@@ -1,15 +1,17 @@
-import { useFormik } from 'formik';
-import * as yup from 'yup';
 import React from 'react';
 import {
   StyleSheet,
   View,
 } from 'react-native';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import { theme } from '../../theme';
 import validation from '../../utils/validation';
-import FormItem from '../CustomTextInput';
 import FormButton from '../FormButton';
 import { ISignUp } from '../../types/userApi';
+import CustomTextInput from '../CustomTextInput';
+import { getInputProps } from '../../utils/utils';
 
 type Props = {
   initialValues: ISignUp;
@@ -34,11 +36,27 @@ const SignUpForm: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.сontainer}>
-      <FormItem formik={formik} itemName="email" itemLabel="EMAIL"/>
-      <FormItem formik={formik} itemName="password" itemLabel="PASSWORD" secureTextEntry/>
-      <FormItem formik={formik} itemName="firstName" itemLabel="NAME"/>
-      <FormItem formik={formik} itemName="lastName" itemLabel="SURNAME"/>
-      <FormItem formik={formik} itemName="login" itemLabel="LOGIN"/>
+      <CustomTextInput
+        itemLabel="EMAIL"
+        {...getInputProps(formik, 'email')}
+      />
+      <CustomTextInput
+        secureTextEntry
+        itemLabel="PASSWORD"
+        {...getInputProps(formik, 'password')}
+      />
+      <CustomTextInput
+        itemLabel="NAME"
+        {...getInputProps(formik, 'firstName')}
+      />
+      <CustomTextInput
+        itemLabel="SURNAME"
+        {...getInputProps(formik, 'lastName')}
+      />
+      <CustomTextInput
+        itemLabel="LOGIN"
+        {...getInputProps(formik, 'login')}
+      />
       <FormButton formik={formik} buttonLabel="SUBMIT"/>
     </View>
   );

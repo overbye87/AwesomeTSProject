@@ -1,8 +1,10 @@
 import React from 'react';
 import {
+  NativeSyntheticEvent,
   StyleSheet,
   Text,
   TextInput,
+  TextInputFocusEventData,
 } from 'react-native';
 import { theme } from '../theme';
 
@@ -10,8 +12,10 @@ type Props = {
   value: string,
   error: string | undefined | string[],
   touched: boolean | undefined,
-  handleChange: (e: string) => void,
-  handleBlur: (e: string) => void,
+  // eslint-disable-next-line no-unused-vars
+  onChangeText: (text: string) => void | undefined,
+  // eslint-disable-next-line no-unused-vars
+  onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void | undefined,
   itemLabel?: string,
   secureTextEntry?: boolean
 };
@@ -40,8 +44,8 @@ const CustomTextInput: React.FC<Props> = (props) => {
         secureTextEntry={props.secureTextEntry}
         style={styles.input}
         placeholder={props.itemLabel}
-        onChangeText={props.handleChange}
-        onBlur={props.handleBlur}
+        onChangeText={props.onChangeText}
+        onBlur={props.onBlur}
         value={props.value}
       />
     </>
@@ -50,7 +54,7 @@ const CustomTextInput: React.FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: 20,
+    fontSize: theme.fontSize.main,
     width: 300,
     borderBottomWidth: 1,
     borderColor: theme.color.mainText,
@@ -60,13 +64,13 @@ const styles = StyleSheet.create({
   label: {
     width: 330,
     color: theme.color.gray,
-    fontSize: 15,
+    fontSize: theme.fontSize.label,
     textAlign: 'left',
   },
   labelerror: {
     width: 330,
     color: theme.color.red,
-    fontSize: 15,
+    fontSize: theme.fontSize.label,
     textAlign: 'left',
   },
 });

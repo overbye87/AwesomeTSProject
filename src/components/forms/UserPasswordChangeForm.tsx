@@ -1,15 +1,17 @@
-import { useFormik } from 'formik';
-import * as yup from 'yup';
 import React from 'react';
 import {
   StyleSheet,
   View,
 } from 'react-native';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 import { theme } from '../../theme';
 import validation from '../../utils/validation';
-import FormItem from '../CustomTextInput';
 import FormButton from '../FormButton';
 import { IPasswordChange } from '../../types/userApi';
+import CustomTextInput from '../CustomTextInput';
+import { getInputProps } from '../../utils/utils';
 
 type Props = {
   initialValues: IPasswordChange;
@@ -31,8 +33,16 @@ const UserPasswordChangeForm: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.сontainer}>
-      <FormItem formik={formik} itemName="oldPassword" itemLabel="OLD PASSWORD" secureTextEntry/>
-      <FormItem formik={formik} itemName="newPassword" itemLabel="NEW PASSWORD" secureTextEntry/>
+      <CustomTextInput
+        secureTextEntry
+        itemLabel="OLD PASSWORD"
+        {...getInputProps(formik, 'oldPassword')}
+      />
+      <CustomTextInput
+        secureTextEntry
+        itemLabel="NEW PASSWORD"
+        {...getInputProps(formik, 'newPassword')}
+      />
       <FormButton formik={formik} buttonLabel="CHANGE"/>
     </View>
   );

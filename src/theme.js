@@ -1,4 +1,8 @@
 export const theme = {
+  fontSize: {
+    main: 20,
+    label: 15,
+  },
   color: {
     background: '#E8E8E8',
     logoBackground: '#D8D8D8',
