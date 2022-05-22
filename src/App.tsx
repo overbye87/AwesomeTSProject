@@ -1,22 +1,21 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
 import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { store } from './store/store';
 
-import Main from './screens/Main';
-import SignIn from './screens/SignIn';
-import SignUp from './screens/SignUp';
-import PasswordRecovery from './screens/PasswordRecovery';
-import PokemonData from './screens/PokemonData';
-import PokemonTabs from './screens/PokemonTabs';
-import MediaFiles from './screens/MediaFiles';
-import CameraVision from './screens/Camera/CameraVision';
-import UserTabs from './screens/UserTabs';
-import Settings from './screens/Settings';
-import CurrentUserTabs from './screens/CurrentUserTabs';
+import Main from './ui/screens/Main';
+import SignIn from './ui/screens/SignIn';
+import SignUp from './ui/screens/SignUp';
+import PasswordRecovery from './ui/screens/PasswordRecovery';
+import PokemonData from './ui/screens/PokemonData';
+import PokemonTabs from './ui/screens/PokemonTabs';
+import MediaFiles from './ui/screens/MediaFiles';
+import CameraVision from './ui/screens/CameraVision';
+import UserTabs from './ui/screens/UserTabs';
+import Settings from './ui/screens/Settings';
+import CurrentUserTabs from './ui/screens/CurrentUserTabs';
 
 export type RootStackParamList = {
   SignIn: undefined;
