@@ -1,6 +1,5 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { theme } from '../../theme';
 import Logo from './Logo';
 
 const Loading: React.FC = () => {
@@ -19,7 +18,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.color.background,
   },
 });
 

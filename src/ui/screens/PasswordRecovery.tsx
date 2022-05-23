@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import { NavigationCommon } from '../../App';
-import { theme } from '../../theme';
+import { theme } from '../styles/theme';
 
 const PasswordRecovery: React.FC = () => {
   const navigation = useNavigation<NavigationCommon<'PasswordRecovery'>>();
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.color.background,
+    
   },
   logo: {
     justifyContent: 'center',

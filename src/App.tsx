@@ -5,17 +5,17 @@ import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-na
 
 import { store } from './store/store';
 
-import Main from './ui/screens/Main';
-import SignIn from './ui/screens/SignIn';
-import SignUp from './ui/screens/SignUp';
+import Main from './ui/screens/Main/Main';
+import SignIn from './ui/screens/SignIn/SignIn';
+import SignUp from './ui/screens/SignUp/SignUp';
 import PasswordRecovery from './ui/screens/PasswordRecovery';
-import PokemonData from './ui/screens/PokemonData';
-import PokemonTabs from './ui/screens/PokemonTabs';
-import MediaFiles from './ui/screens/MediaFiles';
-import CameraVision from './ui/screens/CameraVision';
-import UserTabs from './ui/screens/UserTabs';
+import PokemonData from './ui/screens/Pokemon/components/PokemonData';
+import PokemonTabs from './ui/screens/Pokemon/PokemonTabs';
+import MediaFiles from './ui/screens/MediaFiles/MediaFiles';
+import CameraVision from './ui/screens/CameraVision/CameraVision';
+import UserTabs from './ui/screens/User/UserTabs';
 import Settings from './ui/screens/Settings';
-import CurrentUserTabs from './ui/screens/CurrentUserTabs';
+import CurrentUserTabs from './ui/screens/CurrentUser/CurrentUserTabs';
 
 export type RootStackParamList = {
   SignIn: undefined;

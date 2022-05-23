@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import { setPokemons } from '../../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../../store/store';
-import { theme } from '../../theme';
-import MenuButton from '../components/MenuButton';
+import { theme } from '../styles/theme';
+import MenuButton from '../components/Button';
 
 const handleCheckToken = async () => {
   const token = await AsyncStorage.getItem('token');
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.color.background,
+    
   },
 });
 

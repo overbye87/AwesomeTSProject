@@ -3,7 +3,8 @@ import { Alert } from 'react-native';
 import { AxiosError } from 'axios';
 import { ISignIn, ISignUp } from '../../types/userApi';
 
-import authApi from '../../api/auth/api';
+import authApi from '../../api/main/authApi';
+import userApi from '../../api/main/userApi';
 import { setUser, setUsers } from './userSlice';
 
 export const signInThunk = createAsyncThunk(
@@ -45,7 +46,7 @@ export const getAllUsersThunk = createAsyncThunk(
   async (params, { dispatch }) => {
     try {
       dispatch(setUsers([]));
-      const users = await authApi.getAllUsers();
+      const users = await userApi.getAllUsers();
       // Alert.alert('user', JSON.stringify(user, null, 2));
       dispatch(setUsers(users));
     } catch (error) {
@@ -61,10 +62,10 @@ export const deleteUserThunk = createAsyncThunk(
   'user/deleteUser',
   async (id: number, { dispatch }) => {
     try {
-      const result = await authApi.deleteOneUser(id);
+      const result = await userApi.deleteOneUser(id);
       // Alert.alert('user', JSON.stringify(user, null, 2));
       if (result) {
-        const users = await authApi.getAllUsers();
+        const users = await userApi.getAllUsers();
         dispatch(setUsers(users));
       }
     } catch (error) {

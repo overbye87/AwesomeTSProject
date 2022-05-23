@@ -7,7 +7,7 @@ import {
   TextInputFocusEventData,
 } from 'react-native';
 
-import { theme } from '../../theme';
+import { theme } from '../styles/theme';
 
 type Props = {
   value: string,
