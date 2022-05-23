@@ -55,7 +55,6 @@ const UserPasswordChangeForm: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   сontainer: {
     flex: 1,
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     

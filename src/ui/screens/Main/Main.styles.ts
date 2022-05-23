@@ -4,7 +4,6 @@ import { theme } from '../../styles/theme';
 export const styles = StyleSheet.create({
   сontainer: {
     flex: 1,
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },

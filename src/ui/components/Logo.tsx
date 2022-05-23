@@ -24,7 +24,6 @@ const Logo: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   logo: {
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.color.logoBackground,
     width: 200,
     height: 200,
@@ -32,7 +31,6 @@ const styles = StyleSheet.create({
   },
   small: {
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.color.logoBackground,
     width: '100%',
     height: 100,

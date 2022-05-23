@@ -33,14 +33,11 @@ const PasswordRecovery: React.FC = () => {
 const styles = StyleSheet.create({
   сontainer: {
     flex: 1,
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
   logo: {
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.color.logoBackground,
     width: 200,
     height: 200,

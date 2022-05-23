@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { setPokemons } from '../../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../../store/store';
-import { theme } from '../styles/theme';
 import MenuButton from '../components/Button';
 
 const handleCheckToken = async () => {
@@ -31,10 +30,8 @@ const Settings: React.FC = () => {
 const styles = StyleSheet.create({
   сontainer: {
     flex: 1,
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
 });
 
