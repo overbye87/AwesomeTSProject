@@ -1,16 +1,16 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import {
   Alert,
-  StyleSheet,
   View,
 } from 'react-native';
-import { setPokemons } from '../../store/pokemons/pokemonsSlice';
-import { useTypedDispatch } from '../../store/store';
-import MenuButton from '../components/Button';
+import { setPokemons } from '../../../store/pokemons/pokemonsSlice';
+import { useTypedDispatch } from '../../../store/store';
+import { getToken } from '../../../utils/token';
+import MenuButton from '../../components/Button';
+import { styles } from './Settings.styles';
 
 const handleCheckToken = async () => {
-  const token = await AsyncStorage.getItem('token');
+  const token = await getToken();
   Alert.alert(
     'token',
     String(token),
@@ -26,13 +26,5 @@ const Settings: React.FC = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  сontainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default Settings;

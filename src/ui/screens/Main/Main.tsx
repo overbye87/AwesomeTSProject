@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -13,6 +12,7 @@ import Logo from '../../components/Logo';
 import MenuButton from '../../components/Button';
 import { styles } from './Main.styles';
 import { theme } from '../../styles/theme';
+import { removeToken } from '../../../utils/token';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
@@ -22,7 +22,7 @@ const Main: React.FC<Props> = () => {
   const currentUser = useTypedSelector(({ user }) => user.currentUser);
 
   const handleLogOut = async () => {
-    AsyncStorage.removeItem('token');
+    await removeToken;
     dispatch(setUser(null));
   };
 

@@ -1,17 +1,14 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { theme } from '../../../styles/theme';
 import validation from '../../../../utils/validation';
 import Button from '../../../components/Button';
 import { IPasswordChange } from '../../../../types/userApi';
 import CustomTextInput from '../../../components/CustomTextInput';
 import { getInputProps } from '../../../../utils/utils';
+import { styles } from './UserPasswordChangeForm.styles';
 
 type Props = {
   initialValues: IPasswordChange;
@@ -51,14 +48,5 @@ const UserPasswordChangeForm: React.FC<Props> = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  сontainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  },
-});
 
 export default UserPasswordChangeForm;

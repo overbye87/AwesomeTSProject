@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 
 import { useTypedSelector } from '../../../../store/store';
-import { theme } from '../../../styles/theme';
+import { styles } from './Information.styles';
 
 const Information = () => {
   const currentUser = useTypedSelector(({ user }) => user.currentUser);
@@ -30,26 +29,5 @@ const Information = () => {
 
   );
 };
-
-const styles = StyleSheet.create({
-  сontainerLeft: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    marginRight: 5,
-  },
-  сontainerRight: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginLeft: 5,
-  },
-  text: {
-    textAlign: 'center',
-    lineHeight: 40,
-    fontSize: 20,
-    color: theme.color.gray,
-  },
-});
 
 export default Information;

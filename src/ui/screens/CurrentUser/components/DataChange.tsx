@@ -1,13 +1,12 @@
 import React from 'react';
 import {
   Alert,
-  StyleSheet,
   View,
 } from 'react-native';
 
 import { useTypedSelector } from '../../../../store/store';
-import { theme } from '../../../styles/theme';
 import { IUserDataChange } from '../../../../types/userApi';
+import { styles } from './DataChange.styles';
 import UserDataChangeForm from './UserDataChangeForm';
 
 const DataChange = () => {
@@ -30,14 +29,5 @@ const DataChange = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  сontainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  },
-});
 
 export default DataChange;

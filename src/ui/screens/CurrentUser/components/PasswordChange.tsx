@@ -1,12 +1,12 @@
 import React from 'react';
 import {
   Alert,
-  StyleSheet,
   View,
 } from 'react-native';
 import { useTypedSelector } from '../../../../store/store';
-import { theme } from '../../../styles/theme';
+
 import { IPasswordChange } from '../../../../types/userApi';
+import { styles } from './PasswordChange.styles';
 import UserPasswordChangeForm from './UserPasswordChangeForm';
 
 const CurrentUser = () => {
@@ -28,14 +28,5 @@ const CurrentUser = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  сontainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  },
-});
 
 export default CurrentUser;

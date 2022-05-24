@@ -12,7 +12,7 @@ authAxios.interceptors.response.use(
   },
 );
 
-const setToken = (token: string) => {
+const addTokenToHeaders = (token: string) => {
   if (!authAxios.defaults.headers) {
     authAxios.defaults.headers = {} as HeadersDefaults;
   }
@@ -21,5 +21,5 @@ const setToken = (token: string) => {
 
 export {
   authAxios,
-  setToken,
+  addTokenToHeaders,
 };

@@ -1,17 +1,14 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { theme } from '../../../styles/theme';
 import validation from '../../../../utils/validation';
 import Button from '../../../components/Button';
 import { IUserDataChange } from '../../../../types/userApi';
 import CustomTextInput from '../../../components/CustomTextInput';
 import { getInputProps } from '../../../../utils/utils';
+import { styles } from './UserDataChangeForm.styles';
 
 type Props = {
   initialValues: IUserDataChange;
@@ -54,14 +51,5 @@ const UserDataChangeForm: React.FC<Props> = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  сontainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-  },
-});
 
 export default UserDataChangeForm;
