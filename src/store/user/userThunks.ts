@@ -58,9 +58,9 @@ export const getAllUsersThunk = createAsyncThunk(
   },
 );
 
-export const deleteUserThunk = createAsyncThunk(
+export const deleteUserThunk = createAsyncThunk<unknown, number>(
   'user/deleteUser',
-  async (id: number, { dispatch }) => {
+  async (id, { dispatch }) => {
     try {
       const result = await userApi.deleteOneUser(id);
       // Alert.alert('user', JSON.stringify(user, null, 2));

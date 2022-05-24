@@ -4,6 +4,9 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { theme } from '../styles/theme';
 
@@ -12,18 +15,22 @@ type Props = {
   // eslint-disable-next-line no-unused-vars
   onPress?: ((event: GestureResponderEvent) => void) | undefined,
   disabled?: boolean,
+  style: StyleProp<ViewStyle>,
+  wrapperStyle: StyleProp<ViewStyle>,
 };
 
 const MenuButton: React.FC<Props> = (props) => {
   return (
     <TouchableOpacity
       disabled={props.disabled}
-      style={styles.button}
+      style={[styles.button, props.style]}
       onPress={props.onPress}
     >
-      <Text style={styles.buttonText}>
-        {props.buttonLabel}
-      </Text>
+      <View style={[props.wrapperStyle]}>
+        <Text style={styles.buttonText}>
+          {props.buttonLabel}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 };

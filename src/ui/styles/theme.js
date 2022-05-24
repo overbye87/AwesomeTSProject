@@ -14,10 +14,4 @@ export const theme = {
     gray: 'gray',
     red: '#c62828',
   },
-  color2: {
-    background: '#E8E8E8',
-    logoBackground: '#D8D8D8',
-    mainText: '#434343',
-    white: 'white',
-  },
 };

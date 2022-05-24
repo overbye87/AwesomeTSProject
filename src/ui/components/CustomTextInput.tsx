@@ -12,11 +12,11 @@ import { theme } from '../styles/theme';
 type Props = {
   value: string,
   error: string | undefined | string[],
-  touched: boolean | undefined,
+  touched?: boolean,
   // eslint-disable-next-line no-unused-vars
   onChangeText: (text: string) => void | undefined,
   // eslint-disable-next-line no-unused-vars
-  onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void | undefined,
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void,
   itemLabel?: string,
   secureTextEntry?: boolean
 };
@@ -26,21 +26,18 @@ const CustomTextInput: React.FC<Props> = (props) => {
     <>
       <Text
         style={
-          props.error
-            && props.touched
+          (props.error && props.touched)
             ? styles.labelerror
             : styles.label
         }
       >
         {
-          (
-            props.error
-            && props.touched
-          )
+          (props.error && props.touched)
             ? `${props.itemLabel}: ${props.error}`
             : `${props.itemLabel}:`
         }
       </Text>
+
       <TextInput
         secureTextEntry={props.secureTextEntry}
         style={styles.input}

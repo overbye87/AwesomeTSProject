@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
-import { Keyboard, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { useTypedDispatch, useTypedSelector } from '../../../store/store';
 import { NavigationCommon } from '../../../App';
 import { ISignUp } from '../../../types/userApi';
@@ -8,7 +8,6 @@ import { signUpThunk } from '../../../store/user/userThunks';
 import Form from './components/Form';
 import Logo from '../../components/Logo';
 import { styles } from './SignUp.styles';
-import { setKeyboardVisible } from '../../../store/app/appSlice';
 
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',
@@ -19,29 +18,9 @@ const initialValues: ISignUp = {
 };
 
 const SignUp: React.FC = () => {
-  const isKeyboardVisible = useTypedSelector(({ app }) => app.isKeyboardVisible);
+  const isKeyboardVisible = false;
   const dispatch = useTypedDispatch();
   const { navigate } = useNavigation<NavigationCommon<'SignUp'>>();
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        dispatch(setKeyboardVisible(true));
-      },
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        dispatch(setKeyboardVisible(false));
-      },
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, [dispatch]);
 
   const handleSubmit = async (values: ISignUp) => {
     dispatch(signUpThunk(values));

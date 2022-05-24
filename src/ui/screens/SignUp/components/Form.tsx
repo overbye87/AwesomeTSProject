@@ -55,7 +55,7 @@ const SignUpForm: React.FC<Props> = (props) => {
       <Button
         onPress={formik.handleSubmit}
         buttonLabel="SUBMIT"
-        disabled={Boolean(Object.keys(formik.errors).length)}
+        disabled={!formik.isValid}
       />
     </>
   );

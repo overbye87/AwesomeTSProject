@@ -19,11 +19,9 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (store, action: PayloadAction<IUser | null>) => {
       store.currentUser = action.payload;
-      return store;
     },
     setUsers: (store, action: PayloadAction<IUser[]>) => {
       store.users = action.payload;
-      return store;
     },
   },
 });

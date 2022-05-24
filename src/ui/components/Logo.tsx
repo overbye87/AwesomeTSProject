@@ -15,7 +15,9 @@ type Props = {
 const Logo: React.FC<Props> = (props) => {
   return (
     <View style={props.small ? styles.small : styles.logo}>
-      {props.iconName && <Ionicons name={props.iconName} size={props.small ? 60 : 80}/>}
+      {props.iconName && (
+        <Ionicons name={props.iconName} size={props.small ? 60 : 80} />
+      )}
       {props.children}
     </View>
   );

@@ -21,15 +21,13 @@ const CameraVision: React.FC<Props> = () => {
 
   const device = isFrontCamera ? devices.front : devices.back;
 
-  const requestingPermissions = async () => {
-    // eslint-disable-next-line no-unused-vars
-    const newCameraPermission = await Camera.requestCameraPermission();
-    // eslint-disable-next-line no-unused-vars
-    const newMicrophonePermission = await Camera.requestMicrophonePermission();
-  };
-
   useEffect(() => {
-    requestingPermissions();
+    (async () => {
+      // eslint-disable-next-line no-unused-vars
+      const newCameraPermission = await Camera.requestCameraPermission();
+      // eslint-disable-next-line no-unused-vars
+      const newMicrophonePermission = await Camera.requestMicrophonePermission();
+    })();
   }, []);
 
   const handleFlipCamera = () => {
@@ -62,8 +60,8 @@ const CameraVision: React.FC<Props> = () => {
         ref={camera}
         style={StyleSheet.absoluteFill}
         device={device}
-        isActive={true}
-        photo={true}
+        isActive
+        photo
         enableZoomGesture
       />
       <Buttons

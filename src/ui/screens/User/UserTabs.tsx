@@ -1,13 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { theme } from '../../styles/theme';
+
 import UserFilter from './components/UserFilter';
 import UserList from './components/UserList';
+import { theme } from '../../styles/theme';
 
 const Tab = createBottomTabNavigator();
 
-const PokemonTabs = () => {
+const PokemonTabs: React.FC = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
