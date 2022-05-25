@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -10,7 +11,7 @@ import { getInputProps } from '../../../../utils/utils';
 
 type Props = {
   initialValues: ISignUp;
-  // eslint-disable-next-line no-unused-vars
+
   onSubmit: (values: ISignUp) => void;
 };
 
@@ -54,9 +55,10 @@ const SignUpForm: React.FC<Props> = (props) => {
       />
       <Button
         onPress={formik.handleSubmit}
-        buttonLabel="SUBMIT"
         disabled={!formik.isValid}
-      />
+      >
+        <Text>SUBMIT</Text>
+      </Button>
     </>
   );
 };

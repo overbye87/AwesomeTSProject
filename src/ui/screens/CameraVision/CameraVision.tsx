@@ -23,10 +23,8 @@ const CameraVision: React.FC<Props> = () => {
 
   useEffect(() => {
     (async () => {
-      // eslint-disable-next-line no-unused-vars
-      const newCameraPermission = await Camera.requestCameraPermission();
-      // eslint-disable-next-line no-unused-vars
-      const newMicrophonePermission = await Camera.requestMicrophonePermission();
+      await Camera.requestCameraPermission();
+      await Camera.requestMicrophonePermission();
     })();
   }, []);
 

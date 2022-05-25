@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import { PhotoFile } from 'react-native-vision-camera';
-import { NavigationCommon } from '../../../../App';
+// import { NavigationCommon } from '../../../../App';
 import { styles } from './PhotoItem.styles';
 
 type Props = {
@@ -19,7 +19,7 @@ const win = Dimensions.get('window');
 
 const PhotoItem: React.FC<Props> = (props) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const { navigate } = useNavigation<NavigationCommon<'CameraVision'>>();
+  // const { navigate } = useNavigation<NavigationCommon<'CameraVision'>>();
 
   if (!props.result) {
     return null;

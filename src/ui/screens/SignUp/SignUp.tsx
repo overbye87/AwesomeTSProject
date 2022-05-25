@@ -1,13 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
-import { useTypedDispatch, useTypedSelector } from '../../../store/store';
+import { useTypedDispatch } from '../../../store/store';
 import { NavigationCommon } from '../../../App';
 import { ISignUp } from '../../../types/userApi';
 import { signUpThunk } from '../../../store/user/userThunks';
 import Form from './components/Form';
 import Logo from '../../components/Logo';
 import { styles } from './SignUp.styles';
+import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
 
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',
@@ -18,7 +19,7 @@ const initialValues: ISignUp = {
 };
 
 const SignUp: React.FC = () => {
-  const isKeyboardVisible = false;
+  const { keyboardVisible } = useKeyboardVisible();
   const dispatch = useTypedDispatch();
   const { navigate } = useNavigation<NavigationCommon<'SignUp'>>();
 
@@ -29,8 +30,8 @@ const SignUp: React.FC = () => {
 
   return (
     <>
-      <View style={isKeyboardVisible ? styles.smallLogoContainer : styles.logoContainer}>
-        <Logo iconName="person-add" small={isKeyboardVisible}/>
+      <View style={keyboardVisible ? styles.smallLogoContainer : styles.logoContainer}>
+        <Logo iconName="person-add" />
       </View>
       <View style={styles.сontainer}>
         <Form initialValues={initialValues} onSubmit={handleSubmit}/>

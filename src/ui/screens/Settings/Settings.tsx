@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   Alert,
+  Text,
   View,
 } from 'react-native';
 import { setPokemons } from '../../../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../../../store/store';
 import { getToken } from '../../../utils/token';
-import MenuButton from '../../components/Button';
+import Button from '../../components/Button';
 import { styles } from './Settings.styles';
 
 const handleCheckToken = async () => {
@@ -21,8 +22,12 @@ const Settings: React.FC = () => {
   const dispatch = useTypedDispatch();
   return (
     <View style={styles.сontainer}>
-      <MenuButton buttonLabel="CHECK TOKEN" onPress={handleCheckToken} />
-      <MenuButton buttonLabel="CLEAR POKEMON ARRAY" onPress={() => { dispatch(setPokemons([])); }} />
+      <Button onPress={handleCheckToken} >
+        <Text>CHECK TOKEN</Text>
+      </Button>
+      <Button onPress={() => { dispatch(setPokemons([])); }} >
+        <Text>CLEAR POKEMON ARRAY</Text>
+      </Button>
     </View>
   );
 };

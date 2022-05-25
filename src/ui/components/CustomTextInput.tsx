@@ -13,9 +13,7 @@ type Props = {
   value: string,
   error: string | undefined | string[],
   touched?: boolean,
-  // eslint-disable-next-line no-unused-vars
   onChangeText: (text: string) => void | undefined,
-  // eslint-disable-next-line no-unused-vars
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void,
   itemLabel?: string,
   secureTextEntry?: boolean

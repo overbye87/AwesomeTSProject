@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   Text,
@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { NavigationCommon } from '../../../App';
+// import { NavigationCommon } from '../../../App';
 import { styles } from './PasswordRecovery.styles';
 
 const PasswordRecovery: React.FC = () => {
-  const navigation = useNavigation<NavigationCommon<'PasswordRecovery'>>();
+  // const navigation = useNavigation<NavigationCommon<'PasswordRecovery'>>();
 
   return (
     <>

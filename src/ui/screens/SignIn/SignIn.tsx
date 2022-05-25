@@ -10,6 +10,7 @@ import { ISignIn } from '../../../types/userApi';
 import Logo from '../../components/Logo';
 import Form from './components/Form';
 import { styles } from './SignIn.styles';
+import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
 
 const initialValues: ISignIn = {
   email: 'admin@admin.ru',
@@ -17,6 +18,7 @@ const initialValues: ISignIn = {
 };
 
 const SignIn: React.FC = () => {
+  const { keyboardVisible } = useKeyboardVisible();
   const dispatch = useTypedDispatch();
   const { navigate } = useNavigation<NavigationCommon<'SignIn'>>();
 
@@ -27,7 +29,7 @@ const SignIn: React.FC = () => {
 
   return (
   <>
-    <View style={styles.logoContainer}>
+    <View style={keyboardVisible ? styles.smallLogoContainer : styles.logoContainer}>
       <Logo iconName="log-in-outline"/>
     </View>
     <View style={styles.сontainer}>

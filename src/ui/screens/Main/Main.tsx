@@ -40,16 +40,28 @@ const Main: React.FC<Props> = () => {
         {
           !currentUser
             ? <>
-                <MenuButton buttonLabel="SIGN IN" onPress={() => navigate('SignIn')} />
-                <MenuButton buttonLabel="SIGN UP" onPress={() => navigate('SignUp')} />
+                <MenuButton onPress={() => navigate('SignIn')}>
+                  <Text>SIGN IN</Text>
+                </MenuButton>
+                <MenuButton onPress={() => navigate('SignUp')}>
+                  <Text>SIGN UP</Text>
+                </MenuButton>
               </>
             : <>
-                <MenuButton buttonLabel="LOG OUT" onPress={handleLogOut} />
-                <MenuButton buttonLabel="USER LIST" onPress={() => navigate('UserTabs')} />
+                <MenuButton onPress={handleLogOut}>
+                  <Text>LOG OUT</Text>
+                </MenuButton>
+                <MenuButton onPress={() => navigate('UserTabs')}>
+                  <Text>USER LIST</Text>
+                </MenuButton>
               </>
         }
-        <MenuButton buttonLabel="POKEMON LIST" onPress={() => navigate('PokemonTabs')} />
-        <MenuButton buttonLabel="CAMERA VISION" onPress={() => navigate('CameraVision')} />
+        <MenuButton onPress={() => navigate('PokemonTabs')}>
+                  <Text>POKEMON LIST</Text>
+                </MenuButton>
+        <MenuButton onPress={() => navigate('CameraVision')}>
+                  <Text>CAMERA VISION</Text>
+                </MenuButton>
       </View>
       <Ionicons
         name="settings-outline"
@@ -59,8 +71,8 @@ const Main: React.FC<Props> = () => {
         onPress={() => navigate('Settings')}
       />
       {
-        currentUser
-        && <Ionicons
+        currentUser &&
+        <Ionicons
              name="person-circle-outline"
              style={{ position: 'absolute', top: 15, left: 15 }}
              color={theme.color.gray}

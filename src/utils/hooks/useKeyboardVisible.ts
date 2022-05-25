@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Keyboard } from 'react-native';
 
-export function KeyboardVisible() {
+export function useKeyboardVisible() {
   const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
@@ -24,5 +24,5 @@ export function KeyboardVisible() {
     };
   }, []);
 
-  return keyboardVisible;
+  return { keyboardVisible };
 }

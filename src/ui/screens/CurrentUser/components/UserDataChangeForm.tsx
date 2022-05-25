@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -45,9 +45,10 @@ const UserDataChangeForm: React.FC<Props> = (props) => {
       />
       <Button
         onPress={formik.handleSubmit}
-        buttonLabel="SUBMIT"
-        disabled={Boolean(Object.keys(formik.errors).length)}
-      />
+        disabled={!formik.isValid}
+      >
+        <Text>SUBMIT</Text>
+      </Button>
     </View>
   );
 };

@@ -11,12 +11,11 @@ import {
 import { theme } from '../styles/theme';
 
 type Props = {
-  buttonLabel?: string,
-  // eslint-disable-next-line no-unused-vars
+  children?: React.ReactNode;
   onPress?: ((event: GestureResponderEvent) => void) | undefined,
   disabled?: boolean,
-  style: StyleProp<ViewStyle>,
-  wrapperStyle: StyleProp<ViewStyle>,
+  style?: StyleProp<ViewStyle>,
+  wrapperStyle?: StyleProp<ViewStyle>,
 };
 
 const MenuButton: React.FC<Props> = (props) => {
@@ -28,11 +27,19 @@ const MenuButton: React.FC<Props> = (props) => {
     >
       <View style={[props.wrapperStyle]}>
         <Text style={styles.buttonText}>
-          {props.buttonLabel}
+          {props.children}
         </Text>
       </View>
     </TouchableOpacity>
   );
+};
+
+MenuButton.defaultProps = {
+  children: null,
+  onPress: undefined,
+  disabled: false,
+  style: null,
+  wrapperStyle: null,
 };
 
 const styles = StyleSheet.create({

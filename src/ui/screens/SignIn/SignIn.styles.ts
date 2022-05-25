@@ -8,8 +8,12 @@ export const styles = StyleSheet.create({
   },
   сontainer: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
+  },
+  smallLogoContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   image: {
     width: 257,
