@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { NavigationCommon, RootStackParamList } from '../../../App';
 import { useTypedDispatch, useTypedSelector } from '../../../store/store';
 import { setUser } from '../../../store/user/userSlice';
 import Logo from '../../components/Logo';
@@ -13,11 +12,13 @@ import MenuButton from '../../components/Button';
 import { styles } from './Main.styles';
 import { theme } from '../../styles/theme';
 import { removeToken } from '../../../utils/token';
+import { NavigationAppStack } from '../../../navigation/AppNavigator';
+import { CommonStackParamList } from '../../../navigation/CommonNavigator';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
+type Props = NativeStackScreenProps<CommonStackParamList, 'Main'>;
 
 const Main: React.FC<Props> = () => {
-  const { navigate } = useNavigation<NavigationCommon<'Main'>>();
+  const { navigate } = useNavigation<NavigationAppStack<'CommonNavigator'>>();
   const dispatch = useTypedDispatch();
   const currentUser = useTypedSelector(({ user }) => user.currentUser);
 
@@ -40,10 +41,10 @@ const Main: React.FC<Props> = () => {
         {
           !currentUser
             ? <>
-                <MenuButton onPress={() => navigate('SignIn')}>
+                <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignIn'})}>
                   <Text>SIGN IN</Text>
                 </MenuButton>
-                <MenuButton onPress={() => navigate('SignUp')}>
+                <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignUp'})}>
                   <Text>SIGN UP</Text>
                 </MenuButton>
               </>
@@ -51,15 +52,15 @@ const Main: React.FC<Props> = () => {
                 <MenuButton onPress={handleLogOut}>
                   <Text>LOG OUT</Text>
                 </MenuButton>
-                <MenuButton onPress={() => navigate('UserTabs')}>
+                <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'UserTabs'})}>
                   <Text>USER LIST</Text>
                 </MenuButton>
               </>
         }
-        <MenuButton onPress={() => navigate('PokemonTabs')}>
+        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'PokemonTabs'})}>
                   <Text>POKEMON LIST</Text>
                 </MenuButton>
-        <MenuButton onPress={() => navigate('CameraVision')}>
+        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'CameraVision'})}>
                   <Text>CAMERA VISION</Text>
                 </MenuButton>
       </View>
@@ -68,17 +69,17 @@ const Main: React.FC<Props> = () => {
         style={{ position: 'absolute', top: 15, right: 15 }}
         color={theme.color.gray}
         size={40}
-        onPress={() => navigate('Settings')}
+        onPress={() => navigate('AuthNavigator', { screen: 'Settings'})}
       />
       {
         currentUser &&
         <Ionicons
-             name="person-circle-outline"
-             style={{ position: 'absolute', top: 15, left: 15 }}
-             color={theme.color.gray}
-             size={40}
-             onPress={() => navigate('CurrentUserTabs')}
-           />
+          name="person-circle-outline"
+          style={{ position: 'absolute', top: 15, left: 15 }}
+          color={theme.color.gray}
+          size={40}
+          onPress={() => navigate('AuthNavigator', { screen: 'CurrentUserTabs'})}
+        />
       }
 
     </>

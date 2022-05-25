@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import { useTypedDispatch } from '../../../store/store';
 import { signInThunk } from '../../../store/user/userThunks';
-import { NavigationCommon } from '../../../App';
 import { ISignIn } from '../../../types/userApi';
 import Logo from '../../components/Logo';
 import Form from './components/Form';
 import { styles } from './SignIn.styles';
 import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
+import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
 
 const initialValues: ISignIn = {
   email: 'admin@admin.ru',
@@ -20,7 +20,7 @@ const initialValues: ISignIn = {
 const SignIn: React.FC = () => {
   const { keyboardVisible } = useKeyboardVisible();
   const dispatch = useTypedDispatch();
-  const { navigate } = useNavigation<NavigationCommon<'SignIn'>>();
+  const { navigate } = useNavigation<NavigationCommonStack<'SignIn'>>();
 
   const handleSubmit = async (values: ISignIn) => {
     dispatch(signInThunk(values));

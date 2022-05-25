@@ -7,15 +7,15 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IPokemonFullData } from '../../../../types/pokemonsTypes';
-import { NavigationCommon } from '../../../../App';
 import { styles } from './PokemonItem.styles';
+import { NavigationCommonStack } from '../../../../navigation/CommonNavigator';
 
 type Props = {
   pokemon: IPokemonFullData;
 };
 
 const PokemonItem: React.FC<Props> = (props) => {
-  const { navigate } = useNavigation<NavigationCommon<'PokemonTabs'>>();
+  const { navigate } = useNavigation<NavigationCommonStack<'PokemonTabs'>>();
 
   if (!props.pokemon) {
     return null;

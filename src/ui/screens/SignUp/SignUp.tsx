@@ -2,13 +2,13 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
 import { useTypedDispatch } from '../../../store/store';
-import { NavigationCommon } from '../../../App';
 import { ISignUp } from '../../../types/userApi';
 import { signUpThunk } from '../../../store/user/userThunks';
 import Form from './components/Form';
 import Logo from '../../components/Logo';
 import { styles } from './SignUp.styles';
 import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
+import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
 
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',
@@ -21,7 +21,7 @@ const initialValues: ISignUp = {
 const SignUp: React.FC = () => {
   const { keyboardVisible } = useKeyboardVisible();
   const dispatch = useTypedDispatch();
-  const { navigate } = useNavigation<NavigationCommon<'SignUp'>>();
+  const { navigate } = useNavigation<NavigationCommonStack<'SignUp'>>();
 
   const handleSubmit = async (values: ISignUp) => {
     dispatch(signUpThunk(values));

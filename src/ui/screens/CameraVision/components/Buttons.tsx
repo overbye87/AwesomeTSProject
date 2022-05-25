@@ -3,9 +3,9 @@ import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { NavigationCommon } from '../../../../App';
 import { theme } from '../../../styles/theme';
 import { styles } from './Buttons.styles';
+import { NavigationCommonStack } from '../../../../navigation/CommonNavigator';
 
 interface Props {
   onTakePhoto: () => void;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Buttons: React.FC<Props> = (props) => {
-  const { navigate } = useNavigation<NavigationCommon<'CameraVision'>>();
+  const { navigate } = useNavigation<NavigationCommonStack<'CameraVision'>>();
 
   return (
     <View style={styles.container}>

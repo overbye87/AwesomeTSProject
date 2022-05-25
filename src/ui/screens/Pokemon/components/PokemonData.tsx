@@ -2,16 +2,16 @@ import { useRoute } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { RootStackParamList, RouteCommon } from '../../../../App';
 
 import Slider from './ImageSlider';
 import { useTypedSelector } from '../../../../store/store';
 import { styles } from './PokemonData.styles';
+import { CommonStackParamList, RouteCommonStack } from '../../../../navigation/CommonNavigator';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'PokemonData'>;
+type Props = NativeStackScreenProps<CommonStackParamList, 'PokemonData'>;
 
 const PokemonData: React.FC<Props> = () => {
-  const { params } = useRoute<RouteCommon<'PokemonData'>>();
+  const { params } = useRoute<RouteCommonStack<'PokemonData'>>();
   const { id } = params;
   const pokemonsArray = useTypedSelector(({ pokemons }) => pokemons.pokemonsArray);
   const pokemonData = pokemonsArray?.find((item) => item.id === id);

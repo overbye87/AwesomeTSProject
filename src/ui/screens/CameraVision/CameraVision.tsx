@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { RootStackParamList } from '../../../App';
 import Loading from '../../components/Loading';
 import { setResult } from '../../../store/camera/cameraSlice';
 import Buttons from './components/Buttons';
+import { CommonStackParamList } from '../../../navigation/CommonNavigator';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CameraVision'>;
+type Props = NativeStackScreenProps<CommonStackParamList, 'CameraVision'>;
 
 const CameraVision: React.FC<Props> = () => {
   const camera = useRef<Camera>(null);
