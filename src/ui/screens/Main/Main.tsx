@@ -14,6 +14,7 @@ import { theme } from '../../styles/theme';
 import { removeToken } from '../../../utils/token';
 import { NavigationAppStack } from '../../../navigation/AppNavigator';
 import { CommonStackParamList } from '../../../navigation/CommonNavigator';
+import { IUser } from '../../../types/userTypes';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'Main'>;
 
@@ -27,12 +28,17 @@ const Main: React.FC<Props> = () => {
     dispatch(setUser(null));
   };
 
+  const getUserName = (user: IUser): string => {
+    if (!user.firstName && !user.lastName) return user.email;
+    return (user.firstName && user.firstName.concat(' ')) + user.lastName;
+  };
+
   return (
     <>
       <View style={styles.сontainer}>
         <Logo>
           {currentUser
-            ? <Text style={styles.headerText}>{currentUser.email}</Text>
+            ? <Text style={styles.headerText}>{getUserName(currentUser)}</Text>
             : <Text style={styles.text}>Please sign in</Text>
           }
         </Logo>
