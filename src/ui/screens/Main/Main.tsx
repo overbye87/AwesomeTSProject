@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { SvgXml } from 'react-native-svg';
 import { useTypedDispatch, useTypedSelector } from '../../../store/store';
 import { setUser } from '../../../store/user/userSlice';
 import Logo from '../../components/Logo';
@@ -12,9 +13,11 @@ import MenuButton from '../../components/Button';
 import { styles } from './Main.styles';
 import { theme } from '../../styles/theme';
 import { removeToken } from '../../../utils/token';
-import { NavigationAppStack } from '../../../navigation/AppNavigator';
-import { CommonStackParamList } from '../../../navigation/CommonNavigator';
+import { NavigationAppStack } from '../../navigation/AppNavigator';
+import { CommonStackParamList } from '../../navigation/CommonNavigator';
 import { IUser } from '../../../types/userTypes';
+import Text from '../../components/Text';
+import SvgLogIn from './assets/sign-in-register-svgrepo-com.svg';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'Main'>;
 
@@ -39,7 +42,11 @@ const Main: React.FC<Props> = () => {
         <Logo>
           {currentUser
             ? <Text style={styles.headerText}>{getUserName(currentUser)}</Text>
-            : <Text style={styles.text}>Please sign in</Text>
+            : <>
+                {/* <SvgLogIn /> */}
+                {/* <SvgXml width="130" height="130" xml={SvgLogIn} /> */}
+                {/* <Text style={styles.text}>Please sign in</Text> */}
+              </>
           }
         </Logo>
       </View>
@@ -47,35 +54,35 @@ const Main: React.FC<Props> = () => {
         {
           !currentUser
             ? <>
-                <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignIn'})}>
-                  <Text>SIGN IN</Text>
-                </MenuButton>
-                <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignUp'})}>
-                  <Text>SIGN UP</Text>
-                </MenuButton>
-              </>
+              <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignIn' })}>
+                SIGN IN
+              </MenuButton>
+              <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignUp' })}>
+                <Text>SIGN UP</Text>
+              </MenuButton>
+            </>
             : <>
-                <MenuButton onPress={handleLogOut}>
-                  <Text>LOG OUT</Text>
-                </MenuButton>
-                <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'UserTabs'})}>
-                  <Text>USER LIST</Text>
-                </MenuButton>
-              </>
+              <MenuButton onPress={handleLogOut}>
+                <Text>LOG OUT</Text>
+              </MenuButton>
+              <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'UserTabs' })}>
+                <Text>USER LIST</Text>
+              </MenuButton>
+            </>
         }
-        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'PokemonTabs'})}>
-                  <Text>POKEMON LIST</Text>
-                </MenuButton>
-        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'CameraVision'})}>
-                  <Text>CAMERA VISION</Text>
-                </MenuButton>
+        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'PokemonTabs' })}>
+          <Text>POKEMON LIST</Text>
+        </MenuButton>
+        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'CameraVision' })}>
+          <Text>CAMERA VISION</Text>
+        </MenuButton>
       </View>
       <Ionicons
         name="settings-outline"
         style={{ position: 'absolute', top: 15, right: 15 }}
         color={theme.color.gray}
         size={40}
-        onPress={() => navigate('AuthNavigator', { screen: 'Settings'})}
+        onPress={() => navigate('AuthNavigator', { screen: 'Settings' })}
       />
       {
         currentUser &&
@@ -84,7 +91,7 @@ const Main: React.FC<Props> = () => {
           style={{ position: 'absolute', top: 15, left: 15 }}
           color={theme.color.gray}
           size={40}
-          onPress={() => navigate('AuthNavigator', { screen: 'CurrentUserTabs'})}
+          onPress={() => navigate('AuthNavigator', { screen: 'CurrentUserTabs' })}
         />
       }
 

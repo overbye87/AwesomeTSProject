@@ -1,12 +1,13 @@
 import { useRoute } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import Slider from './ImageSlider';
 import { useTypedSelector } from '../../../../store/store';
 import { styles } from './PokemonData.styles';
-import { CommonStackParamList, RouteCommonStack } from '../../../../navigation/CommonNavigator';
+import { CommonStackParamList, RouteCommonStack } from '../../../navigation/CommonNavigator';
+import Text from '../../../components/Text';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'PokemonData'>;
 

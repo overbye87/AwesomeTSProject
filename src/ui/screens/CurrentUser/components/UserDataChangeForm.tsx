@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -9,6 +9,7 @@ import { IUserDataChange } from '../../../../types/userApi';
 import CustomTextInput from '../../../components/CustomTextInput';
 import { getInputProps } from '../../../../utils/utils';
 import { styles } from './UserDataChangeForm.styles';
+import Text from '../../../components/Text';
 
 type Props = {
   initialValues: IUserDataChange;

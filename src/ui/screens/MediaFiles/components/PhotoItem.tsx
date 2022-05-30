@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import {
   Dimensions,
   Image,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import { PhotoFile } from 'react-native-vision-camera';
+import Text from '../../../components/Text';
 // import { NavigationCommon } from '../../../../App';
 import { styles } from './PhotoItem.styles';
 

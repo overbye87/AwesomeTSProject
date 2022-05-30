@@ -1,11 +1,11 @@
 // import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import Text from '../../components/Text';
 // import { NavigationCommon } from '../../../App';
 import { styles } from './PasswordRecovery.styles';
 

@@ -6,6 +6,8 @@ interface IUser {
 }
 
 export const getUserName = (user: IUser): string => {
-  if (!user.firstName && !user.lastName) return user.email;
+  if (!user.firstName && !user.lastName) {
+    return user.email;
+  }
   return `${user.firstName || ''} ${user.lastName || ''}`.trim();
 };

@@ -10,7 +10,7 @@ import Logo from '../../components/Logo';
 import Form from './components/Form';
 import { styles } from './SignIn.styles';
 import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
-import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
+import { NavigationCommonStack } from '../../navigation/CommonNavigator';
 
 const initialValues: ISignIn = {
   email: 'admin@admin.ru',

@@ -8,7 +8,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Loading from '../../components/Loading';
 import { setResult } from '../../../store/camera/cameraSlice';
 import Buttons from './components/Buttons';
-import { CommonStackParamList } from '../../../navigation/CommonNavigator';
+import { CommonStackParamList } from '../../navigation/CommonNavigator';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'CameraVision'>;
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Text,
   View,
 } from 'react-native';
 
 import { useTypedSelector } from '../../../../store/store';
+import Text from '../../../components/Text';
 import { styles } from './Information.styles';
 
 const Information = () => {

@@ -5,13 +5,13 @@ export const theme = {
   },
   color: {
     background: '#E8E8E8',
-    logoBackground: '#D8D8D8',
+    logoBackground: '#0078d4',
     itemBackground: '#ebf5f0',
-    headerBackground: '#ef5350',
-    headerDark: '#c62828',
+    headerBackground: '#ca5010',
+    headerDark: '#a4262c',
     mainText: '#434343',
     white: 'white',
     gray: 'gray',
-    red: '#c62828',
+    red: '#a4262c',
   },
 };

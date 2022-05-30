@@ -1,15 +1,15 @@
 import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
-import Main from '../ui/screens/Main/Main';
-import SignIn from '../ui/screens/SignIn/SignIn';
-import SignUp from '../ui/screens/SignUp/SignUp';
-import PasswordRecovery from '../ui/screens/PasswordRecovery/PasswordRecovery';
-import UserTabs from '../ui/screens/User/UserTabs';
-import PokemonData from '../ui/screens/Pokemon/components/PokemonData';
-import CameraVision from '../ui/screens/CameraVision/CameraVision';
-import MediaFiles from '../ui/screens/MediaFiles/MediaFiles';
-import PokemonTabs from '../ui/screens/Pokemon/PokemonTabs';
+import Main from '../screens/Main/Main';
+import SignIn from '../screens/SignIn/SignIn';
+import SignUp from '../screens/SignUp/SignUp';
+import PasswordRecovery from '../screens/PasswordRecovery/PasswordRecovery';
+import UserTabs from '../screens/User/UserTabs';
+import PokemonData from '../screens/Pokemon/components/PokemonData';
+import CameraVision from '../screens/CameraVision/CameraVision';
+import MediaFiles from '../screens/MediaFiles/MediaFiles';
+import PokemonTabs from '../screens/Pokemon/PokemonTabs';
 
 export type CommonStackParamList = {
   SignIn: undefined;

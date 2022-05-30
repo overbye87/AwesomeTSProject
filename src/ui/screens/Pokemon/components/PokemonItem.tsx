@@ -1,14 +1,14 @@
 import React from 'react';
 import {
   Image,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IPokemonFullData } from '../../../../types/pokemonsTypes';
 import { styles } from './PokemonItem.styles';
-import { NavigationCommonStack } from '../../../../navigation/CommonNavigator';
+import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
+import Text from '../../../components/Text';
 
 type Props = {
   pokemon: IPokemonFullData;

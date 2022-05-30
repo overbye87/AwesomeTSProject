@@ -3,10 +3,10 @@
 import React, { useState } from 'react';
 import {
   Image,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import Text from '../../../components/Text';
 import { styles } from './ImageSlider.styles';
 
 type Props = {

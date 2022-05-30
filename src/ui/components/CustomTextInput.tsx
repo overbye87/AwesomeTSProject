@@ -2,19 +2,19 @@ import React from 'react';
 import {
   NativeSyntheticEvent,
   StyleSheet,
-  Text,
   TextInput,
   TextInputFocusEventData,
 } from 'react-native';
 
 import { theme } from '../styles/theme';
+import Text from './Text';
 
 type Props = {
   value: string,
   error: string | undefined | string[],
   touched?: boolean,
   onChangeText: (text: string) => void | undefined,
-  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void,
+  onBlur?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void) | undefined,
   itemLabel?: string,
   secureTextEntry?: boolean
 };
@@ -48,9 +48,16 @@ const CustomTextInput: React.FC<Props> = (props) => {
   );
 };
 
+CustomTextInput.defaultProps = {
+  touched: false,
+};
+
 const styles = StyleSheet.create({
   input: {
-    fontSize: theme.fontSize.main,
+    fontFamily: 'PressStart2P-Regular',
+    marginTop: 10,
+    fontSize: 12,
+    lineHeight: 12,
     width: 300,
     borderBottomWidth: 1,
     borderColor: theme.color.mainText,

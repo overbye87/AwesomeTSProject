@@ -2,13 +2,13 @@ import React from 'react';
 import {
   GestureResponderEvent,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   StyleProp,
   ViewStyle,
 } from 'react-native';
 import { theme } from '../styles/theme';
+import Text from './Text';
 
 type Props = {
   children?: React.ReactNode;
@@ -25,7 +25,7 @@ const MenuButton: React.FC<Props> = (props) => {
       style={[styles.button, props.style]}
       onPress={props.onPress}
     >
-      <View style={[props.wrapperStyle]}>
+      <View style={[styles.wrapperStyle, props.wrapperStyle]}>
         <Text style={styles.buttonText}>
           {props.children}
         </Text>
@@ -50,10 +50,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: theme.color.logoBackground,
   },
+  wrapperStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   buttonText: {
-    textAlign: 'center',
-    lineHeight: 40,
-    fontSize: 20,
     color: theme.color.white,
   },
 });

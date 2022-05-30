@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { theme } from '../../../styles/theme';
 import { styles } from './Buttons.styles';
-import { NavigationCommonStack } from '../../../../navigation/CommonNavigator';
+import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
 
 interface Props {
   onTakePhoto: () => void;

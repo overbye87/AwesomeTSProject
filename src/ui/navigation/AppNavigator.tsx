@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useTypedSelector } from '../store/store';
+import { useTypedSelector } from '../../store/store';
 
 import CommonNavigator, { CommonStackParamList } from './CommonNavigator';
 import AuthNavigator, { AuthStackParamList } from './AuthNavigator';

@@ -8,7 +8,7 @@ import Form from './components/Form';
 import Logo from '../../components/Logo';
 import { styles } from './SignUp.styles';
 import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
-import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
+import { NavigationCommonStack } from '../../navigation/CommonNavigator';
 
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',

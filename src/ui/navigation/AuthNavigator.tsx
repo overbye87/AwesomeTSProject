@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
-import CurrentUserTabs from '../ui/screens/CurrentUser/CurrentUserTabs';
-import Settings from '../ui/screens/Settings/Settings';
+import CurrentUserTabs from '../screens/CurrentUser/CurrentUserTabs';
+import Settings from '../screens/Settings/Settings';
 
 export type AuthStackParamList = {
   CurrentUserTabs: undefined;

@@ -1,17 +1,17 @@
 import React from 'react';
 import {
   Alert,
-  Text,
   View,
 } from 'react-native';
 import { setPokemons } from '../../../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../../../store/store';
-import { getToken } from '../../../utils/token';
+import storage from '../../../utils/storage';
 import Button from '../../components/Button';
+import Text from '../../components/Text';
 import { styles } from './Settings.styles';
 
 const handleCheckToken = async () => {
-  const token = await getToken();
+  const token = await storage.token.get();
   Alert.alert(
     'token',
     String(token),

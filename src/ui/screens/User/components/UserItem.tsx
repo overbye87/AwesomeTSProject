@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Alert,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -9,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTypedDispatch } from '../../../../store/store';
 import { deleteUserThunk } from '../../../../store/user/userThunks';
 import { IUser } from '../../../../types/userTypes';
+import Text from '../../../components/Text';
 import { styles } from './UserItem.styles';
 
 type Props = {
