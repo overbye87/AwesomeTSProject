@@ -1,5 +1,5 @@
 import { IUser } from '../../types/userTypes';
-import { authAxios } from './axios';
+import { addTokenToHeaders, authAxios } from './axios';
 import { ISignIn, ISignUp } from '../../types/userApi';
 import storage from '../../utils/storage';
 
@@ -8,6 +8,7 @@ type IResp = {token: string, data: IUser}
 export const signIn = async (SignInData : ISignIn): Promise<IUser> => {
   const { token, data } = await authAxios.post<any, IResp>('/auth', SignInData);
   await storage.token.set(token);
+  addTokenToHeaders(token);
   return data;
 };
 
