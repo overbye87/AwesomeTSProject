@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { SvgXml } from 'react-native-svg';
 import { useTypedDispatch, useTypedSelector } from '../../../store/store';
 import { setUser } from '../../../store/user/userSlice';
 import Logo from '../../components/Logo';
@@ -17,7 +16,7 @@ import { NavigationAppStack } from '../../navigation/AppNavigator';
 import { CommonStackParamList } from '../../navigation/CommonNavigator';
 import { IUser } from '../../../types/userTypes';
 import Text from '../../components/Text';
-import SvgLogIn from './assets/sign-in-register-svgrepo-com.svg';
+import RocketSvg from './assets/rocket-spaceship-start-svgrepo-com';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'Main'>;
 
@@ -43,8 +42,7 @@ const Main: React.FC<Props> = () => {
           {currentUser
             ? <Text style={styles.headerText}>{getUserName(currentUser)}</Text>
             : <>
-                {/* <SvgLogIn /> */}
-                {/* <SvgXml width="130" height="130" xml={SvgLogIn} /> */}
+                <RocketSvg width={220} height={220} />
                 {/* <Text style={styles.text}>Please sign in</Text> */}
               </>
           }

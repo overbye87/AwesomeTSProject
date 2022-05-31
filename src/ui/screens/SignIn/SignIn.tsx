@@ -11,6 +11,7 @@ import Form from './components/Form';
 import { styles } from './SignIn.styles';
 import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
 import { NavigationCommonStack } from '../../navigation/CommonNavigator';
+import LockSvg from './assets/lock-padlock-protection-svgrepo-com';
 
 const initialValues: ISignIn = {
   email: 'admin@admin.ru',
@@ -30,7 +31,8 @@ const SignIn: React.FC = () => {
   return (
   <>
     <View style={keyboardVisible ? styles.smallLogoContainer : styles.logoContainer}>
-      <Logo iconName="log-in-outline"/>
+      <LockSvg width={220} height={220} />
+      {/* <Logo iconName="log-in-outline"/> */}
     </View>
     <View style={styles.сontainer}>
       <Form initialValues={initialValues} onSubmit={handleSubmit}/>
