@@ -32,7 +32,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'import/extensions': ['error', 'ignorePackages', {
-      js: 'never', jsx: 'never', ts: 'never', tsx: 'never',
+      js: 'never', jsx: 'never', ts: 'never', tsx: 'never', svg: 'never',
     },
     ],
     '@typescript-eslint/no-shadow': ['error'],
@@ -62,7 +62,7 @@ module.exports = {
     {
       files: ['*.js', '*.ts', '*.tsx'],
       settings: {
-        'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
+        'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'] } },
       },
     },
   ],
