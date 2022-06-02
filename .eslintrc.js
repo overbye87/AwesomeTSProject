@@ -31,9 +31,11 @@ module.exports = {
     'react/no-unused-prop-types': 'warn',
     'import/prefer-default-export': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+
     'import/extensions': ['error', 'ignorePackages', {
-      js: 'never', jsx: 'never', ts: 'never', tsx: 'never', svg: 'never',
+      js: 'never', jsx: 'never', ts: 'never', tsx: 'never', svg: 'always',
     },
+
     ],
     '@typescript-eslint/no-shadow': ['error'],
     'no-shadow': 'off',
@@ -60,7 +62,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js', '*.ts', '*.tsx'],
+      files: ['*.js', '*.ts', '*.tsx', '*.svg'],
       settings: {
         'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'] } },
       },

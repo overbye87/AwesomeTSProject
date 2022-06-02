@@ -16,7 +16,7 @@ import { NavigationAppStack } from '../../navigation/AppNavigator';
 import { CommonStackParamList } from '../../navigation/CommonNavigator';
 import { IUser } from '../../../types/userTypes';
 import Text from '../../components/Text';
-import RocketSvg from './assets/rocket-spaceship-start-svgrepo-com-svg';
+import RocketSvg from './assets/rocket-spaceship-start-svgrepo-com.svg';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'Main'>;
 
