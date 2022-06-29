@@ -8,15 +8,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTypedDispatch, useTypedSelector } from '../../../store/store';
 import { setUser } from '../../../store/user/userSlice';
 import Logo from '../../components/Logo';
-import MenuButton from '../../components/Button';
+import CustomButton from '../../components/CustomButton';
 import { styles } from './Main.styles';
 import { theme } from '../../styles/theme';
 import { removeToken } from '../../../utils/token';
 import { NavigationAppStack } from '../../navigation/AppNavigator';
 import { CommonStackParamList } from '../../navigation/CommonNavigator';
 import { IUser } from '../../../types/userTypes';
-import Text from '../../components/Text';
 import RocketSvg from './assets/rocket-spaceship-start-svgrepo-com.svg';
+import CustomText from '../../components/CustomText';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'Main'>;
 
@@ -40,10 +40,10 @@ const Main: React.FC<Props> = () => {
       <View style={styles.сontainer}>
         <Logo>
           {currentUser
-            ? <Text style={styles.headerText}>{getUserName(currentUser)}</Text>
+            ? <CustomText style={styles.headerText}>{getUserName(currentUser)}</CustomText>
             : <>
                 <RocketSvg width={220} height={220} />
-                {/* <Text style={styles.text}>Please sign in</Text> */}
+                {/* <CustomText style={styles.text}>Please sign in</CustomText> */}
               </>
           }
         </Logo>
@@ -52,35 +52,35 @@ const Main: React.FC<Props> = () => {
         {
           !currentUser
             ? <>
-              <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignIn' })}>
+              <CustomButton onPress={() => navigate('CommonNavigator', { screen: 'SignIn' })}>
                 SIGN IN
-              </MenuButton>
-              <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'SignUp' })}>
-                <Text>SIGN UP</Text>
-              </MenuButton>
+              </CustomButton>
+              <CustomButton onPress={() => navigate('CommonNavigator', { screen: 'SignUp' })}>
+                <CustomText>SIGN UP</CustomText>
+              </CustomButton>
             </>
             : <>
-              <MenuButton onPress={handleLogOut}>
-                <Text>LOG OUT</Text>
-              </MenuButton>
-              <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'UserTabs' })}>
-                <Text>USER LIST</Text>
-              </MenuButton>
+              <CustomButton onPress={handleLogOut}>
+                <CustomText>LOG OUT</CustomText>
+              </CustomButton>
+              <CustomButton onPress={() => navigate('CommonNavigator', { screen: 'UserTabs' })}>
+                <CustomText>USER LIST</CustomText>
+              </CustomButton>
             </>
         }
-        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'PokemonTabs' })}>
-          <Text>POKEMON LIST</Text>
-        </MenuButton>
-        <MenuButton onPress={() => navigate('CommonNavigator', { screen: 'CameraVision' })}>
-          <Text>CAMERA VISION</Text>
-        </MenuButton>
+        <CustomButton onPress={() => navigate('CommonNavigator', { screen: 'PokemonTabs' })}>
+          <CustomText>POKEMON LIST</CustomText>
+        </CustomButton>
+        <CustomButton onPress={() => navigate('CommonNavigator', { screen: 'CameraVision' })}>
+          <CustomText>CAMERA VISION</CustomText>
+        </CustomButton>
       </View>
       <Ionicons
         name="settings-outline"
         style={{ position: 'absolute', top: 15, right: 15 }}
         color={theme.color.gray}
         size={40}
-        onPress={() => navigate('AuthNavigator', { screen: 'Settings' })}
+        onPress={() => navigate('ProtectedNavigator', { screen: 'Settings' })}
       />
       {
         currentUser &&
@@ -89,7 +89,7 @@ const Main: React.FC<Props> = () => {
           style={{ position: 'absolute', top: 15, left: 15 }}
           color={theme.color.gray}
           size={40}
-          onPress={() => navigate('AuthNavigator', { screen: 'CurrentUserTabs' })}
+          onPress={() => navigate('ProtectedNavigator', { screen: 'CurrentUserTabs' })}
         />
       }
 

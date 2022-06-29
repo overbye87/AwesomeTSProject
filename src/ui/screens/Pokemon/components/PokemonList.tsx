@@ -5,7 +5,7 @@ import { additionalLoadingThunk } from '../../../../store/pokemons/pokemonsThunk
 import { IPokemonFullData } from '../../../../types/pokemonsTypes';
 import PokemonItem from './PokemonItem';
 import { setPokemons } from '../../../../store/pokemons/pokemonsSlice';
-import Loading from '../../../components/Loading';
+import CustomActivityIndicator from '../../../components/CustomActivityIndicator';
 
 const initialParams = { limit: 10, offset: 0 };
 
@@ -29,7 +29,7 @@ const PokemonList: React.FC = () => {
   };
 
   if (!pokemonsArray.length) {
-    return <Loading />;
+    return <CustomActivityIndicator />;
   }
   return (
     <View>

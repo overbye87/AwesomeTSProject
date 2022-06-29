@@ -5,9 +5,11 @@ import {
 } from 'react-native';
 import { setPokemons } from '../../../store/pokemons/pokemonsSlice';
 import { useTypedDispatch } from '../../../store/store';
+import { setUser } from '../../../store/user/userSlice';
 import storage from '../../../utils/storage';
-import Button from '../../components/Button';
-import Text from '../../components/Text';
+import { removeToken } from '../../../utils/token';
+import CustomButton from '../../components/CustomButton';
+import CustomText from '../../components/CustomText';
 import { styles } from './Settings.styles';
 
 const handleCheckToken = async () => {
@@ -20,14 +22,23 @@ const handleCheckToken = async () => {
 
 const Settings: React.FC = () => {
   const dispatch = useTypedDispatch();
+
+  const handleLogOut = async () => {
+    await removeToken;
+    dispatch(setUser(null));
+  };
+
   return (
     <View style={styles.сontainer}>
-      <Button onPress={handleCheckToken} >
-        <Text>CHECK TOKEN</Text>
-      </Button>
-      <Button onPress={() => { dispatch(setPokemons([])); }} >
-        <Text>CLEAR POKEMON ARRAY</Text>
-      </Button>
+      <CustomButton onPress={handleLogOut}>
+        <CustomText>LOG OUT</CustomText>
+      </CustomButton>
+      <CustomButton onPress={handleCheckToken} >
+        <CustomText>CHECK TOKEN</CustomText>
+      </CustomButton>
+      <CustomButton onPress={() => { dispatch(setPokemons([])); }} >
+        <CustomText>CLEAR POKEMON ARRAY</CustomText>
+      </CustomButton>
     </View>
   );
 };

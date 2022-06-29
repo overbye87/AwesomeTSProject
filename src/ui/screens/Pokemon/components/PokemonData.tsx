@@ -7,7 +7,7 @@ import Slider from './ImageSlider';
 import { useTypedSelector } from '../../../../store/store';
 import { styles } from './PokemonData.styles';
 import { CommonStackParamList, RouteCommonStack } from '../../../navigation/CommonNavigator';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
 
 type Props = NativeStackScreenProps<CommonStackParamList, 'PokemonData'>;
 
@@ -28,34 +28,34 @@ const PokemonData: React.FC<Props> = () => {
   return (
     <View>
       <Slider uris={uris} />
-      <Text style={styles.statHeader}>Stats:</Text>
+      <CustomText style={styles.statHeader}>Stats:</CustomText>
       <View style={styles.statContainer}>
         <View style={styles.statLeft}>
           {pokemonData.stats.map((stat) => (
-            <Text
+            <CustomText
               key={`${pokemonData.name}${stat.stat.name}`}
               style={styles.statText}>
               {stat.stat.name}
-            </Text>
+            </CustomText>
           ))}
         </View>
         <View style={styles.statRight}>
           {pokemonData.stats.map((stat) => (
-            <Text
+            <CustomText
               key={`${pokemonData.name}${stat.stat.name}${stat.base_stat}`}
               style={styles.statText}>
               {stat.base_stat}
-            </Text>
+            </CustomText>
           ))}
         </View>
       </View>
-      <Text style={styles.statHeader}>Abilities:</Text>
+      <CustomText style={styles.statHeader}>Abilities:</CustomText>
       {pokemonData.abilities.map((item) => (
-        <Text
+        <CustomText
           key={`${pokemonData.name}${item.ability.name}`}
           style={styles.statAbility}>
           {item.ability.name}
-        </Text>
+        </CustomText>
       ))}
     </View>
   );

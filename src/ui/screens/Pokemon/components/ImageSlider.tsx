@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
 import { styles } from './ImageSlider.styles';
 
 type Props = {
@@ -26,7 +26,7 @@ const ImageSlider: React.FC<Props> = (props) => {
   return (
     <View style={styles.сontainer}>
       <TouchableOpacity style={styles.left} onPress={decrementUriIndex}>
-        <Text style={styles.arrow}>⇐</Text>
+        <CustomText style={styles.arrow}>⇐</CustomText>
       </TouchableOpacity>
       <View style={styles.imageContainer}>
         <Image
@@ -45,7 +45,7 @@ const ImageSlider: React.FC<Props> = (props) => {
         </View>
       </View>
       <TouchableOpacity style={styles.right} onPress={incrementUriIndex}>
-        <Text style={styles.arrow}>⇒</Text>
+        <CustomText style={styles.arrow}>⇒</CustomText>
       </TouchableOpacity>
     </View>
   );

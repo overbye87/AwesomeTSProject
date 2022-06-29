@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import validation from '../../../../utils/validation';
-import Button from '../../../components/Button';
+import CustomButton from '../../../components/CustomButton';
 import { ISignUp } from '../../../../types/userApi';
 import CustomTextInput from '../../../components/CustomTextInput';
 import { getInputProps } from '../../../../utils/utils';
@@ -53,12 +53,12 @@ const SignUpForm: React.FC<Props> = (props) => {
         itemLabel="LOGIN"
         {...getInputProps(formik, 'login')}
       />
-      <Button
+      <CustomButton
         onPress={formik.handleSubmit}
         disabled={!formik.isValid}
       >
         <Text>SUBMIT</Text>
-      </Button>
+      </CustomButton>
     </>
   );
 };

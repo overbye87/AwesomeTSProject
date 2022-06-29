@@ -7,7 +7,7 @@ import { getInputProps } from '../../../../utils/utils';
 import { ISignIn } from '../../../../types/userApi';
 import validation from '../../../../utils/validation';
 import CustomTextInput from '../../../components/CustomTextInput';
-import Button from '../../../components/Button';
+import CustomButton from '../../../components/CustomButton';
 
 type Props = {
   initialValues: ISignIn;
@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
   password: validation.password,
 });
 
-const Form: React.FC<Props> = (props) => {
+const SignInForm: React.FC<Props> = (props) => {
   const formik: FormikProps<ISignIn> = useFormik<ISignIn>({
     initialValues: props.initialValues,
     onSubmit: props.onSubmit,
@@ -38,14 +38,14 @@ const Form: React.FC<Props> = (props) => {
         itemLabel="PASSOWRD"
         {...getInputProps(formik, 'password')}
       />
-      <Button
+      <CustomButton
         onPress={formik.handleSubmit}
         disabled={!formik.isValid}
       >
         <Text>SUBMIT</Text>
-      </Button>
+      </CustomButton>
     </>
   );
 };
 
-export default Form;
+export default SignInForm;

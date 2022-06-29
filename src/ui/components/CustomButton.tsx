@@ -1,14 +1,13 @@
 import React from 'react';
 import {
   GestureResponderEvent,
-  StyleSheet,
   TouchableOpacity,
   View,
   StyleProp,
   ViewStyle,
 } from 'react-native';
-import { theme } from '../styles/theme';
-import Text from './Text';
+import { styles } from './CustomButton.styles';
+import CustomText from './CustomText';
 
 type Props = {
   children?: React.ReactNode;
@@ -18,7 +17,7 @@ type Props = {
   wrapperStyle?: StyleProp<ViewStyle>,
 };
 
-const MenuButton: React.FC<Props> = (props) => {
+const CustomButton: React.FC<Props> = (props) => {
   return (
     <TouchableOpacity
       disabled={props.disabled}
@@ -26,15 +25,15 @@ const MenuButton: React.FC<Props> = (props) => {
       onPress={props.onPress}
     >
       <View style={[styles.wrapperStyle, props.wrapperStyle]}>
-        <Text style={styles.buttonText}>
+        <CustomText style={styles.buttonText}>
           {props.children}
-        </Text>
+        </CustomText>
       </View>
     </TouchableOpacity>
   );
 };
 
-MenuButton.defaultProps = {
+CustomButton.defaultProps = {
   children: null,
   onPress: undefined,
   disabled: false,
@@ -42,22 +41,4 @@ MenuButton.defaultProps = {
   wrapperStyle: null,
 };
 
-const styles = StyleSheet.create({
-  button: {
-    marginTop: 20,
-    width: 300,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.color.logoBackground,
-  },
-  wrapperStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: theme.color.white,
-  },
-});
-
-export default MenuButton;
+export default CustomButton;

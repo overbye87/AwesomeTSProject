@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 
 const Filter = () => {
-  return <Text>Filter</Text>;
+  return <CustomText>Filter</CustomText>;
 };
 
 export default Filter;

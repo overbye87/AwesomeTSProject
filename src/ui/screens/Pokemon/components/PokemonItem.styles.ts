@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     flexDirection: 'column',
     marginLeft: 5,
   },
@@ -34,11 +34,13 @@ export const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   dataButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 5,
     width: 100,
     padding: 3,
     backgroundColor: theme.color.logoBackground,
     borderRadius: 3,
-    alignSelf: 'flex-end',
   },
   dataText: {
     textAlign: 'center',

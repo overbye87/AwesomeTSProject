@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 import { useTypedSelector } from '../../../../store/store';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
 import { styles } from './Information.styles';
 
 const Information = () => {
@@ -14,16 +14,16 @@ const Information = () => {
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <View style={styles.сontainerLeft}>
-        <Text style={styles.text}>NAME:</Text>
-        <Text style={styles.text}>SURNAME:</Text>
-        <Text style={styles.text}>EMAIL:</Text>
-        <Text style={styles.text}>LOGIN:</Text>
+        <CustomText style={styles.text}>NAME:</CustomText>
+        <CustomText style={styles.text}>SURNAME:</CustomText>
+        <CustomText style={styles.text}>EMAIL:</CustomText>
+        <CustomText style={styles.text}>LOGIN:</CustomText>
       </View>
       <View style={styles.сontainerRight}>
-        <Text style={styles.text}>{currentUser.firstName}</Text>
-        <Text style={styles.text}>{currentUser.lastName}</Text>
-        <Text style={styles.text}>{currentUser.email}</Text>
-        <Text style={styles.text}>{currentUser.login}</Text>
+        <CustomText style={styles.text}>{currentUser.firstName}</CustomText>
+        <CustomText style={styles.text}>{currentUser.lastName}</CustomText>
+        <CustomText style={styles.text}>{currentUser.email}</CustomText>
+        <CustomText style={styles.text}>{currentUser.login}</CustomText>
       </View>
     </View>
 

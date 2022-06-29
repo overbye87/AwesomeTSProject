@@ -1,13 +1,12 @@
 import React from 'react';
 import {
   NativeSyntheticEvent,
-  StyleSheet,
   TextInput,
   TextInputFocusEventData,
 } from 'react-native';
 
-import { theme } from '../styles/theme';
-import Text from './Text';
+import CustomText from './CustomText';
+import { styles } from './CustomTextInput.styles';
 
 type Props = {
   value: string,
@@ -22,7 +21,7 @@ type Props = {
 const CustomTextInput: React.FC<Props> = (props) => {
   return (
     <>
-      <Text
+      <CustomText
         style={
           (props.error && props.touched)
             ? styles.labelerror
@@ -34,7 +33,7 @@ const CustomTextInput: React.FC<Props> = (props) => {
             ? `${props.itemLabel}: ${props.error}`
             : `${props.itemLabel}:`
         }
-      </Text>
+      </CustomText>
 
       <TextInput
         secureTextEntry={props.secureTextEntry}
@@ -51,31 +50,5 @@ const CustomTextInput: React.FC<Props> = (props) => {
 CustomTextInput.defaultProps = {
   touched: false,
 };
-
-const styles = StyleSheet.create({
-  input: {
-    fontFamily: 'PressStart2P-Regular',
-    marginTop: 10,
-    fontSize: 12,
-    lineHeight: 12,
-    width: 300,
-    borderBottomWidth: 1,
-    borderColor: theme.color.mainText,
-    marginBottom: 10,
-    padding: 0,
-  },
-  label: {
-    width: 330,
-    color: theme.color.gray,
-    fontSize: theme.fontSize.label,
-    textAlign: 'left',
-  },
-  labelerror: {
-    width: 330,
-    color: theme.color.red,
-    fontSize: theme.fontSize.label,
-    textAlign: 'left',
-  },
-});
 
 export default CustomTextInput;

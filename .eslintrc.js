@@ -33,7 +33,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
 
     'import/extensions': ['error', 'ignorePackages', {
-      js: 'never', jsx: 'never', ts: 'never', tsx: 'never', svg: 'always',
+      js: 'never', jsx: 'never', ts: 'never', tsx: 'never',
     },
 
     ],
@@ -62,9 +62,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js', '*.ts', '*.tsx', '*.svg'],
+      files: ['*.js', '*.ts', '*.tsx'],
       settings: {
-        'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'] } },
+        'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
       },
     },
   ],

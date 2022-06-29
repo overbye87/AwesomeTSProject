@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Text from '../../components/Text';
+import CustomText from '../../components/CustomText';
 // import { NavigationCommon } from '../../../App';
 import { styles } from './PasswordRecovery.styles';
 
@@ -16,13 +16,13 @@ const PasswordRecovery: React.FC = () => {
     <>
       <View style={styles.сontainer}>
         <View>
-          <Text style={styles.logoText}>FORGOT PASSWORD?</Text>
+          <CustomText style={styles.logoText}>FORGOT PASSWORD?</CustomText>
         </View>
       </View>
       <View style={styles.сontainer}>
-        <TextInput style={styles.input} placeholder="EMAIL" />
+        <CustomTextInput style={styles.input} placeholder="EMAIL" />
         <TouchableOpacity style={styles.signButton} onPress={() => null}>
-          <Text style={styles.signText}>REMIND ME</Text>
+          <CustomText style={styles.signText}>REMIND ME</CustomText>
         </TouchableOpacity>
       </View>
     </>

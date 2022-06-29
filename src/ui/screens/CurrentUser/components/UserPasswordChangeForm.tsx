@@ -4,16 +4,15 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import validation from '../../../../utils/validation';
-import Button from '../../../components/Button';
+import CustomButton from '../../../components/CustomButton';
 import { IPasswordChange } from '../../../../types/userApi';
 import CustomTextInput from '../../../components/CustomTextInput';
 import { getInputProps } from '../../../../utils/utils';
 import { styles } from './UserPasswordChangeForm.styles';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
 
 type Props = {
   initialValues: IPasswordChange;
-  // eslint-disable-next-line no-unused-vars
   onSubmit: (values: IPasswordChange) => void;
 };
 
@@ -41,12 +40,12 @@ const UserPasswordChangeForm: React.FC<Props> = (props) => {
         itemLabel="NEW PASSWORD"
         {...getInputProps(formik, 'newPassword')}
       />
-      <Button
+      <CustomButton
         onPress={formik.handleSubmit}
         disabled={!formik.isValid}
       >
-        <Text>SUBMIT</Text>
-      </Button>
+        <CustomText>SUBMIT</CustomText>
+      </CustomButton>
     </View>
   );
 };

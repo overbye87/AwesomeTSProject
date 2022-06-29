@@ -7,7 +7,7 @@ import {
 import { useTypedDispatch, useTypedSelector } from '../../../../store/store';
 import { getAllUsersThunk } from '../../../../store/user/userThunks';
 import { IUser } from '../../../../types/userTypes';
-import Loading from '../../../components/Loading';
+import CustomActivityIndicator from '../../../components/CustomActivityIndicator';
 import UserItem from './UserItem';
 
 const renderUser: ListRenderItem<IUser> = ({ item }) => (
@@ -25,7 +25,7 @@ const UserList: React.FC = () => {
   }, [dispatch]);
 
   if (!users.length) {
-    return <Loading />;
+    return <CustomActivityIndicator />;
   }
   return (
     <View>

@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useKeyboardVisible } from '../../utils/hooks/useKeyboardVisible';
-import { theme } from '../styles/theme';
+import { styles } from './Logo.styles';
 
 type Props = {
   iconName?: string;
@@ -23,25 +20,5 @@ const Logo: React.FC<Props> = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  logo: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.color.logoBackground,
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-  },
-  small: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.color.logoBackground,
-    width: '100%',
-    height: 100,
-    borderBottomEndRadius: 50,
-    borderBottomStartRadius: 50,
-  },
-});
 
 export default Logo;

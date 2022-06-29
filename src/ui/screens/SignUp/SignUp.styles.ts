@@ -7,8 +7,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   smallLogoContainer: {
-    flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 15,
   },
   сontainer: {
     flex: 1,

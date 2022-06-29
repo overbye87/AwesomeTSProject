@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import Loading from '../../components/Loading';
+import CustomActivityIndicator from '../../components/CustomActivityIndicator';
 import { setResult } from '../../../store/camera/cameraSlice';
 import Buttons from './components/Buttons';
 import { CommonStackParamList } from '../../navigation/CommonNavigator';
@@ -50,7 +50,7 @@ const CameraVision: React.FC<Props> = () => {
   };
 
   if (!device || isTakePhoto) {
-    return <Loading />;
+    return <CustomActivityIndicator />;
   }
   return (
     <>

@@ -1,14 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
+
+import { styles } from './SignUp.styles';
+
 import { useTypedDispatch } from '../../../store/store';
 import { ISignUp } from '../../../types/userApi';
 import { signUpThunk } from '../../../store/user/userThunks';
-import Form from './components/Form';
+import SignUpForm from './components/SignUpForm';
 import Logo from '../../components/Logo';
-import { styles } from './SignUp.styles';
 import { useKeyboardVisible } from '../../../utils/hooks/useKeyboardVisible';
-import { NavigationCommonStack } from '../../navigation/CommonNavigator';
 
 const initialValues: ISignUp = {
   email: 'admin@admin.ru',
@@ -21,11 +21,9 @@ const initialValues: ISignUp = {
 const SignUp: React.FC = () => {
   const { keyboardVisible } = useKeyboardVisible();
   const dispatch = useTypedDispatch();
-  const { navigate } = useNavigation<NavigationCommonStack<'SignUp'>>();
 
   const handleSubmit = async (values: ISignUp) => {
     dispatch(signUpThunk(values));
-    navigate('Main');
   };
 
   return (
@@ -34,7 +32,7 @@ const SignUp: React.FC = () => {
         <Logo iconName="person-add" />
       </View>
       <View style={styles.сontainer}>
-        <Form initialValues={initialValues} onSubmit={handleSubmit}/>
+        <SignUpForm initialValues={initialValues} onSubmit={handleSubmit}/>
       </View>
     </>
   );

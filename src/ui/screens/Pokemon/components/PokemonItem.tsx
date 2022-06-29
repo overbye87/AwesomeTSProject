@@ -7,15 +7,15 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { IPokemonFullData } from '../../../../types/pokemonsTypes';
 import { styles } from './PokemonItem.styles';
-import { NavigationCommonStack } from '../../../navigation/CommonNavigator';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
+import { NavigationProtectedStack } from '../../../navigation/ProtectedNavigator';
 
 type Props = {
   pokemon: IPokemonFullData;
 };
 
 const PokemonItem: React.FC<Props> = (props) => {
-  const { navigate } = useNavigation<NavigationCommonStack<'PokemonTabs'>>();
+  const { navigate } = useNavigation<NavigationProtectedStack<'PokemonTabs'>>();
 
   if (!props.pokemon) {
     return null;
@@ -33,14 +33,14 @@ const PokemonItem: React.FC<Props> = (props) => {
         style={styles.pokemonImage}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.id}>ID: {props.pokemon.id}</Text>
-        <Text style={styles.name}>{props.pokemon.name}</Text>
-        <Text style={styles.description}>height: {props.pokemon.height}</Text>
-        <Text style={styles.description}>weight: {props.pokemon.weight}</Text>
+        <CustomText style={styles.id}>ID: {props.pokemon.id}</CustomText>
+        <CustomText style={styles.name}>{props.pokemon.name}</CustomText>
+        <CustomText style={styles.description}>height: {props.pokemon.height}</CustomText>
+        <CustomText style={styles.description}>weight: {props.pokemon.weight}</CustomText>
         <TouchableOpacity
           style={styles.dataButton}
           onPress={() => navigate('PokemonData', { id, title })}>
-          <Text style={styles.dataText}>SHOW DATA</Text>
+          <CustomText style={styles.dataText}>SHOW DATA</CustomText>
         </TouchableOpacity>
       </View>
     </View>

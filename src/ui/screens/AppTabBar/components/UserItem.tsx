@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTypedDispatch } from '../../../../store/store';
 import { deleteUserThunk } from '../../../../store/user/userThunks';
 import { IUser } from '../../../../types/userTypes';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
 import { styles } from './UserItem.styles';
 
 type Props = {
@@ -30,17 +30,17 @@ const UserItem: React.FC<Props> = (props) => {
   return (
     <View style={styles.сontainer}>
       <Ionicons style={styles.image} name={'person-outline'} size={80}/>
-      <Text style={styles.id}>ID:{props.user.id}</Text>
+      <CustomText style={styles.id}>ID:{props.user.id}</CustomText>
       <View style={styles.textContainer}>
-        <Text style={styles.email}>{props.user.email}</Text>
-        {props.user.firstName && <Text>{props.user.firstName}</Text>}
-        {props.user.lastName && <Text>{props.user.lastName}</Text>}
-        {props.user.login && <Text style={styles.login}>{props.user.login}</Text>}
+        <CustomText style={styles.email}>{props.user.email}</CustomText>
+        {props.user.firstName && <CustomText>{props.user.firstName}</CustomText>}
+        {props.user.lastName && <CustomText>{props.user.lastName}</CustomText>}
+        {props.user.login && <CustomText style={styles.login}>{props.user.login}</CustomText>}
       </View>
     <TouchableOpacity
       style={styles.deleteButton}
       onPress={() => deletionСonfirmation(props.user)}>
-      <Text style={styles.buttonText}>DELETE</Text>
+      <CustomText style={styles.buttonText}>DELETE</CustomText>
     </TouchableOpacity>
     </View>
   );

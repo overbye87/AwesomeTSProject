@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import { PhotoFile } from 'react-native-vision-camera';
-import Text from '../../../components/Text';
+import CustomText from '../../../components/CustomText';
 // import { NavigationCommon } from '../../../../App';
 import { styles } from './PhotoItem.styles';
 
@@ -50,13 +50,13 @@ const PhotoItem: React.FC<Props> = (props) => {
         style={styles.pokemonImage}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.id}>{props.result.metadata['{Exif}'].DateTimeOriginal}</Text>
-        <Text style={styles.name}>{props.result.width} x {props.result.height}</Text>
-        <Text style={styles.description}>{props.result.path}</Text>
+        <CustomText style={styles.id}>{props.result.metadata['{Exif}'].DateTimeOriginal}</CustomText>
+        <CustomText style={styles.name}>{props.result.width} x {props.result.height}</CustomText>
+        <CustomText style={styles.description}>{props.result.path}</CustomText>
         <TouchableOpacity
           style={styles.dataButton}
           onPress={() => setIsFullScreen((prev) => !prev)}>
-          <Text style={styles.dataText}>VIEW</Text>
+          <CustomText style={styles.dataText}>VIEW</CustomText>
         </TouchableOpacity>
       </View>
     </View>
