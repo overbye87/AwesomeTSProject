@@ -19,7 +19,12 @@ const addTokenToHeaders = (token: string) => {
   (authAxios.defaults.headers as HeadersDefaults & { 'x-access-token': string })['x-access-token'] = token;
 };
 
+const addBaseURL = (baseURL: string) => {
+  authAxios.defaults.baseURL = baseURL;
+};
+
 export {
   authAxios,
   addTokenToHeaders,
+  addBaseURL,
 };

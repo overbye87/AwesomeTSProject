@@ -11,14 +11,13 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  сontainer: {
-    flex: 1,
+  formContainer: {
+    marginTop: 40,
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    width: 257,
-    height: 103,
+    alignSelf: 'center',
   },
   signUpText: {
     marginTop: 25,

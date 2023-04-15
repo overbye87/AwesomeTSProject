@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   logoText: {
     color: theme.color.mainText,
-    fontSize: 30,
+    fontSize: 28,
   },
   input: {
     width: 300,
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
   signText: {
     textAlign: 'center',
     lineHeight: 40,
-    fontSize: 20,
+    fontSize: 18,
     color: theme.color.white,
   },
 });

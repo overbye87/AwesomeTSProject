@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   statHeader: {
     marginTop: 20,
-    fontSize: 30,
+    fontSize: 28,
     marginHorizontal: 10,
     color: theme.color.headerDark,
   },
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   },
   statAbility: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 18,
     marginHorizontal: 10,
     textTransform: 'uppercase',
     padding: 3,

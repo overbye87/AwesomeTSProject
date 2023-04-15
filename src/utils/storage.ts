@@ -29,5 +29,6 @@ class StorageItem<D> {
 
 export default {
   token: new StorageItem<string>('token'),
+  ip: new StorageItem<string>('ip'),
 };
 

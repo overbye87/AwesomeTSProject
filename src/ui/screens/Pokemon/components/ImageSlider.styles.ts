@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   right: {},
   left: {},
   arrow: {
-    fontSize: 50,
+    fontSize: 46,
     lineHeight: 50,
     color: theme.color.white,
   },

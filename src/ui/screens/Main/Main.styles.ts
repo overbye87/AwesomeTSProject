@@ -10,13 +10,13 @@ export const styles = StyleSheet.create({
   headerText: {
     textAlign: 'center',
     lineHeight: 40,
-    fontSize: 20,
+    fontSize: 18,
     color: theme.color.headerBackground,
   },
   text: {
     textAlign: 'center',
     lineHeight: 40,
-    fontSize: 20,
+    fontSize: 18,
     color: theme.color.mainText,
   },
 });

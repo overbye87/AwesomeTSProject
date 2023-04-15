@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     lineHeight: 40,
-    fontSize: 20,
+    fontSize: 18,
     color: theme.color.gray,
   },
 });

@@ -31,7 +31,7 @@ const CommonNavigator: React.FC = () => {
       <CommonStack.Screen
         name="SignUp"
         component={SignUp}
-        options={{ title: 'Sign Up', headerShown: false }}
+        options={{ title: 'Sign Up', headerShown: true }}
       />
     </CommonStack.Navigator>
   );

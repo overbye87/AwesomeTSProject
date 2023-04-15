@@ -10,12 +10,13 @@ import { styles } from './CustomTextInput.styles';
 
 type Props = {
   value: string,
-  error: string | undefined | string[],
+  error?: string | undefined | string[],
   touched?: boolean,
   onChangeText: (text: string) => void | undefined,
   onBlur?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void) | undefined,
   itemLabel?: string,
-  secureTextEntry?: boolean
+  secureTextEntry?: boolean,
+  editable?: boolean,
 };
 
 const CustomTextInput: React.FC<Props> = (props) => {
@@ -42,6 +43,7 @@ const CustomTextInput: React.FC<Props> = (props) => {
         onChangeText={props.onChangeText}
         onBlur={props.onBlur}
         value={props.value}
+        editable={props.editable}
       />
     </>
   );

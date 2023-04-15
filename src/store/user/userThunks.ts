@@ -13,7 +13,7 @@ export const signInThunk = createAsyncThunk(
     try {
       dispatch(setUser(null));
       const user = await authApi.signIn(signInData);
-      // Alert.alert('user', JSON.stringify(user, null, 2));
+      Alert.alert('user', JSON.stringify(user, null, 2));
       dispatch(setUser(user));
     } catch (error) {
       Alert.alert(

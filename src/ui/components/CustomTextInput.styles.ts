@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   input: {
     fontFamily: 'PressStart2P-Regular',
     marginTop: 10,
-    fontSize: 12,
+    fontSize: 10,
     lineHeight: 12,
     width: 300,
     borderBottomWidth: 1,

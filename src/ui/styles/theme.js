@@ -1,7 +1,7 @@
 export const theme = {
   fontSize: {
-    main: 20,
-    label: 15,
+    main: 14,
+    label: 12,
   },
   color: {
     background: '#E8E8E8',
